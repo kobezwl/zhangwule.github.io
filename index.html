@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zwl的学习笔记</title>
+    <title>zwl个人网页</title>
+    <link rel="stylesheet" href="./CSS/base.css">
+    <link rel="stylesheet" href="./bg-layer/bg-layer.css">
+    <link rel="stylesheet" href="./page/page.css">
 </head>
 <body>
-    <h3>正在搭建中...</h3>
+    <!-- 背景图层 -->
+    <div id="bg-layer">
+        <!-- 背景图片 -->
+        <div id="bg-img"></div>
+
+        <!-- 背景时钟 -->
+        <div id="bg-clock">
+            <!-- <div class="card running"> -->
+                <!-- <div class="digital front" data-number="1"></div>
+                <div class="digital back" data-number="2"></div> -->
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <div id="page">
+        <header></header>
+        <main>
+            <div id="temp"></div>
+        </main>
+        <footer></footer>
+    </div>
+
+    <script src="./bg-layer/bg-clock.js"></script>
 </body>
 </html>
