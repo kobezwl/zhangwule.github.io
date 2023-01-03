@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./CSS/base.css">
     <link rel="stylesheet" href="./bg-layer/bg-layer.css">
     <link rel="stylesheet" href="./page/page.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3849029_el42orbjqdu.css">
 </head>
 <body>
     <!-- 背景图层 -->
@@ -17,21 +18,68 @@
 
         <!-- 背景时钟 -->
         <div id="bg-clock">
-            <!-- <div class="card running"> -->
-                <!-- <div class="digital front" data-number="1"></div>
-                <div class="digital back" data-number="2"></div> -->
-            <!-- </div> -->
+            <!--  -->
         </div>
     </div>
 
+    <!-- 页面 -->
     <div id="page">
-        <header></header>
+        <!-- 页面头部 -->
+        <header>
+            <nav class="head-nav">
+                <!-- 博客名字 -->
+                <div class="blog-name">
+                    <a class="site" href="https://zhangwule.github.io/">zwl的开发笔记</a>
+                </div>
+                <!-- 菜单 -->
+                <div class="menus">
+                    <div class="menu-item search">
+                        <a href="javascript:void(0);">
+                            <i class="icon-search iconfont"></i>
+                            <span>搜索</span>
+                        </a>
+                    </div>
+                    <div class="menu-item home-page">
+                        <a href="javascript:void(0);">
+                            <i class="icon-index iconfont"></i>
+                            <span>主页</span>
+                        </a>
+                    </div>
+                    <div class="menu-item subject">
+                        <a href="javascript:void(0);">
+                            <i class="icon-subject iconfont"></i>
+                            <span>主题</span>
+                        </a>
+                    </div>
+                    <div class="menu-item label">
+                        <a href="javascript:void(0);">
+                            <i class="icon-label iconfont"></i>
+                            <span>标签</span>
+                        </a>
+                    </div>
+                    <div class="menu-item classify">
+                        <a href="javascript:void(0);">
+                            <i class="icon-classify iconfont"></i>
+                            <span>分类</span>
+                        </a>
+                    </div>
+                    <div class="sidebar">
+                        <i class="icon-unfold iconfont"></i>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- 页面主体 -->
         <main>
             <div id="temp"></div>
         </main>
+
+        <!-- 页面页脚 -->
         <footer></footer>
     </div>
 
+    <script src="./bg-layer/bg-img.js"></script>
     <script src="./bg-layer/bg-clock.js"></script>
 </body>
 </html>

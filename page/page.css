@@ -1,4 +1,4 @@
-/* 页面 */
+/* === === === 页面 === === === */
 #page {
     position: absolute;
     top: 0px;
@@ -9,19 +9,126 @@
     overflow-y: auto;
     z-index: 1;
 }
-
-
-
-/* 页面头部 */
-#page header {
-    width: inherit;
-    height: 60px;
-    background-color: rgba( 255, 255, 255, 0.1 );
+#page::-webkit-scrollbar {
+    width: 5px;
+}
+/* 滚动条 */
+#page::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: rgba( 80, 80, 80, 0.5 );
+}
+#page::-webkit-scrollbar-thumb:hover {
+    background-color: rgba( 80, 80, 80, 0.8 );
+}
+/* 滚动条轨道 */
+#page::-webkit-scrollbar-track-piece{
+    background-color: rgba( 213, 213, 213, 0.3 );
 }
 
 
 
-/* 页面主体 */
+/* === === === 页面头部 === === === */
+#page header {
+    width: inherit;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba( 0, 0, 0, 0.3 ); */
+}
+
+/* 头部导航 */
+header .head-nav {
+    position: relative;
+    width: 1500px;
+    height: inherit;
+    display: grid;
+    grid-template-rows: repeat( 1, 1fr );
+    grid-template-columns: repeat( 4, 1fr );
+    grid-template-areas: "name . . menus";
+}
+/* 博客名字 */
+header .head-nav .blog-name {
+    width: 200px;
+    height: 100%;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 60px;
+}
+header .head-nav .blog-name a.site {
+    color: #ffffff;
+    letter-spacing: 0.1em;
+}
+/* 菜单 */
+header .head-nav .menus {
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    grid-area: menus-start;
+    box-sizing: border-box;
+}
+header .menu-item {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+header .menu-item a {
+    position: relative;
+    padding-bottom: 3px;
+    color: rgba( 255, 255, 255, 0.9 );
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+header .menu-item a::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #bba9ff;
+    content: '';
+    transition: width 0.3s ease;
+}
+header .menu-item a:hover {
+    color: #ffffff;
+}
+header .menu-item a:hover::after {
+    width: 100%;
+}
+header .menu-item a:hover span {
+    text-shadow: none;
+}
+header .menu-item i {
+    font-weight: bold;
+}
+header .menu-item span {
+    text-shadow: 1px 1px 2px #000000;
+}
+/* 展开菜单 */
+header .head-nav .sidebar {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    color: rgba( 0, 0, 0, 0.5 );
+}
+header .head-nav .sidebar i {
+    font-size: 20px;
+    /* font-weight: bold; */
+}
+header .head-nav .sidebar:hover i {
+    color: #000000;
+    cursor: pointer;
+}
+
+
+/* === === === 页面主体 === === === */
 #page main {
     margin-top: calc( 100vh - 60px );
     width: inherit;
@@ -31,7 +138,7 @@
 
 
 
-/* 页面页脚 */
+/* === === === 页面页脚 === === === */
 #page footer {
     width: inherit;
     height: 80px;
