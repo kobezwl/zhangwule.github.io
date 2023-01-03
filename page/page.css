@@ -29,26 +29,27 @@
 
 /* === === === 页面头部 === === === */
 #page header {
+    position: relative;
     width: inherit;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgba( 0, 0, 0, 0.3 ); */
+    height: 100vh;
+    transition: all 0.5s ease;
 }
 
-/* 头部导航 */
-header .head-nav {
-    position: relative;
+
+/* === 头部导航 === */
+header #head-nav {
+    margin: 0 auto;
     width: 1500px;
-    height: inherit;
+    height: 60px;
     display: grid;
     grid-template-rows: repeat( 1, 1fr );
     grid-template-columns: repeat( 4, 1fr );
     grid-template-areas: "name . . menus";
+    box-sizing: border-box;
 }
-/* 博客名字 */
-header .head-nav .blog-name {
+
+/* --- 博客名字 --- */
+header #head-nav .blog-name {
     width: 200px;
     height: 100%;
     color: #ffffff;
@@ -57,12 +58,14 @@ header .head-nav .blog-name {
     text-align: center;
     line-height: 60px;
 }
-header .head-nav .blog-name a.site {
+header #head-nav .blog-name a.site {
     color: #ffffff;
     letter-spacing: 0.1em;
 }
-/* 菜单 */
-header .head-nav .menus {
+
+/* --- 菜单 --- */
+header #head-nav .menus {
+    position: relative;
     padding: 15px;
     width: 100%;
     height: 100%;
@@ -92,7 +95,7 @@ header .menu-item a::after {
     left: 0;
     width: 0;
     height: 1px;
-    background-color: #bba9ff;
+    background-color: #987bff;
     content: '';
     transition: width 0.3s ease;
 }
@@ -111,26 +114,253 @@ header .menu-item i {
 header .menu-item span {
     text-shadow: 1px 1px 2px #000000;
 }
-/* 展开菜单 */
-header .head-nav .sidebar {
+
+/* 侧边栏菜单 */
+#head-nav .sidebar-switch {
     position: absolute;
-    top: 20px;
+    top: 21px;
     right: 0;
-    color: rgba( 0, 0, 0, 0.5 );
-}
-header .head-nav .sidebar i {
-    font-size: 20px;
-    /* font-weight: bold; */
-}
-header .head-nav .sidebar:hover i {
     color: #000000;
+}
+#head-nav .sidebar-switch i {
+    font-size: 20px;
+}
+#head-nav .sidebar-switch:hover i {
+    color: #ffffff;
     cursor: pointer;
 }
+.menus .menu-content {
+    position: absolute;
+    top: 0px;
+    right: -17px;
+    width: 300px;
+    height: 100vh;
+    background-color: #ffffff;
+    transform: translateX( 300px );
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    z-index: 1;
+}
+/* 菜单图片 */
+.menu-content .menu-img {
+    width: 100%;
+    height: 150px;
+}
+/* 站点数据 */
+.menu-content .site-data {
+    padding: 10px 15px 0;
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+}
+.menu-content .site-data .site-data-link {
+    float: left;
+    width: calc( 100% / 3 );
+    height: 100%;
+}
+.menu-content .site-data .site-data-link:hover h4 {
+    color: #ff5959;
+}
+.menu-content .site-data .site-data-link a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #4c4948;
+    text-align: center;
+    line-height: 30px;
+}
+.menu-content .site-data .site-data-link h4 {
+    height: 30px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.menu-content .site-data .site-data-link p {
+    height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+}
+/* 装饰条 */
+.menu-content div.decoration {
+    position: relative;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 24px;
+    overflow: hidden;
+}
+.menu-content div.decoration i, 
+.menu-content div.decoration i::before {
+    float: left;
+    display: block;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 24px;
+    transform: rotateZ( 0deg );
+}
+.menu-content div.decoration i {
+    color: #8fcdff;
+}
+.menu-content div.decoration i:hover {
+    color: #a187ff;
+    animation: shake 0.5s ease-in-out infinite;
+}
+.menu-content div.decoration .shakeStar {
+    color: #ce84c2;
+    animation: shake 0.5s ease-in-out 4;
+}
+@keyframes shake {
+
+    30% {
+        transform: rotateZ( -15deg );
+    }
+    50% {
+        transform: rotateZ( 0deg );
+    }
+    70% {
+        transform: rotateZ( 15deg );
+    }
+}
+/* 菜单项目 */
+.menu-content .menu-items {
+    width: 100%;
+    height: 240px;
+}
+.menu-content .menu-items .item {
+    margin-bottom: 10px;
+    padding: 5px 30px;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+}
+.menu-content .menu-items .item a {
+    display: block;
+    width: 110px;
+    height: 30px;
+    color: #4c4948;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+}
+.menu-content .menu-items .item a:hover {
+    background-color: rgba( 240, 240, 240, 0.8 );
+    color: #ff5959;
+}
+.menu-content .menu-items .item i {
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* --- 遮罩层 --- */
+#head-nav .mask-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    transition: all 0.5s ease-in-out;
+    background-color: rgba( 0, 0, 0, 0.5 );
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* === 站点信息 === */
+header #site-info {
+    position: absolute;
+    top: 43%;
+    left: 0;
+    padding: 0 10px;
+    width: 100%;
+    height: 100px;
+    color: #ffffff;
+    text-align: center;
+}
+#site-info .site-title, 
+#site-info .site-subtitle {
+    width: 100%;
+    height: 50px;
+    font-size: 45px;
+    line-height: 50px;
+    letter-spacing: 0.1em;
+}
+#site-info .site-subtitle {
+    font-size: 28px;
+}
+#site-info .site-subtitle span {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+#site-info .site-subtitle span::after {
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+    content: '|';
+    animation: textFlicker 0.5s linear infinite;
+}
+@keyframes textFlicker {
+    to {
+        color: transparent;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* === === === 页面主体 === === === */
 #page main {
-    margin-top: calc( 100vh - 60px );
     width: inherit;
     height: 1600px;
     background-color: rgba( 255, 255, 255, 0.24 );

@@ -64,6 +64,13 @@ body {
 .iconfont {
     font-family: sans-serif;
 }
+/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: 'iconfont';  /* Project id 3849029 */
+    src: url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.woff2?t=1672747034282') format('woff2'),
+        url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.woff?t=1672747034282') format('woff'),
+        url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.ttf?t=1672747034282') format('truetype');
+}
 /* #temp {
     position: absolute;
     top: 2000px;

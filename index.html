@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./CSS/base.css">
     <link rel="stylesheet" href="./bg-layer/bg-layer.css">
     <link rel="stylesheet" href="./page/page.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3849029_el42orbjqdu.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3849029_tuinmzynh6.css">
 </head>
 <body>
     <!-- 背景图层 -->
@@ -26,7 +26,8 @@
     <div id="page">
         <!-- 页面头部 -->
         <header>
-            <nav class="head-nav">
+            <!-- 头部导航 -->
+            <nav id="head-nav">
                 <!-- 博客名字 -->
                 <div class="blog-name">
                     <a class="site" href="https://zhangwule.github.io/">zwl的开发笔记</a>
@@ -63,11 +64,83 @@
                             <span>分类</span>
                         </a>
                     </div>
-                    <div class="sidebar">
+                    <!-- 侧边栏菜单 -->
+                    <div class="sidebar-switch">
                         <i class="icon-unfold iconfont"></i>
                     </div>
+                    <div class="menu-content">
+                        <!-- 菜单图片 -->
+                        <div class="menu-img">
+                            <img src="./image/logo/menu-img.jpg" alt="logo">
+                        </div>
+                        <!-- 站点数据 -->
+                        <div class="site-data">
+                            <div class="site-data-link">
+                                <a href="javascript:void(0);">
+                                    <h4>文章</h4>
+                                    <p class="data-count">00</p>
+                                </a>
+                            </div>
+                            <div class="site-data-link">
+                                <a href="javascript:void(0);">
+                                    <h4>标签</h4>
+                                    <p class="data-count">00</p>
+                                </a>
+                            </div>
+                            <div class="site-data-link">
+                                <a href="javascript:void(0);">
+                                    <h4>分类</h4>
+                                    <p class="data-count">00</p>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 装饰条 -->
+                        <div class="decoration">
+                            <!-- <i class="icon-star iconfont star"></i> -->
+                        </div>
+                        <!-- 菜单项目 -->
+                        <div class="menu-items">
+                            <div class="item home-page">
+                                <a href="javascript:void(0);">
+                                    <i class="icon-index iconfont"></i>
+                                    <span>主页</span>
+                                </a>
+                            </div>
+                            <div class="item subject">
+                                <a href="javascript:void(0);">
+                                    <i class="icon-subject iconfont"></i>
+                                    <span>主题</span>
+                                </a>
+                            </div>
+                            <div class="item label">
+                                <a href="javascript:void(0);">
+                                    <i class="icon-label iconfont"></i>
+                                    <span>标签</span>
+                                </a>
+                            </div>
+                            <div class="item classify">
+                                <a href="javascript:void(0);">
+                                    <i class="icon-classify iconfont"></i>
+                                    <span>分类</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- 遮罩层 -->
+                <div class="mask-layer"></div>
             </nav>
+
+            <!-- 站点信息 -->
+            <div id="site-info">
+                <h2 class="site-title">zwl的开发笔记</h2>
+                <div class="site-subtitle">
+                    <span class="active-text"></span>
+                </div>
+            </div>
+
+            <!-- 更多 -->
+            <div id="more"></div>
         </header>
 
         <!-- 页面主体 -->
@@ -81,5 +154,7 @@
 
     <script src="./bg-layer/bg-img.js"></script>
     <script src="./bg-layer/bg-clock.js"></script>
+    <script type="module" src="./page/menus.js"></script>
+    <script src="./page/site-info.js"></script>
 </body>
 </html>
