@@ -1,8 +1,8 @@
 /* === === === 页面 === === === */
 #page {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     /* height: 792px; */
     height: 100vh;
@@ -136,7 +136,7 @@ header .menu-item span {
 }
 .menus .menu-content {
     position: absolute;
-    top: 0px;
+    top: 0;
     /* right: -17px; */
     right: -320px;
     width: 300px;
@@ -275,8 +275,8 @@ header .menu-item span {
 /* --- 遮罩层 --- */
 #head-nav .mask-layer {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     transition: all 0.5s ease-in-out;
@@ -347,7 +347,7 @@ header #down-more i {
 }
 @keyframes iconfontFloatEffect {
     0% {
-        transform: translateY( 0px );
+        transform: translateY( 0 );
         color: rgba( 255, 255, 255, 0.5 );
     }
     50% {
@@ -355,7 +355,7 @@ header #down-more i {
         color: rgba( 255, 255, 255, 1 );
     }
     100% {
-        transform: translateY( 0px );
+        transform: translateY( 0 );
         color: rgba( 255, 255, 255, 0.5 );
     }
 }
@@ -682,8 +682,13 @@ main #posts {
     width: inherit;
     height: 150px;
     background-color: rgba( 255, 255, 255, 0.8 );
+    background-image: url( '../image/background/城市夕阳.png' );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 90%;
     text-align: center;
     box-sizing: border-box;
+    color: #ffffff;
 }
 
 
@@ -698,7 +703,7 @@ footer #copyright {
 #copyright .platform-copyright {
     width: 100%;
     height: 20px;
-    color: #000000;
+    color: inherit;
     font-size: 14px;
     line-height: 20px;
 }
@@ -708,47 +713,31 @@ footer #copyright {
     /*  */
 }
 #copyright .platform-copyright a, 
-footer #source a {
-    color: #000000;
+footer #source a, 
+footer #ending a {
+    color: inherit;
+    vertical-align: middle;
 }
 #copyright .platform-copyright a:hover, 
-footer #source a:hover {
+footer #source a:hover, 
+footer #ending a:hover {
     text-decoration: underline;
 }
 
 /* === 来源 === */
 footer #source {
     width: 100%;
-    height: 20px;
-    color: #000000;
+    height: auto;
+    color: inherit;
     font-size: 14px;
     line-height: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 临时元素 */
-#temp {
-    width: 240px;
-    height: 240px;
-    background-color: red;
-    border: 1px solid rgb(255, 158, 158);
+/* === 结尾语 === */
+footer #ending {
+    width: 100%;
+    height: 30px;
+    color: inherit;
+    font-size: 14px;
+    line-height: 30px;
 }

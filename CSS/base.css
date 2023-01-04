@@ -3,8 +3,8 @@ dl, dt, dd, ul, ol, li,
 pre, 
 fieldset, lengend, button, input, textarea, 
 th, td {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 html {
     scroll-behavior: smooth;
@@ -46,6 +46,13 @@ a {
 a:hover { 
     text-decoration: none;
 }
+/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: 'iconfont';  /* Project id 3849029 */
+    src: url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.woff2?t=1672747034282') format('woff2'),
+        url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.woff?t=1672747034282') format('woff'),
+        url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.ttf?t=1672747034282') format('truetype');
+}
 img {
     width: 100%;
     height: 100%;
@@ -61,31 +68,9 @@ body {
     overflow: hidden;
 }
 
-.iconfont {
-    font-family: sans-serif;
-}
-/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
-@font-face {
-    font-family: 'iconfont';  /* Project id 3849029 */
-    src: url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.woff2?t=1672747034282') format('woff2'),
-        url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.woff?t=1672747034282') format('woff'),
-        url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.ttf?t=1672747034282') format('truetype');
-}
-/* #temp {
-    position: absolute;
-    top: 2000px;
-    left: 0px;
-    width: 240px;
-    height: 240px;
-    background-image: linear-gradient( to right, rgb( 210, 197, 255 ), rgb( 184, 223, 255 ) );
-    color: black;
-    font-size: 24px;
-    text-align: center;
-    line-height: 80px;
-} */
 
 
-
+/* --- 响应式 --- */
 /* @media screen and ( min-width: 990px ) and ( max-width: 1350px ) { */
 /* @media screen and ( max-width: 1350px ) {
     header #nav {
@@ -100,6 +85,7 @@ body {
 
 
 
+/* --- 颜色 --- */
 .color {
     color: #d2c5ff;
     color: #ccbeff;
@@ -115,4 +101,14 @@ body {
     color: #f9d3e3;
     color: #75c1c4;
     color: #39363f;
+}
+
+
+
+/* --- 临时元素 --- */
+#temp {
+    width: 240px;
+    height: 240px;
+    background-color: red;
+    border: 1px solid rgb(255, 158, 158);
 }

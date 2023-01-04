@@ -11,8 +11,8 @@
 #bg-layer #bg-img {
     width: inherit;
     height: inherit;
-    background-image: url( '../image/background/城市白天_1.png' );
-    /* background-image: url( './image/background/城市夕阳_1.png' ); */
+    background-image: url( '../image/background/城市白天.png' );
+    /* background-image: url( './image/background/城市夕阳.png' ); */
     background-repeat: no-repeat;
     background-size: cover;
     animation: bg-img 5s ease-in-out infinite;
@@ -63,8 +63,8 @@
 div.card .digital::before, 
 div.card .digital::after {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 50%;
     background-color: #000000;
