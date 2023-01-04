@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./CSS/base.css">
     <link rel="stylesheet" href="./bg-layer/bg-layer.css">
     <link rel="stylesheet" href="./page/page.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3849029_tuinmzynh6.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3849029_464g89dcj5c.css">
 </head>
 <body>
     <!-- 背景图层 -->
@@ -25,7 +25,7 @@
     <!-- 页面 -->
     <div id="page">
         <!-- 页面头部 -->
-        <header>
+        <header id="page-header">
             <!-- 头部导航 -->
             <nav id="head-nav">
                 <!-- 博客名字 -->
@@ -139,23 +139,351 @@
                 </div>
             </div>
 
-            <!-- 更多 -->
-            <div id="more"></div>
+            <!-- 向下更多 -->
+            <div id="down-more">
+                <i class="icon-arrow_down iconfont"></i>
+            </div>
         </header>
 
         <!-- 页面主体 -->
-        <main>
-            <div id="temp"></div>
+        <main id="page-main">
+            <!-- 侧边栏 -->
+            <div id="sidebar">
+                <!-- 信息卡片 -->
+                <div class="author-card">
+                    <!-- 个人图片 -->
+                    <div class="author-img">
+                        <img src="#" alt="author-logo">
+                        <span class="author-name">zwl</span>
+                    </div>
+                    <!-- 站点数据 -->
+                    <div class="site-data">
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>文章</h4>
+                                <p class="data-count">00</p>
+                            </a>
+                        </div>
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>标签</h4>
+                                <p class="data-count">00</p>
+                            </a>
+                        </div>
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>分类</h4>
+                                <p class="data-count">00</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 联系作者 || 作者更多 -->
+                    <a href="javascript:void(0);" class="author-contact-link">
+                        <i class="icon-contact iconfont"></i>
+                        Contact Me
+                    </a>
+                </div>
+
+                <!-- 公告卡片 -->
+                <div class="announce-card">
+                    <!-- 公告标题 -->
+                    <div class="announce-title">
+                        <i class="icon-reminder iconfont"></i>
+                        <span class="title-text">公告</span>
+                    </div>
+                    <!-- 公告内容 -->
+                    <p class="announce-content">
+                        welcome to my blog
+                    </p>
+                </div>
+
+                <!-- 音乐卡片 -->
+                <div class="music-card">
+                    <!-- 卡片标题 -->
+                    <div class="music-title">
+                        <i class="icon-music iconfont"></i>
+                        <span class="title-text">音乐</span>
+                    </div>
+                    <!-- 卡片内容 -->
+                    <p class="music-content">
+                        给你的生活加点音乐吧
+                    </p>
+                    <!-- 卡片链接 -->
+                    <a href="./Music player/musicPlayer.html" class="music-link">前往音乐播放器>></a>
+                </div>
+
+                <!-- 其他卡片 -->
+                <div class="other-card">
+                    其他卡片
+                </div>
+            </div>
+
+            <!-- 帖子 -->
+            <div id="posts">
+                <!-- 帖子项目 HTML -->
+                <div class="post-item">
+                    <!-- 项目图片 -->
+                    <div class="post-item-img">
+                        <a href="javascript:void(0);">
+                            <img src="./image/logo/HTML-logo.jpg" alt="logo">
+                        </a>
+                    </div>
+                    <!-- 项目信息 -->
+                    <div class="post-item-info">
+                        <!-- 项目标题 -->
+                        <a href="javascript:void(0);" class="post-title-link">HTML 笔记</a>
+                        <!-- 项目时间 -->
+                        <div class="post-time">
+                            <p>
+                                <i class="icon-item iconfont"></i>&nbsp;
+                                创建于 <span class="create-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-update iconfont"></i>&nbsp;
+                                更新于 <span class="update-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-label iconfont"></i>&nbsp;
+                                <span class="post-label">HTML</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-comment iconfont"></i>
+                                <span class="post-comment">0</span>条评论
+                            </p>
+                        </div>
+                        <!-- 项目介绍 -->
+                        <div class="post-introduce">
+                            <p class="introduce">
+                                参考文档: &nbsp;<a href="https://www.w3school.com.cn/html/index.asp">W3School</a>
+                                &nbsp;
+                                简介: &nbsp;HTML的全称为超文本标记语言，是一种标记语言。它包括一系列标签．通过这些标签可以将网络上的文档格式统一，使分散的Internet资源连接为一个逻辑整体。HTML文本是由HTML命令组成的描述性文本，HTML命令可以说明文字，图形、动画、声音、表格、链接等。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 帖子项目 CSS -->
+                <div class="post-item special-post-item">
+                    <!-- 项目信息 -->
+                    <div class="post-item-info">
+                        <!-- 项目标题 -->
+                        <a href="javascript:void(0);" class="post-title-link">CSS 笔记</a>
+                        <!-- 项目时间 -->
+                        <div class="post-time">
+                            <p>
+                                <i class="icon-item iconfont"></i>&nbsp;
+                                创建于 <span class="create-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-update iconfont"></i>&nbsp;
+                                更新于 <span class="update-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-label iconfont"></i>&nbsp;
+                                <span class="post-label">CSS</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-comment iconfont"></i>
+                                <span class="post-comment">0</span>条评论
+                            </p>
+                        </div>
+                        <!-- 项目介绍 -->
+                        <div class="post-introduce">
+                            <p class="introduce">
+                                参考文档: &nbsp;<a href="https://www.w3school.com.cn/css/index.asp">W3School</a>
+                                &nbsp;
+                                简介: &nbsp;层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 项目图片 -->
+                    <div class="post-item-img">
+                        <a href="javascript:void(0);">
+                            <img src="./image/logo/CSS-logo.jpg" alt="logo">
+                        </a>
+                    </div>
+                </div>
+                <!-- 帖子项目 JavaScript -->
+                <div class="post-item">
+                    <!-- 项目图片 -->
+                    <div class="post-item-img">
+                        <a href="javascript:void(0);">
+                            <img src="./image/logo/JavaScript-logo.jpg" alt="logo">
+                        </a>
+                    </div>
+                    <!-- 项目信息 -->
+                    <div class="post-item-info">
+                        <!-- 项目标题 -->
+                        <a href="javascript:void(0);" class="post-title-link">JavaScript 笔记</a>
+                        <!-- 项目时间 -->
+                        <div class="post-time">
+                            <p>
+                                <i class="icon-item iconfont"></i>&nbsp;
+                                创建于 <span class="create-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-update iconfont"></i>&nbsp;
+                                更新于 <span class="update-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-label iconfont"></i>&nbsp;
+                                <span class="post-label">JavaScript</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-comment iconfont"></i>
+                                <span class="post-comment">0</span>条评论
+                            </p>
+                        </div>
+                        <!-- 项目介绍 -->
+                        <div class="post-introduce">
+                            <p class="introduce">
+                                参考文档: &nbsp;<a href="https://www.w3school.com.cn/js/index.asp">W3School</a>
+                                &nbsp;
+                                简介: &nbsp;JavaScript（简称“JS”）是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式、声明式、函数式编程范式。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 帖子项目 jQuery -->
+                <div class="post-item special-post-item">
+                    <!-- 项目信息 -->
+                    <div class="post-item-info">
+                        <!-- 项目标题 -->
+                        <a href="javascript:void(0);" class="post-title-link">jQuery 笔记</a>
+                        <!-- 项目时间 -->
+                        <div class="post-time">
+                            <p>
+                                <i class="icon-item iconfont"></i>&nbsp;
+                                创建于 <span class="create-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-update iconfont"></i>&nbsp;
+                                更新于 <span class="update-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-label iconfont"></i>&nbsp;
+                                <span class="post-label">jQuery</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-comment iconfont"></i>
+                                <span class="post-comment">0</span>条评论
+                            </p>
+                        </div>
+                        <!-- 项目介绍 -->
+                        <div class="post-introduce">
+                            <p class="introduce">
+                                参考文档: &nbsp;<a href="https://www.w3school.com.cn/jquery/index.asp">W3School</a>
+                                &nbsp;
+                                简介: &nbsp;jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（框架）于2006年1月由John Resig发布。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 项目图片 -->
+                    <div class="post-item-img">
+                        <a href="javascript:void(0);">
+                            <img src="./image/logo/jQuery-logo.jpg" alt="logo">
+                        </a>
+                    </div>
+                </div>
+                <!-- 帖子项目 Vue -->
+                <div class="post-item">
+                    <!-- 项目图片 -->
+                    <div class="post-item-img">
+                        <a href="javascript:void(0);">
+                            <img src="./image/logo/Vue-logo.jpg" alt="logo">
+                        </a>
+                    </div>
+                    <!-- 项目信息 -->
+                    <div class="post-item-info">
+                        <!-- 项目标题 -->
+                        <a href="javascript:void(0);" class="post-title-link">Vue 笔记</a>
+                        <!-- 项目时间 -->
+                        <div class="post-time">
+                            <p>
+                                <i class="icon-item iconfont"></i>&nbsp;
+                                创建于 <span class="create-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-update iconfont"></i>&nbsp;
+                                更新于 <span class="update-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-label iconfont"></i>&nbsp;
+                                <span class="post-label">Vue</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-comment iconfont"></i>
+                                <span class="post-comment">0</span>条评论
+                            </p>
+                        </div>
+                        <!-- 项目介绍 -->
+                        <div class="post-introduce">
+                            <p class="introduce">
+                                参考文档: &nbsp;<a href="https://cn.vuejs.org/">Vue 官网</a>
+                                &nbsp;
+                                简介: &nbsp;Vue 是一款用于构建用户界面的JavaScript框架。它基于标准HTML、CSS和JavaScript构建，并提供了一套声明式的、组件化的编程模型，帮助开发者高效地开发用户界面。
+                                Vue是一个独立的社区驱动的项目，它是由尤雨溪在2014年作为其个人项目创建，是一个成熟的、经历了无数实战考验的框架，它是目前生产环境中使用最广泛的JavaScript框架之一，可以轻松处理大多数web应用的场景，并且几乎不需要手动优化，并且Vue完全有能力处理大规模的应用。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 帖子项目 动画效果 -->
+                <div class="post-item special-post-item">
+                    <!-- 项目信息 -->
+                    <div class="post-item-info">
+                        <!-- 项目标题 -->
+                        <a href="javascript:void(0);" class="post-title-link">动画效果</a>
+                        <!-- 项目时间 -->
+                        <div class="post-time">
+                            <p>
+                                <i class="icon-item iconfont"></i>&nbsp;
+                                创建于 <span class="create-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-update iconfont"></i>&nbsp;
+                                更新于 <span class="update-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-label iconfont"></i>&nbsp;
+                                <span class="post-label">动画效果</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-comment iconfont"></i>
+                                <span class="post-comment">0</span>条评论
+                            </p>
+                        </div>
+                        <!-- 项目介绍 -->
+                        <div class="post-introduce">
+                            <p class="introduce">
+                                简介: &nbsp;一些实现的动画效果, 实现方法包括但不限于CSS、JavaScript、jQuery等
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 项目图片 -->
+                    <div class="post-item-img">
+                        <a href="javascript:void(0);">
+                            <img src="./image/logo/动画效果-logo.jpg" alt="logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <!-- 页面页脚 -->
-        <footer></footer>
+        <footer id="page-footer">
+            <!-- 版权 -->
+            <div id="copyright">
+                <!-- 个人 -->
+                <div class="personal-copyright">
+                    <p>&copy;2022&nbsp;-&nbsp;2023 By ZhangWuLe</p>
+                </div>
+                <!-- 平台 -->
+                <div class="platform-copyright">
+                    <p>
+                        平台:&nbsp;
+                        <a href="https://github.com/">GitHub</a>
+                        |
+                        <a href="https://gitee.com/">Gitee</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 来源 -->
+            <div id="source">
+                <p>
+                    字体来源:&nbsp;
+                    <a href="https://www.iconfont.cn/">iconfont-阿里巴巴矢量图标库</a>
+                </p>
+            </div>
+        </footer>
     </div>
 
     <script src="./bg-layer/bg-img.js"></script>
     <script src="./bg-layer/bg-clock.js"></script>
+
     <script type="module" src="./page/menus.js"></script>
     <script src="./page/site-info.js"></script>
-    <!-- <script src="./module/module.js"></script> -->
+    <script src="./page/down-more.js"></script>
 </body>
 </html>

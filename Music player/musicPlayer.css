@@ -1,0 +1,739 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient( 200deg, #F9D3E3, #CCA4E3 );
+    cursor: default;
+    overflow: hidden;
+}
+
+#bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient( 200deg, #DDD6F3, #FAACA8 );
+    animation: bgEffect 20s linear infinite;
+    opacity: 1;
+}
+@keyframes bgEffect {
+    0% {
+        background-image: linear-gradient( 200deg, #DDD6F3, #FAACA8 );
+        opacity: 1;
+    }
+    10% {
+        opacity: 0;
+    }
+    20% {
+        background-image: linear-gradient( 200deg, #5EE7DF, #B490CA );
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+    }
+    40% {
+        background-image: linear-gradient( 200deg, rgb(208, 198, 255 ), rgb( 120, 100, 225 ) );
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    60% {
+        background-image: linear-gradient( 200deg, #a5ccec, #d497ca );
+        opacity: 1;
+    }
+    70% {
+        opacity: 0;
+    }
+    80% {
+        background-image: linear-gradient( 200deg, #ccbeff, #e4ffd3 );
+        opacity: 1;
+    }
+    90% {
+        opacity: 0;
+    }
+    100% {
+        background-image: linear-gradient( 200deg, #DDD6F3, #FAACA8 );
+        opacity: 1;
+    }
+}
+
+
+
+/* === === === div#wrapper style start === === === */
+div#wrapper {
+    position: relative;
+    width: 800px;
+    height: calc( 800px * 0.618 );
+    /* border: 1px solid red; */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+
+/* === === header style start === === */
+header {
+    width: 100%;
+    height: 40px;
+    /* border: 1px solid red; */
+    background-color: #222126;
+}
+div.appName {
+    margin-left: 24px;
+    float: left;
+    width: 120px;
+    height: inherit;
+    /* border: 1px solid red; */
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    line-height: 160%;
+}
+div.search {
+    position: relative;
+    float: right;
+    width: 340px;
+    height: inherit;
+    /* border: 1px solid red; */
+}
+div.search input.searchBox {
+    position: absolute;
+    top: calc( 50% - 30px / 2 );
+    left: 0px;
+    padding-left: 15px;
+    width: 260px;
+    height: 30px;
+    border: none;
+    /* border: 1px solid red; */
+    border-radius: 15px;
+    background:none;
+    background-color: rgb(63, 62, 66);
+    outline:none;
+    color: white;
+    font-size: 12px;
+}
+div.search span.searchIcon {
+    position: absolute;
+    top: calc( 50% - 30px / 2 );
+    left: 245px;
+    width: 30px;
+    height: 30px;
+    /* border-left: 1px solid black; */
+    border-radius: 0px 15px 15px 0px;
+    text-align: center;
+}
+span.searchIcon > i.icon-search {
+    color: white;
+    font-size: 24px;
+    line-height: 125%;
+}
+i.icon-search:hover {
+    color: red;
+    cursor: pointer;
+}
+i.icon-search:active {
+    color: rgba(255, 0, 0, 0.233);
+}
+/* === === header style end === === */
+
+
+
+/* === === 主体内容 style start === === */
+div#container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: calc( 100% - 40px - 50px );
+    /* border: 1px solid red; */
+    background-color: rgba(43, 43, 43, 0.9);
+}
+
+/* === 歌曲列表 style start === */
+.container-left {
+    /* width: calc( 220px + 2px ); */
+    width: 220px;
+    height: 100%;
+    /* border: 1px solid red; */
+    /* overflow: auto; */
+    /* background-color: rgba( 81, 81, 81, 0.9 ); */
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* overflow-y: scroll; */
+    /* -ms-overflow-style:none; */
+    /* scrollbar-width: none; */
+}
+.container-left::-webkit-scrollbar {
+    /* display: none; */
+    width: 0px;
+    /* background-color: #616060; */
+    /* height: 100%; */
+}
+.container-left::-webkit-scrollbar-thumb {
+    /* border-radius: 30px; */
+    /* height: 10px; */
+    background-color: #2B2B2B;
+}
+/* .container-left::-webkit-scrollbar-track-piece{
+    background-color: #CCCCCC;
+} */
+.container-left:hover::-webkit-scrollbar {
+    width: 1px;
+    background-color: #616060;
+}
+/* 歌曲列表 */
+.container-left ul.songList {
+    position: relative;
+    top: 10px;
+    left: calc( 50% - 210px / 2 );
+    /* border: 1px solid red; */
+}
+/* 列表内容 */
+.container-left ul > li.songItems {
+    position: relative;
+    width: 210px;
+    height: 35px;
+    /* border: 1px solid red; */
+    /* text-align: center; */
+}
+.container-left ul > li > input.music {
+    position: absolute;
+    top: 6.5px;
+    left: 2.5px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid red;
+    cursor: pointer;
+    opacity: 0;
+    /* opacity: 0.5; */
+    /* z-index: 1; */
+}
+.container-left ul > li > input.music:hover ~ i.icon-play {
+    color: red;
+}
+.container-left ul > li > input.music:checked ~ i.icon-play {
+    color: red;
+}
+.container-left ul > li > input.music:checked ~ span.songName {
+    color: red;
+}
+.container-left ul > li > i.icon-play {
+    /* position: absolute; */
+    /* border: 1px solid red; */
+    color: #b4b4b4;
+    font-size: 24px;
+    line-height: 35px;
+    pointer-events: none;
+}
+.container-left ul > li > span.songName {
+    position: absolute;
+    top: calc( ( 35px - 24px ) / 2 );
+    left: 30px;
+    display: inline-block;
+    width: 150px;
+    height: 24px;
+    /* border: 1px solid red; */
+    color: white;
+    font-size: 12px;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+/* input.musicSpan {
+    position: absolute;
+    top: 0px;
+    left: -100px;
+    border: 1px solid red;
+} */
+.container-left ul > li > input.MV {
+    position: absolute;
+    top: 6.5px;
+    right: 2.5px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid red;
+    cursor: pointer;
+    opacity: 0;
+    /* z-index: 1; */
+}
+.container-left ul > li > input.MV:hover ~ i.icon-video {
+    color: red;
+}
+.container-left ul > li > input.MV:checked ~ i.icon-video {
+    color: red;
+}
+.container-left ul > li > i.icon-video {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /* border: 1px solid red; */
+    color: #b4b4b4;
+    font-size: 24px;
+    line-height: 35px;
+    /* pointer-events: none; */
+}
+.container-left ul > li > i.icon-video::before {
+    /* background-color: white; */
+}
+.container-left ul > li > i.icon-video:hover {
+    color: red;
+    cursor: pointer;
+}
+.container-left ul > li:nth-child(odd) {
+    background-color: rgb(109, 109, 109);
+}
+.container-left ul > li:hover {
+    background-color: rgb(153, 152, 152);
+}
+/* === 歌曲列表 style end === */
+
+
+
+/* === 播放动画 style start === */
+.container-center {
+    position: relative;
+    width: calc( 100% - 220px - 200px );
+    height: 100%;
+    /* border: 1px solid red; */
+}
+
+/* --- 光盘 style start --- */
+div.CD {
+    position: absolute;
+    top: calc( 50% - 260px / 2 );
+    left: calc( 50% - 260px / 2 );
+    width: 260px;
+    height: 260px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-color: #363636;
+    animation: rotateCD 30s linear infinite paused;
+    /* animation: rotateCD 10s linear infinite; */
+    /* transform: rotateZ( 0deg ); */
+    /* transition: all 10s linear; */
+}
+.playing {
+    /* animation: rotateCD 10s linear infinite paused; */
+    /* animation-play-state: running; */
+    /* transition: all 10s linear; */
+}
+@keyframes rotateCD {
+    0% {
+        transform: rotateZ( 0deg );
+    }
+    to {
+        transform: rotateZ( 360deg );
+    }
+}
+div.CD > .sheen {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-image: linear-gradient( 
+        45deg, 
+        transparent 35%, 
+        rgba(255,255,255,0.2) 45%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0.2) 55%, 
+        transparent
+    );
+    /* transform: translate( -50%, -50%); */
+    /* overflow: hidden; */
+    /* clip-path: polygon(50% 50%, 100% 46%, 100% 23%, 100% 0, 74% 0, 53% 0, 15% 0); */
+    /* clip-path: polygon( 50% 50%, 100% 46% ); */
+    /* transform: rotateZ( -90deg ); */
+    z-index: 1;
+    pointer-events: none;
+}
+div.blackBorder {
+    position: absolute;
+    top: calc( 50% - 230px / 2 );
+    left: calc( 50% - 230px / 2 );
+    width: 230px;
+    height: 230px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-color: #1A1B1D;
+}
+div.texture {
+    position: absolute;
+    top: calc( 50% - 215px / 2 );
+    left: calc( 50% - 215px / 2 );
+    width: 215px;
+    height: 215px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    /* background-color: #313234; */
+    background-image: repeating-radial-gradient( #313234, #313234 1px, #1C1C1C 2px );
+}
+.inside {
+    position: absolute;
+    top: calc( 50% - 190px / 2 );
+    left: calc( 50% - 190px / 2 );
+    width: 190px;
+    height: 190px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-color: #1A1B1D;
+}
+/* 封面 */
+div.cover {
+    position: absolute;
+    top: calc( 50% - 175px / 2 );
+    left: calc( 50% - 175px / 2 );
+    width: 175px;
+    height: 175px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 1;
+}
+/* div.center_Of_A_Circle {
+    position: absolute;
+    top: -500px;
+    left: calc( 50% - 1px / 2 );
+    width: 1px;
+    height: 1000px;
+    background-color: red;
+} */
+img.coverImg {
+    position: absolute;
+    width: 175px;
+    height: 175px;
+    color: transparent;
+    z-index: 12;
+}
+img.coverImg:hover {
+    cursor: pointer;
+}
+/* --- 光盘 style end --- */
+
+/* --- 读取器 style start --- */
+div.fixed {
+    position: relative;
+    top: 15px;
+    left: 190px;
+    width: 80px;
+    height: 200px;
+    /* border: 1px solid red; */
+    /* transform: rotateZ( 4.5deg ); */
+    transform: rotateZ( -25deg );
+    transform-origin: left top;
+    transition: all 0.3s linear;
+}
+div.fixation {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-color: #5d5c5c;
+}
+div.fixation > div {
+    position: absolute;
+    top: 5px;
+    left: calc( 50% - 20px / 2 );
+    width: 20px;
+    height: 20px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-color: #222222;
+}
+div.fixation > div > div {
+    position: absolute;
+    top: 2.5px;
+    left: calc( 50% - 15px / 2 + 0.5px );
+    width: 15px;
+    height: 15px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-color: white;
+}
+div.pole {
+    position: absolute;
+    top: 0px;
+    left: 19px;
+    width: 50px;
+    height: 50px;
+    border: 5px solid white;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    /* border-bottom-color: transparent; */
+    border-radius: 0px 0px 0px 30%;
+    transform: skew( 20deg, 40deg );
+    transform-origin: left bottom;
+}
+div.pole > div:first-child {
+    position: absolute;
+    top: 47px;
+    left: 35px;
+    width: 25px;
+    height: 10px;
+    /* border: 1px solid red; */
+    border-radius: 10px 0px 0px 10px;
+    background-color: white;
+    transform: skew( -20deg, -40deg ) rotateZ( 40deg );
+}
+div.pole > div:first-child::before {
+    position: absolute;
+    top: calc( 50% - 1px / 2 );
+    left: 15px;
+    width: 10px;
+    height: 1px;
+    /* border: 1px solid red; */
+    background-color: black;
+    content: '';
+}
+div.pole > div:nth-child(2) {
+    position: absolute;
+    top: 45px;
+    left: 50px;
+    width: 10px;
+    height: 15px;
+    /* border: 1px solid red; */
+    border-left: 0.1px solid #CDCDCD;
+    border-radius: 3px;
+    background-color: white;
+    transform: skew( -20deg, -40deg ) rotateZ( 40deg );
+    /* box-shadow: -1px 0px 0.5px 0.5px #CDCDCD; */
+    z-index: 1;
+}
+div.pole > div:nth-child(2)::before, 
+div.pole > div:nth-child(2)::after {
+    position: absolute;
+    top: calc( 50% - 1px / 2 - 2.5px );
+    left: calc( 50% - 7px / 2 );
+    width: 7px;
+    height: 1px;
+    /* border: 1px solid red; */
+    background-color: #a5a5a5;
+    content: '';
+}
+div.pole > div:nth-child(2)::after {
+    top: calc( 50% - 1px / 2 + 2.5px );
+}
+/* --- 读取器 style end --- */
+
+/* === 播放动画 style end === */
+
+
+
+/* === 热门评论 style start === */
+.container-right {
+    width: 200px;
+    height: 100%;
+    /* border: 1px solid red; */
+    /* background-color: rgba( 81, 81, 81, 0.9 ); */
+    overflow: auto;
+}
+.container-right::-webkit-scrollbar {
+    /* display: none; */
+    width: 0px;
+}
+/* 标题 */
+.container-right h3 {
+    position: sticky;
+    top: 0px;
+    /* margin: 5px; */
+    display: block;
+    width: 200px;
+    height: 30px;
+    /* background-color: #4a4a4a; */
+    background-color: rgb(59 57 57);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    /* border: 1px solid red; */
+    overflow: hidden;
+    z-index: 1;
+}
+/* 评论列表 */
+.container-right ul {
+    position: relative;
+    top: 5px;
+    left: calc( 50% - 180px / 2 );
+    /* border: 1px solid red; */
+    overflow: hidden;
+}
+.container-right ul > li {
+    position: relative;
+    margin-bottom: 10px;
+    width: 180px;
+    height: auto;
+    /* border: 1px solid red; */
+    overflow: hidden;
+}
+/* 用户头像 */
+span.userImg {
+    position: relative;
+    float: left;
+    display: block;
+    width: 35px;
+    height: 35px;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    background-color: white;
+    /* line-height: 35px; */
+    overflow: hidden;
+}
+i.icon-xinxibar_zhanghu {
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    display: none;
+    width: 35px;
+    height: 35px;
+    color: rgb(189, 187, 187);
+    font-size: 50px;
+}
+img.avatarUrl {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid red;
+    border-radius: 50%;
+    /* z-index: 1; */
+}
+/* 用户名称 */
+span.userName {
+    position: relative;
+    top: 0px;
+    left: 5px;
+    display: block;
+    width: 140px;
+    height: 35px;
+    text-align: left;
+    line-height: 45px;
+    /* border: 1px solid red; */
+    color: #9dc5e5;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* 评论内容 */
+span.userMain {
+    float: right;
+    /* display: block; */
+    width: 140px;
+    /* border: 1px solid red; */
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+    /* text-align: center; */
+}
+/* 评论时间 */
+span.userTime {
+    margin-left: 40px;
+    clear: both;
+    display: block;
+    width: 100px;
+    height: 25px;
+    /* border: 1px solid red; */
+    color: rgb(159, 159, 159);
+    font-size: 12px;
+    line-height: 25px;
+}
+/* === 热门评论 style end === */
+
+/* === === 主体内容 style end === === */
+
+
+
+/* === === footer style start === === */
+footer {
+    position: relative;
+    width: 800px;
+    height: 50px;
+    /* border: 1px solid red; */
+    /* background-color: #222126; */
+    background-color: #F2F3F5;
+    color: white;
+}
+audio.playState {
+    position: absolute;
+    top: calc( 50% - 40px / 2 );
+    left: calc( 50% - 790px / 2 );
+    width: 790px;
+    height: 40px;
+    /* border: 1px solid red; */
+    /* border-radius: 0; */
+    /* background-color: black; */
+}
+/* === === footer style end === === */
+
+
+
+/* === === MV style start === === */
+div.videoMV {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    /* display: none; */
+    width: 100%;
+    height: 100vh;
+    /* border: 1px solid red; */
+    z-index: 1;
+}
+div.mask {
+    width: 240px;
+    height: 240px;
+    width: 100%;
+    height: 100vh;
+    /* border: 1px solid red; */
+    background-color: rgba(0, 0, 0, 0.9);
+}
+video.videoMV {
+    position: absolute;
+    top: calc( 50% - ( 800px * 0.618 ) / 2 );
+    left: calc( 50% - 800px / 2 );
+    width: 800px;
+    height: calc( 800px * 0.618 );
+    background-color: black;
+}
+/* === === footer style end === === */
+
+
+
+/* === === 查看大图 style start === === */
+div.viewLarger {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    /* display: none; */
+    width: 100%;
+    height: 100vh;
+    /* border: 1px solid red; */
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+    transition: all 0.5s linear;
+}
+img.viewLargerImage {
+    position: absolute;
+    top: calc( 50% - 500px / 2 );
+    left: calc( 50% - 500px / 2 );
+    width: 500px;
+    height: 500px;
+}
+
+/* === === 查看大图 style end === === */
+
+/* === === === div#wrapper style end === === === */

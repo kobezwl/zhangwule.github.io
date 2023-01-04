@@ -4,14 +4,18 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 792px;
+    /* height: 792px; */
+    height: 100vh;
     overflow: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
+    /* overflow-x: scroll; */
+    scroll-behavior: smooth;
     z-index: 1;
 }
 #page::-webkit-scrollbar {
     width: 5px;
 }
+
 /* 滚动条 */
 #page::-webkit-scrollbar-thumb {
     border-radius: 30px;
@@ -20,6 +24,7 @@
 #page::-webkit-scrollbar-thumb:hover {
     background-color: rgba( 80, 80, 80, 0.8 );
 }
+
 /* 滚动条轨道 */
 #page::-webkit-scrollbar-track-piece{
     background-color: rgba( 213, 213, 213, 0.3 );
@@ -132,36 +137,44 @@ header .menu-item span {
 .menus .menu-content {
     position: absolute;
     top: 0px;
-    right: -17px;
+    /* right: -17px; */
+    right: -320px;
     width: 300px;
     height: 100vh;
     background-color: #ffffff;
-    transform: translateX( 300px );
+    /* transform: translateX( 300px ); */
+    opacity: 0;
     transition: all 0.5s ease-in-out;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
 }
+
 /* 菜单图片 */
 .menu-content .menu-img {
     width: 100%;
     height: 150px;
 }
+
 /* 站点数据 */
-.menu-content .site-data {
+.menu-content .site-data, 
+.author-card .site-data {
     padding: 10px 15px 0;
     width: 100%;
     height: 80px;
     box-sizing: border-box;
 }
-.menu-content .site-data .site-data-link {
+.menu-content .site-data .site-data-link, 
+.author-card .site-data .site-data-link {
     float: left;
     width: calc( 100% / 3 );
     height: 100%;
 }
-.menu-content .site-data .site-data-link:hover h4 {
+.menu-content .site-data .site-data-link:hover h4, 
+.author-card .site-data .site-data-link:hover h4 {
     color: #ff5959;
 }
-.menu-content .site-data .site-data-link a {
+.menu-content .site-data .site-data-link a, 
+.author-card .site-data .site-data-link a {
     display: block;
     width: 100%;
     height: 100%;
@@ -169,16 +182,19 @@ header .menu-item span {
     text-align: center;
     line-height: 30px;
 }
-.menu-content .site-data .site-data-link h4 {
+.menu-content .site-data .site-data-link h4, 
+.author-card .site-data .site-data-link h4 {
     height: 30px;
     font-size: 14px;
     font-weight: 400;
 }
-.menu-content .site-data .site-data-link p {
+.menu-content .site-data .site-data-link p, 
+.author-card .site-data .site-data-link p {
     height: 40px;
     font-size: 18px;
     font-weight: 500;
 }
+
 /* 装饰条 */
 .menu-content div.decoration {
     position: relative;
@@ -206,13 +222,13 @@ header .menu-item span {
 }
 .menu-content div.decoration i:hover {
     color: #a187ff;
-    animation: shake 0.5s ease-in-out infinite;
+    animation: decorationShakeEffect 0.5s ease-in-out infinite;
 }
 .menu-content div.decoration .shakeStar {
     color: #ce84c2;
-    animation: shake 0.5s ease-in-out 4;
+    animation: decorationShakeEffect 0.5s ease-in-out 4;
 }
-@keyframes shake {
+@keyframes decorationShakeEffect {
 
     30% {
         transform: rotateZ( -15deg );
@@ -224,6 +240,7 @@ header .menu-item span {
         transform: rotateZ( 15deg );
     }
 }
+
 /* 菜单项目 */
 .menu-content .menu-items {
     width: 100%;
@@ -266,6 +283,7 @@ header .menu-item span {
     background-color: rgba( 0, 0, 0, 0.5 );
     opacity: 0;
     pointer-events: none;
+    z-index: 1;
 }
 
 
@@ -297,83 +315,433 @@ header #site-info {
     overflow: hidden;
 }
 #site-info .site-subtitle span::after {
-    color: #ffffff;
     text-align: center;
     line-height: 35px;
     content: '|';
-    animation: textFlicker 0.5s linear infinite;
+    animation: textFlickerEffect 0.5s linear infinite;
 }
-@keyframes textFlicker {
+@keyframes textFlickerEffect {
     to {
         color: transparent;
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* === 向下更多 === */
+header #down-more {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    height: 45px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 45px;
+}
+header #down-more i {
+    display: inline-block;
+    font-size: 35px;
+    cursor: pointer;
+    animation: iconfontFloatEffect 1.5s ease infinite;
+}
+@keyframes iconfontFloatEffect {
+    0% {
+        transform: translateY( 0px );
+        color: rgba( 255, 255, 255, 0.5 );
+    }
+    50% {
+        transform: translateY( -20px );
+        color: rgba( 255, 255, 255, 1 );
+    }
+    100% {
+        transform: translateY( 0px );
+        color: rgba( 255, 255, 255, 0.5 );
+    }
+}
 
 
 /* === === === 页面主体 === === === */
 #page main {
-    width: inherit;
-    height: 1600px;
-    background-color: rgba( 255, 255, 255, 0.24 );
+    padding: 40px calc( 50% - 1190px / 2 );
+    width: 1190px;
+    height: auto;
+    /* height: 3000px; */
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba( 255, 255, 255, 0.5 );
+}
+
+
+/* === 侧边栏 === */
+main #sidebar {
+    width: 280px;
+    height: inherit;
+}
+
+/* --- 信息卡片 --- */
+#sidebar .author-card, 
+#sidebar .announce-card, 
+#sidebar .other-card, 
+#sidebar .music-card {
+    padding: 20px 24px;
+    width: 100%;
+    height: 330px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
+}
+#sidebar .author-card:hover, 
+#sidebar .announce-card:hover, 
+#sidebar .other-card:hover, 
+#sidebar .music-card:hover {
+    box-shadow: -1.5px 3px 5px 3px rgba( 0, 0, 0, 0.15 );
+}
+
+/* 个人图片 */
+.author-card .author-img {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+}
+.author-card .author-img img {
+    margin: 0 auto 5px;
+    display: block;
+    width: 110px;
+    height: 110px;
+    background-color: #987bff;
+}
+.author-card .author-img span.author-name {
+    display: block;
+    width: 100%;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+/* 站点数据 */
+.author-card .site-data {
+    padding: 10px 10px 0;
+}
+
+/* 联系作者 || 作者更多 */
+.author-card .author-contact-link {
+    position: relative;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #8ccbff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 40px;
+    overflow: hidden;
+    z-index: 1;
+}
+.author-card .author-contact-link::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: inherit;
+    background-color: #e8adff;
+    content: '';
+    transition: all 0.5s ease-out;
+    z-index: -1;
+}
+.author-card .author-contact-link:hover::before {
+    width: 100%;
+    transition: all 0.5s cubic-bezier( 0.45, 1.64, 0.47, 0.66 );
+}
+.author-card .author-contact-link i {
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+/* --- 公告卡片 --- */
+#sidebar .announce-card {
+    margin-top: 20px;
+    height: auto;
+}
+
+/* 公告标题 */
+.announce-card .announce-title, 
+.music-card .music-title {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.announce-card .announce-title i, 
+.music-card .music-title i {
+    float: left;
+    height: 20px;
+    color: #ff0000;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+    transform: rotateZ( -5deg );
+    transform-origin: center top;
+    animation: announceShakeEffect 1.5s linear infinite;
+}
+.announce-card .announce-title i:hover, 
+.music-card .music-title i:hover {
+    animation: announceShakeEffect 0.3s linear infinite;
+}
+@keyframes announceShakeEffect {
+    0% {
+        transform: rotateZ( -5deg );
+        color: #ff0000;
+    }
+    50% {
+        transform: rotateZ( 5deg );
+        color: rgba( 255, 0, 0, 0.5 );
+    }
+    100% {
+        transform: rotateZ( -5deg );
+        color: #ff0000;
+    }
+}
+.announce-card .announce-title span.title-text, 
+.music-card .music-title span.title-text {
+    margin-left: 10px;
+    float: left;
+}
+
+/* 公告内容 */
+.announce-card .announce-content, 
+.music-card .music-content {
+    width: 100%;
+    min-height: 30px;
+    line-height: 30px;
+    color: #333333;
+    font-size: 14px;
+}
+
+/* --- 音乐卡片 --- */
+#sidebar .music-card {
+    margin-top: 20px;
+    height: auto;
+}
+
+/* 卡片标题 */
+.music-card .music-title i {
+    font-weight: lighter;
+    transform-origin: right top;
+}
+
+/* 卡片内容 */
+
+/* 卡片链接 */
+.music-card .music-link {
+    margin: 5px 0;
+    float: right;
+    color: #ea517f;
+}
+.music-card .music-link:hover {
+    color: #cca4e3;
+}
+
+/* --- 其他卡片 --- */
+.other-card {
+    /*  */
+}
+#sidebar .other-card {
+    margin-top: 20px;
+    height: auto;
+}
+
+
+/* === 帖子 === */
+main #posts {
+    width: 880px;
+    height: auto;
+    /* height: inherit; */
+}
+
+/* --- 帖子项目 --- */
+#posts .post-item {
+    margin-bottom: 30px;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: box-shadow 0.5s ease;
+    overflow: hidden;
+}
+#posts .post-item:hover {
+    box-shadow: -1.5px 3px 5px 3px rgba( 0, 0, 0, 0.15 );
+}
+#posts .post-item:hover .post-item-img img {
+    transform: scale( 1.15 );
+}
+
+/* 项目图片 */
+.post-item .post-item-img {
+    width: 45%;
+    height: inherit;
+    overflow: hidden;
+}
+.post-item .post-item-img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.post-item .post-item-img img {
+    transform: scale( 1 );
+    transition: all 0.5s ease-in-out;
+}
+/* .post-item .post-item-img a:hover img {
+    transform: scale( 1.1 );
+} */
+
+/* 项目信息 */
+.post-item .post-item-info {
+    padding: 0 40px;
+    width: 55%;
+    height: 180px;
+    box-sizing: border-box
+}
+
+/* 标题 */
+.post-item-info .post-title-link {
+    margin: 0 auto 10px;
+    display: block;
+    width: 240px;
+    height: 35px;
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+.post-item-info .post-title-link:hover {
+    color: #987bff;
+}
+/* 时间 */
+.post-item-info .post-time {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+}
+.post-item-info .post-time p {
+    color: #858585;
+    line-height: 15px;
+}
+.post-item-info .post-time p i {
+    color: #333333;
+    vertical-align: middle;
+}
+/* 介绍 */
+.post-item-info .post-introduce {
+    width: 100%;
+    height: 85px;
+    font-size: 14px;
+}
+.post-item-info .post-introduce p {
+    display: -webkit-box;
+    line-height: 2;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.post-item-info .post-introduce p a {
+    color: #901E28;
+}
+
+/* --- 特殊帖子项目 --- */
+#posts .special-post-item {
+    /* margin-top: 20px; */
 }
 
 
 
 /* === === === 页面页脚 === === === */
 #page footer {
+    padding: 20px 24px;
     width: inherit;
-    height: 80px;
-    background-color: rgba( 255, 255, 255, 0.5 );
+    height: 150px;
+    background-color: rgba( 255, 255, 255, 0.8 );
+    text-align: center;
+    box-sizing: border-box;
 }
+
+
+/* === 版权 === */
+footer #copyright {
+    width: 100%;
+    height: auto;
+}
+
+/* --- 个人 --- */
+#copyright .personal-copyright, 
+#copyright .platform-copyright {
+    width: 100%;
+    height: 20px;
+    color: #000000;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* --- 平台 --- */
+#copyright .platform-copyright {
+    /*  */
+}
+#copyright .platform-copyright a, 
+footer #source a {
+    color: #000000;
+}
+#copyright .platform-copyright a:hover, 
+footer #source a:hover {
+    text-decoration: underline;
+}
+
+/* === 来源 === */
+footer #source {
+    width: 100%;
+    height: 20px;
+    color: #000000;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

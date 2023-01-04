@@ -9,14 +9,18 @@ import * as api from "../module/module.js";
 
     function unfoldSidebar() {
         maskLayer.style.opacity = '1';
+        sidebar.style.opacity = '1';
         maskLayer.style.pointerEvents = 'auto';
-        sidebar.style.transform = 'translateX( 0px )';
+        // sidebar.style.transform = 'translateX( 0px )';
+        sidebar.style.right = '-17px';
         page.style.overflowY = 'hidden';
     }
     function shutSidebar() {
         maskLayer.style.opacity = '0';
+        sidebar.style.opacity = '0';
         maskLayer.style.pointerEvents = 'none';
-        sidebar.style.transform = 'translateX( 300px )';
+        // sidebar.style.transform = 'translateX( 300px )';
+        sidebar.style.right = '-320px';
         page.style.overflowY = 'auto';
     }
     sidebarSwitch.addEventListener( 'click', unfoldSidebar );

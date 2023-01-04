@@ -100,11 +100,19 @@ body {
 
 
 
-.background-color {
-    background-color: #d2c5ff;
-    background-color: #ccbeff;
-    background-color: #c17db6;
-    background-color: #d497ca;
-    background-color: #99c7ed;
-    background-color: #a5ccec;
+.color {
+    color: #d2c5ff;
+    color: #ccbeff;
+    color: #c17db6;
+    color: #d497ca;
+    color: #99c7ed;
+    color: #a5ccec;
+    color: #ea517f;
+    color: #ea517f;
+    color: #f997e8;
+    color: #987bff;
+    color: #cca4e3;
+    color: #f9d3e3;
+    color: #75c1c4;
+    color: #39363f;
 }

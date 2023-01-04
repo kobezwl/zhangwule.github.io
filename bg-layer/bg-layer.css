@@ -57,9 +57,9 @@
     overflow: hidden;
     box-sizing: border-box;
 }
-div.card .digital {
-    /* border: 1px solid red; */
-}
+/* div.card .digital {
+    border: 1px solid red;
+} */
 div.card .digital::before, 
 div.card .digital::after {
     position: absolute;
