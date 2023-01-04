@@ -1,4 +1,4 @@
-import * as api from "../../网页练习/电商网站/JavaScript/module.js";
+import * as api from "../module/module.js";
 // console.log( api );
 
 // 侧边栏菜单
