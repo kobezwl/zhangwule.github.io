@@ -1,13 +1,12 @@
 #elevator {
     position: fixed;
-    bottom: 100px;
+    bottom: 150px;
     right: 5px;
     width: 30px;
     height: auto;
-    background-color: rgba( 234, 81, 127, 0.5 );
-    color: #ffffff;
+    /* background-color: rgba( 234, 81, 127, 0.5 ); */
+    color: var( --default-color );
     text-align: center;
-    overflow: hidden;
     z-index: 10;
 }
 #elevator a {
@@ -91,7 +90,7 @@
 
 /* --- 分享 --- */
 #ordinary .share {
-    /*  */
+    position: relative;
 }
 #ordinary .share i {
     transform: rotateZ( 0deg );
@@ -103,8 +102,39 @@
         transform: rotateZ( 3deg );
     }
 }
+#ordinary .share .input-share-link-text {
+    position: absolute;
+    top: 0px;
+    left: -35px;
+    width: 30px;
+    display: none;
+}
+#ordinary .share .share-hint {
+    position: absolute;
+    top: 0px;
+    left: -120px;
+    display: block;
+    width: auto;
+    height: 30px;
+    color: #333333;
+    line-height: 30px;
+    pointer-events: none;
+    opacity: 0;
+}
+#ordinary .share .share-hint-show {
+    animation: shareHintShow 2.4s ease;
+}
+@keyframes shareHintShow {
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 
 /* --- 返回顶部 --- */
 #ordinary .return-top {
     /*  */
+    /* background-color: var( --default-white ); */
 }

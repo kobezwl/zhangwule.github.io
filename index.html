@@ -151,7 +151,7 @@
             <!-- 侧边栏 -->
             <div id="sidebar">
                 <!-- 信息卡片 -->
-                <div class="author-card">
+                <div class="author-card card">
                     <!-- 个人图片 -->
                     <div class="author-img">
                         <img src="./image/logo/myLogo(110x110).jpg" alt="author-logo">
@@ -186,7 +186,7 @@
                 </div>
 
                 <!-- 公告卡片 -->
-                <div class="announce-card">
+                <div class="announce-card card ">
                     <!-- 公告标题 -->
                     <div class="announce-title">
                         <i class="icon-reminder iconfont"></i>
@@ -199,7 +199,7 @@
                 </div>
 
                 <!-- 音乐卡片 -->
-                <div class="music-card">
+                <div class="music-card card">
                     <!-- 卡片标题 -->
                     <div class="music-title">
                         <i class="icon-music iconfont"></i>
@@ -214,7 +214,7 @@
                 </div>
 
                 <!-- 其他卡片 -->
-                <div class="other-card">
+                <div class="other-card card">
                     其他卡片
                 </div>
             </div>
@@ -222,7 +222,7 @@
             <!-- 帖子 -->
             <div id="posts">
                 <!-- 帖子项目 HTML -->
-                <div class="post-item">
+                <div class="post-item html-item">
                     <!-- 项目图片 -->
                     <div class="post-item-img">
                         <a href="javascript:void(0);">
@@ -260,7 +260,7 @@
                     </div>
                 </div>
                 <!-- 帖子项目 CSS -->
-                <div class="post-item special-post-item">
+                <div class="post-item special-post-item css-item">
                     <!-- 项目信息 -->
                     <div class="post-item-info">
                         <!-- 项目标题 -->
@@ -298,7 +298,7 @@
                     </div>
                 </div>
                 <!-- 帖子项目 JavaScript -->
-                <div class="post-item">
+                <div class="post-item javascript-item">
                     <!-- 项目图片 -->
                     <div class="post-item-img">
                         <a href="javascript:void(0);">
@@ -336,7 +336,7 @@
                     </div>
                 </div>
                 <!-- 帖子项目 jQuery -->
-                <div class="post-item special-post-item">
+                <div class="post-item special-post-item jquery-item">
                     <!-- 项目信息 -->
                     <div class="post-item-info">
                         <!-- 项目标题 -->
@@ -374,7 +374,7 @@
                     </div>
                 </div>
                 <!-- 帖子项目 Vue -->
-                <div class="post-item">
+                <div class="post-item vue-item">
                     <!-- 项目图片 -->
                     <div class="post-item-img">
                         <a href="javascript:void(0);">
@@ -413,7 +413,7 @@
                     </div>
                 </div>
                 <!-- 帖子项目 动画效果 -->
-                <div class="post-item special-post-item">
+                <div class="post-item special-post-item animation-item">
                     <!-- 项目信息 -->
                     <div class="post-item-info">
                         <!-- 项目标题 -->
@@ -446,6 +446,42 @@
                         <a href="javascript:void(0);">
                             <img src="./image/logo/动画效果-logo.jpg" alt="logo">
                         </a>
+                    </div>
+                </div>
+                <!-- 帖子项目 其他 -->
+                <div class="post-item">
+                    <!-- 项目图片 -->
+                    <div class="post-item-img">
+                        <a href="javascript:void(0);">
+                            <!-- <img src="#" alt="logo"> -->
+                        </a>
+                    </div>
+                    <!-- 项目信息 -->
+                    <div class="post-item-info">
+                        <!-- 项目标题 -->
+                        <a href="javascript:void(0);" class="post-title-link">其他 笔记</a>
+                        <!-- 项目时间 -->
+                        <div class="post-time">
+                            <p>
+                                <i class="icon-item iconfont"></i>&nbsp;
+                                创建于 <span class="create-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-update iconfont"></i>&nbsp;
+                                更新于 <span class="update-time">2023-01-14</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-label iconfont"></i>&nbsp;
+                                <span class="post-label">其他</span>
+                                &nbsp;|&nbsp;
+                                <i class="icon-comment iconfont"></i>
+                                <span class="post-comment">0</span>条评论
+                            </p>
+                        </div>
+                        <!-- 项目介绍 -->
+                        <div class="post-introduce">
+                            <p class="introduce">
+                                其他
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -517,8 +553,10 @@
                 <i class="icon-setting iconfont"></i>
             </div>
             <!-- 分享 -->
-            <div class="share" title="分享">
-                <i class="icon-share iconfont"></i>
+            <div class="share">
+                <i class="icon-share iconfont" title="分享"></i>
+                <input class="input-share-link-text" type="text" value="http://kobezwl.gitee.io/zhangwule">
+                <p class="share-hint">链接已复制到剪切板</p>
             </div>
             <!-- 返回顶部 -->
             <div class="return-top" title="返回顶部">
@@ -529,6 +567,7 @@
         </div>
     </div>
 
+    <script src="./init/init.js"></script>
     <script src="./bg-layer/bg-img.js"></script>
     <script src="./bg-layer/bg-clock.js"></script>
 

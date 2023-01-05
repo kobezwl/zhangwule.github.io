@@ -5,7 +5,7 @@ import * as api from "../module/module.js";
 
 // 侧边栏菜单
 {
-    let sidebarSwitch = document.querySelector( '#head-nav .sidebar-switch' );
+    let sidebarSwitch = document.querySelector( '#head-nav .sidebar-switch i' );
     let maskLayer = document.querySelector( '#head-nav .mask-layer' );
     let sidebar  = document.querySelector( '#head-nav .menu-content' );
 
