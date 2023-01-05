@@ -1,3 +1,5 @@
+'use strict';
+
 export { random, hover, tab, SeamlessShow, getCountDown }
 
 // 生成随机数 random( x, y )

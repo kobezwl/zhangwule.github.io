@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./bg-layer/bg-layer.css">
     <link rel="stylesheet" href="./page/page.css">
     <link rel="stylesheet" href="./elevator/elevator.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3849029_464g89dcj5c.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3849029_j8pnx9pqst.css">
 </head>
 <body>
     <!-- 背景图层 -->
@@ -493,8 +493,39 @@
 
     <!-- 传送导航 -->
     <div id="elevator">
-        <div class="return-top">
-            <i class=" iconfont"></i>
+        <!-- 配置 -->
+        <div id="config">
+            <!-- 切换背景图片 -->
+            <div class="bg-img-toggle" title="切换背景图片">
+                <i class="icon-shuffling-banner-fill iconfont"></i>
+            </div>
+            <!-- 中英文切换 -->
+            <div class="Chinese-English-toggle" title="中英文切换">
+                <i class="icon-multi-language-fill iconfont"></i>
+            </div>
+            <!-- 昼夜切换 -->
+            <div class="day-night-toggle" title="昼夜切换">
+                <i class="icon-Daytimemode-fill iconfont"></i>
+                <!-- <i class="icon-nightmode-fill iconfont"></i> -->
+            </div>
+        </div>
+
+        <!-- 普通 -->
+        <div id="ordinary">
+            <!-- 设置 -->
+            <div class="setting" title="设置">
+                <i class="icon-setting iconfont"></i>
+            </div>
+            <!-- 分享 -->
+            <div class="share" title="分享">
+                <i class="icon-share iconfont"></i>
+            </div>
+            <!-- 返回顶部 -->
+            <div class="return-top" title="返回顶部">
+                <a href="javascript:void(0);">
+                    <i class="icon-rising iconfont"></i>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -504,5 +535,11 @@
     <script type="module" src="./page/menus.js"></script>
     <script src="./page/site-info.js"></script>
     <script src="./page/down-more.js"></script>
+
+    <script src="./elevator/elevator.js"></script>
+
+    <script>
+        // 'use strict';
+    </script>
 </body>
 </html>

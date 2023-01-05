@@ -1,3 +1,5 @@
+'use strict';
+
 // 翻页时钟
 {
     class FlipCard {

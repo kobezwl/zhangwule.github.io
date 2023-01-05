@@ -1,3 +1,5 @@
+'use strict';
+
 import * as api from "../module/module.js";
 // console.log( api );
 

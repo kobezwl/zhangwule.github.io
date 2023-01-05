@@ -1,7 +1,110 @@
 #elevator {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 24px;
-    height: 24px;
+    position: fixed;
+    bottom: 100px;
+    right: 5px;
+    width: 30px;
+    height: auto;
+    background-color: rgba( 234, 81, 127, 0.5 );
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+    z-index: 10;
+}
+#elevator a {
+    color: inherit;
+}
+#elevator i.iconfont {
+    display: block;
+    font-size: 24px;
+}
+
+
+/* === 配置 === */
+#elevator #config {
+    width: inherit;
+    height: auto;
+    transform: translateX( 30px );
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+/* --- 切换背景图片 --- */
+#config .bg-img-toggle, 
+#config .Chinese-English-toggle, 
+#config .day-night-toggle {
+    margin-top: 3px;
+    width: inherit;
+    height: 30px;
+    line-height: 30px;
+    background-color: #49b1f5;
+}
+#config .bg-img-toggle {
+    margin-top: 0;
+}
+#config div:hover, 
+#ordinary div:hover {
+    background-color: #987bff;
+    cursor: pointer;
+}
+
+/* --- 中英文切换 --- */
+#config .Chinese-English-toggle {
+    /*  */
+}
+
+/* --- 昼夜切换 --- */
+#config .day-night-toggle {
+    /*  */
+}
+
+
+/* === 普通 === */
+#elevator #ordinary {
+    width: inherit;
+    height: auto;
+}
+
+/* --- 设置 --- */
+#ordinary .setting, 
+#ordinary .return-top, 
+#ordinary .share {
+    margin-top: 3px;
+    width: inherit;
+    height: 30px;
+    line-height: 30px;
+    background-color: #49b1f5;
+}
+#ordinary .setting i {
+    animation: settingRotation 2s linear infinite;
+}
+#ordinary .setting i::before {
+    position: relative;
+    top: 0.5px;
+    left: 1.25px;
+    font-weight: 600;
+}
+@keyframes settingRotation {
+    to {
+        transform: rotateZ( 360deg );
+    }
+}
+
+/* --- 分享 --- */
+#ordinary .share {
+    /*  */
+}
+#ordinary .share i {
+    transform: rotateZ( 0deg );
+    transform-origin: left bottom;
+    animation: shareShake 1s ease-in-out infinite;
+}
+@keyframes shareShake {
+    50% {
+        transform: rotateZ( 3deg );
+    }
+}
+
+/* --- 返回顶部 --- */
+#ordinary .return-top {
+    /*  */
 }

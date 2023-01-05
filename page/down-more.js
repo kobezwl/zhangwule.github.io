@@ -1,3 +1,5 @@
+'use strict';
+
 // 向下更多
 {
     let downBtn = document.querySelector( '#down-more i' );

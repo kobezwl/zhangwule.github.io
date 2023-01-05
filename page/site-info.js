@@ -1,3 +1,5 @@
+'use strict';
+
 // 文字输入效果
 {
     let siteSubtitle = document.querySelector( '#site-info .site-subtitle .active-text' );
