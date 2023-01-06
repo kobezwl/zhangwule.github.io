@@ -82,7 +82,7 @@
                 page_header.style.backgroundColor = 'rgba( 0, 0, 0, 0.25 )';
                 menu_content.style.backgroundColor = '#121212';
                 menu_content.style.color = '#ffffff';
-                page_main.style.backgroundColor = 'rgba( 0, 0, 0, 0.5 )';
+                page_main.style.backgroundColor = 'rgba( 0, 0, 0, 0.25 )';
                 site_data.style.color = '#ffffff';
                 page_footer.style.color = '#121212';
                 multipleToggle( card_items );
@@ -93,7 +93,7 @@
                 page_header.style.backgroundColor = 'transparent';
                 menu_content.style.backgroundColor = '#ffffff';
                 menu_content.style.color = '#4c4948';
-                page_main.style.backgroundColor = 'rgba( 255, 255, 255, 0.5 )';
+                page_main.style.backgroundColor = 'rgba( 255, 255, 255, 0.25 )';
                 site_data.style.color = '#4c4948';
                 page_footer.style.color = '#ffffff';
                 multipleToggle( card_items );
