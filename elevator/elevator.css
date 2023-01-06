@@ -1,7 +1,7 @@
 #elevator {
     position: fixed;
     bottom: 150px;
-    right: 7px;
+    right: 10px;
     width: 30px;
     height: auto;
     /* background-color: rgba( 234, 81, 127, 0.5 ); */
