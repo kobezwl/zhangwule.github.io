@@ -8,13 +8,17 @@
     let footer = document.querySelector( '#page-footer' );
 
     if ( thisTimeHour < 12 ) {
-        bgImg.style.backgroundImage = `url( './image/background/城市白天.png' )`;
+        document.documentElement.style.setProperty( '--bg-layer-img', `url( '../image/background/urban-daytime.png' )` );
+        // bgImg.style.backgroundImage = `url( './image/background/urban-daytime.png' )`;
         siteInfo.style.color = '#000000';
-        footer.style.backgroundImage = `url( './image/background/城市白天.png' )`;
+        // footer.style.backgroundImage = `url( './image/background/urban-daytime.png' )`;
+        footer.style.color = '#000000';
     }
     else {
-        bgImg.style.backgroundImage = `url( './image/background/城市夕阳.png' )`;
+        document.documentElement.style.setProperty( '--bg-layer-img', `url( '../image/background/urban-sunset.png' )` );
+        // bgImg.style.backgroundImage = `url( './image/background/urban-sunset.png' )`;
         siteInfo.style.color = '#ffffff';
-        footer.style.backgroundImage = `url( './image/background/城市夕阳.png' )`;
+        // footer.style.backgroundImage = `url( './image/background/urban-sunset.png' )`;
+        footer.style.color = '#ffffff';
     }
 }

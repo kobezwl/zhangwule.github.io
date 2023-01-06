@@ -9,9 +9,10 @@
 
 /* 背景图片 */
 #bg-layer #bg-img {
+    position: relative;
     width: inherit;
     height: inherit;
-    background-image: var( --bg-layer-img-day );
+    background-image: var( --bg-layer-img );
     background-repeat: no-repeat;
     background-size: cover;
     animation: bg-img 5s ease-in-out infinite;

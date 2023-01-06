@@ -73,9 +73,10 @@ body {
 :root {
     --default-color: #ffffff;
     --test-border: 1px solid red;
+    --temp-bg-linear: linear-gradient( 45deg, #39363f, #cca4e3 );
     /* --- bg-layer --- */
-    --bg-layer-img-day: url( '../image/background/城市白天.png' );
-    --bg-layer-img-night: url( '../image/background/城市夜晚.png' );
+    --bg-layer-img: url( '../image/background/urban-daytime.png' );
+    --bg-layer-img-prepare: url( '#' );
     --bg-clock-left: 50px;
     /* --- page --- */
     --page-header-columns: repeat( 4, 1fr );
@@ -88,6 +89,8 @@ body {
     --page-main-post-item-img-width: 400px;
     --page-main-post-item-img-height: 280px;
     --page-main-post-title-link: 24px;
+    /*  */
+    /* --flag: true; */
 }
 /*
 --global-font-size: 14px;
@@ -174,10 +177,15 @@ body {
         --page-main-post-item-img-height: 200px;
         --page-main-post-title-link: 18px;
     }
+    /* 侧边栏 */
+    main #sidebar {
+        margin-right: 0 !important;
+        width: 880px !important;
+    }
     /* 侧边栏卡片 */
-    /* main #sidebar .card {
+    main #sidebar .card {
         width: 100% !important;
-    } */
+    }
     /* 项目信息 */
     .post-item .post-item-info {
         padding: 0 20px !important;

@@ -147,6 +147,7 @@ header .menu-item span {
     width: 300px;
     height: 100vh;
     background-color: var( --default-color );
+    color: #4c4948;
     /* transform: translateX( 300px ); */
     opacity: 0;
     transition: all 0.5s ease-in-out;
@@ -156,8 +157,12 @@ header .menu-item span {
 
 /* 菜单图片 */
 .menu-content .menu-img {
-    width: 100%;
+    /* width: 100%; */
+    margin: 20px auto;
+    width: 150px;
     height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 /* 站点数据 */
@@ -183,7 +188,7 @@ header .menu-item span {
     display: block;
     width: 100%;
     height: 100%;
-    color: #4c4948;
+    color: inherit;
     text-align: center;
     line-height: 30px;
 }
@@ -262,7 +267,7 @@ header .menu-item span {
     display: block;
     width: 110px;
     height: 30px;
-    color: #4c4948;
+    color: inherit;
     font-size: 16px;
     text-align: center;
     line-height: 30px;
@@ -375,6 +380,7 @@ header #down-more i {
     flex-wrap: var( --page-main-wrap );
     justify-content: space-around;
     background-color: rgba( 255, 255, 255, 0.5 );
+    transition: background-color 0.5s ease;
 }
 
 
@@ -383,6 +389,11 @@ main #sidebar {
     margin-right: 10px;
     width: 280px;
     height: inherit;
+}
+main #sidebar .card {
+    color: #000000;
+    background-color: #ffffff;
+    transition: all 0.5s ease;
 }
 
 /* --- 信息卡片 --- */
@@ -418,7 +429,9 @@ main #sidebar {
     display: block;
     width: 110px;
     height: 110px;
+    border-radius: 50%;
     background-color: #987bff;
+    overflow: hidden;
 }
 .author-card .author-img span.author-name {
     display: block;
@@ -426,7 +439,7 @@ main #sidebar {
     height: 45px;
     text-align: center;
     line-height: 45px;
-    color: #000000;
+    color: inherit;
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 0.1em;
@@ -435,6 +448,10 @@ main #sidebar {
 /* 站点数据 */
 .author-card .site-data {
     padding: 10px 10px 0;
+    color: #4c4948;
+}
+.author-card .site-data a {
+    color: inherit !important;
 }
 
 /* 联系作者 || 作者更多 */
@@ -489,7 +506,7 @@ main #sidebar {
     position: relative;
     width: 100%;
     height: 35px;
-    color: #000000;
+    color: inherit;
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
@@ -537,7 +554,7 @@ main #sidebar {
     width: 100%;
     min-height: 30px;
     line-height: 30px;
-    color: #333333;
+    color: inherit;
     font-size: 14px;
 }
 
@@ -593,8 +610,9 @@ main #posts {
     display: flex;
     align-items: center;
     border-radius: 12px;
-    background-color: var( --default-color );
-    transition: box-shadow 0.5s ease;
+    background-color: #ffffff;
+    /* transition: box-shadow 0.5s ease; */
+    transition: all 0.5s ease;
     overflow: hidden;
 }
 #posts .post-item:hover {
@@ -608,6 +626,7 @@ main #posts {
 .post-item .post-item-img {
     width: 45%;
     height: 100%;
+    background-image: var( --temp-bg-linear );
     overflow: hidden;
 }
 .post-item .post-item-img a {
@@ -665,7 +684,7 @@ main #posts {
     width: auto;
     /* height: 35px; */
     height: auto;
-    color: #000000;
+    color: inherit;
     font-size: var( --page-main-post-title-link );
     text-align: center;
     line-height: 30px;
@@ -692,7 +711,7 @@ main #posts {
     line-height: 15px;
 }
 .post-item-info .post-time p i {
-    color: #333333;
+    color: #858585;
     vertical-align: middle;
 }
 /* 介绍 */
@@ -726,7 +745,7 @@ main #posts {
     width: inherit;
     height: 150px;
     background-color: rgba( 255, 255, 255, 0.8 );
-    background-image: url( '../image/background/城市夕阳.png' );
+    background-image: var( --bg-layer-img );
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 90%;
@@ -765,6 +784,7 @@ footer #ending a {
 #copyright .platform-copyright a:hover, 
 footer #source a:hover, 
 footer #ending a:hover {
+    color: #ffffff;
     text-decoration: underline;
 }
 

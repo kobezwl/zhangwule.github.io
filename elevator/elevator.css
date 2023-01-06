@@ -1,12 +1,15 @@
 #elevator {
     position: fixed;
     bottom: 150px;
-    right: 5px;
+    right: 7px;
     width: 30px;
     height: auto;
     /* background-color: rgba( 234, 81, 127, 0.5 ); */
     color: var( --default-color );
     text-align: center;
+    transform: translateX( 30px );
+    opacity: 0;
+    transition: all 0.5s ease;
     z-index: 10;
 }
 #elevator a {
@@ -15,6 +18,9 @@
 #elevator i.iconfont {
     display: block;
     font-size: 24px;
+}
+#elevator i.iconfont::before {
+    display: block;
 }
 
 
@@ -31,6 +37,7 @@
 #config .bg-img-toggle, 
 #config .Chinese-English-toggle, 
 #config .day-night-toggle {
+    position: relative;
     margin-top: 3px;
     width: inherit;
     height: 30px;
@@ -40,15 +47,53 @@
 #config .bg-img-toggle {
     margin-top: 0;
 }
-#config div:hover, 
-#ordinary div:hover {
+#config > div:hover, 
+#ordinary > div:hover {
     background-color: #987bff;
     cursor: pointer;
 }
-
-/* --- 中英文切换 --- */
-#config .Chinese-English-toggle {
-    /*  */
+.bg-img-toggle .image-select {
+    position: absolute;
+    top: -207px;
+    left: -258px;
+    /* padding: 3px; */
+    padding: 3px 0 3px 3px;
+    /* display: flex; */
+    display: none;
+    /* flex-wrap: wrap;
+    justify-content: space-between; */
+    width: 285px;
+    height: 190px;
+    border-radius: 5px;
+    background-color: #dddddd;
+    /* box-shadow: -1px 3px 5px 3px rgba( 0 0 0 / 0.15 ); */
+    filter: drop-shadow( -1.5px 3px 3px rgba( 0 0 0 / 0.3 ) );
+    user-select: none;
+}
+.bg-img-toggle .image-select::before {
+    position: absolute;
+    right: 5px;
+    bottom: -5px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: inherit;
+    content: '';
+    transform: rotateZ( 45deg );
+    z-index: -1;
+}
+.bg-img-toggle .image-select .img-item {
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 90px;
+    height: 60px;
+}
+.bg-img-toggle .image-select .img-item img {
+    transition: all 0.3s ease;
+}
+.bg-img-toggle .image-select .img-item:hover img {
+    transform: scale( 1.1 );
 }
 
 /* --- 昼夜切换 --- */
@@ -116,7 +161,7 @@
     display: block;
     width: auto;
     height: 30px;
-    color: #333333;
+    color: #000000;
     line-height: 30px;
     pointer-events: none;
     opacity: 0;
