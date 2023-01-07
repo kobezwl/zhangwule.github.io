@@ -1,0 +1,207 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, 
+dl, dt, dd, ul, ol, li, 
+pre, 
+fieldset, lengend, button, input, textarea, 
+th, td {
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body,
+button, input, select, textarea {
+    /* font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif; */
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+    /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+    font-family: 'Microsoft YaHei', 'Heiti SC', tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;
+}
+h1 { 
+    font-size: 18px; /* 18px / 12px = 1.5 */ 
+}
+h2 { 
+    font-size: 16px; 
+}
+h3 { 
+    font-size: 14px; 
+}
+h4, h5, h6 { 
+    font-size: 100%; 
+}
+address, cite, dfn, em, var { 
+    font-style: normal; /* 将斜体扶正 */
+}
+code, kbd, pre, samp, tt { 
+    font-family: "Courier New", Courier, monospace; /* 统一等宽字体 */
+}
+small { 
+    font-size: 12px; /* 小于 12px 的中文很难阅读，让 small 正常化 */
+}
+li, ol {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+a:hover { 
+    text-decoration: none;
+}
+/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: 'iconfont';  /* Project id 3849029 */
+    src: url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.woff2?t=1672747034282') format('woff2'),
+        url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.woff?t=1672747034282') format('woff'),
+        url('//at.alicdn.com/t/c/font_3849029_tuinmzynh6.ttf?t=1672747034282') format('truetype');
+}
+img {
+    width: 100%;
+    height: 100%;
+    border: none;
+    vertical-align: top;
+}
+div {
+    background-repeat: no-repeat;
+}
+
+body {
+    background-color: var( --default-color );
+    overflow: hidden;
+}
+
+
+/* === === === css 全局变量 === === === */
+:root {
+    --default-color: #ffffff;
+    --test-border: 1px solid red;
+    --temp-bg-linear: linear-gradient( 45deg, #39363f, #cca4e3 );
+    /* --- bg-layer --- */
+    --bg-layer-img: url( '../image/background/urban-daytime.png' );
+    --bg-layer-img-prepare: url( '#' );
+    --bg-clock-left: 50px;
+    /* --- page --- */
+    --page-header-columns: repeat( 4, 1fr );
+    --page-header-areas: "name . . menus";
+    --page-header-menus-padding: 15px;
+    --page-header-switch-right: -5px;
+    --page-header-menu-item: block;
+    --page-main-wrap: nowrap;
+    --page-main-post-item-height: 280px;
+    --page-main-post-item-img-width: 400px;
+    --page-main-post-item-img-height: 280px;
+    --page-main-post-title-link: 24px;
+    /*  */
+    /* --flag: true; */
+}
+
+
+
+
+/* === === === 响应式 === === === */
+
+
+/* --- PC端 --- */
+@media screen and ( min-width: 960px ) {
+    /*  */
+}
+
+
+/* --- iPad端 --- */
+/* @media screen and ( min-width: 750px ) and ( max-width: 960px ) { */
+@media screen and ( min-width: 750px ) and ( max-width: 1024px ) {
+    :root {
+        /* --- bg-layer --- */
+        --bg-clock-left: calc( 50% - 380px / 2 );
+        /* --- page --- */
+        --page-header-columns: repeat( 3, 1fr );
+        --page-header-areas: "name . menus";
+        --page-header-menus-padding: 10px;
+        --page-header-switch-right: -8px;
+        --page-main-wrap: wrap-reverse;
+        --page-main-post-item-img-width: 300px;
+        --page-main-post-item-img-height: 280px;
+    }
+    /* 项目图片 */
+    .post-item .post-item-img img {
+        top: calc( 50% - var( --page-main-post-item-img-height ) / 2 ) !important;
+        left: calc( 50% - var( --page-main-post-item-img-width ) / 2 ) !important;
+    }
+}
+
+
+/* --- 移动端 --- */
+@media screen and ( max-width: 750px ) {
+    :root {
+        /* --- bg-layer --- */
+        --bg-clock-left: calc( 50% - 380px / 2 );
+        /* --- page --- */
+        --page-header-columns: repeat( 2, 1fr );
+        --page-header-areas: "name menus";
+        --page-header-menus-padding: 5px;
+        --page-header-switch-right: 20px;
+        --page-header-menu-item: none;
+        --page-main-wrap: wrap-reverse;
+        --page-main-post-item-height: 200px;
+        --page-main-post-item-img-width: 300px;
+        --page-main-post-item-img-height: 200px;
+        --page-main-post-title-link: 18px;
+    }
+    /* 侧边栏 */
+    main #sidebar {
+        margin-right: 0 !important;
+        width: 880px !important;
+    }
+    /* 侧边栏卡片 */
+    main #sidebar .card {
+        width: 100% !important;
+    }
+    /* 项目信息 */
+    .post-item .post-item-info {
+        padding: 0 20px !important;
+    }
+    /* 项目图片 */
+    .post-item .post-item-img img {
+        top: calc( 50% - var( --page-main-post-item-img-height ) / 2 ) !important;
+        left: calc( 50% - var( --page-main-post-item-img-width ) / 2 ) !important;
+    }
+    /* 项目介绍 */
+    .post-item-info .post-introduce {
+        font-size: 12px !important;
+        letter-spacing: -0.5px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* --- 预选颜色 --- */
+.color {
+    color: #d2c5ff;
+    color: #ccbeff;
+    color: #c17db6;
+    color: #d497ca;
+    color: #99c7ed;
+    color: #a5ccec;
+    color: #ea517f;
+    color: #ea517f;
+    color: #f997e8;
+    color: #987bff;
+    color: #cca4e3;
+    color: #f9d3e3;
+    color: #75c1c4;
+    color: #39363f;
+}
+
+
+
+/* --- 临时元素 --- */
+#temp {
+    width: 240px;
+    height: 240px;
+    background-color: red;
+    border: 1px solid rgb(255, 158, 158);
+}

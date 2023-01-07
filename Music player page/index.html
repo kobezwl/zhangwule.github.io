@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="./CSS/base.css">
+    <link rel="stylesheet" href="./bg-layer/bg-layer.css">
+    <link rel="stylesheet" href="./page/page.css">
+    <link rel="stylesheet" href="./topmost-layer/topmost-layer.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3849029_s5b3of4ow4.css">
+</head>
+<body>
+    <div id="body">
+        <!-- 背景图层 -->
+        <div id="bg-layer"></div>
+
+        <!-- 页面 -->
+        <div id="page">
+            <!-- 页面头部 -->
+            <header id="page-header">
+                <!-- 顶部导航 -->
+                <nav id="header-nav">
+                    <!-- 应用名称 -->
+                    <div class="app-name">
+                        <i class="icon-music iconfont"></i>
+                        <h1>音乐播放器</h1>
+                    </div>
+
+                    <!-- 搜索框 -->
+                    <div class="search-box">
+                        <input type="text" placeholder="搜索" class="search-input" v-model="query" v-on:keyup.enter="querySong">
+                        <i class="icon-search iconfont" @click="querySong"></i>
+                    </div>
+
+                    <!-- 交互设置 -->
+                    <!-- <div class="interaction"> -->
+                        <!-- 皮肤 -->
+                        <!-- <div class="clothes">
+                            <i class="icon-clothes iconfont"></i>
+                            <div class="clothes-content">
+                                <h3 class="clothes-title">皮肤换色</h3>
+                                <div class="clothes-color color-987bff"></div>
+                                <div class="clothes-color color-99c7ed"></div>
+                                <div class="clothes-color color-ccbeff"></div>
+                                <div class="clothes-color color-39363f"></div>
+                                <div class="clothes-color color-75c1c4"></div>
+                                <div class="clothes-color color-ea517f"></div>
+                                <div class="clothes-color color-ea517f"></div>
+                                <div class="clothes-color color-ea517f"></div>
+                                <div class="clothes-color color-ea517f"></div>
+                                <div class="clothes-color color-ea517f"></div>
+                            </div>
+                        </div> -->
+                        <!-- 主页 -->
+                        <!-- <div class="home">
+                            <i class="icon-index iconfont"></i>
+                        </div> -->
+                        <!-- 历史 -->
+                        <!-- <div class="record">
+                            <i class="icon-record iconfont"></i>
+                        </div> -->
+                    <!-- </div> -->
+                </nav>
+            </header>
+
+            <!-- 页面主体 -->
+            <main id="page-main">
+                <!-- 音乐列表 -->
+                <div id="music-list">
+                    <!-- 音乐项目 -->
+                    <div class="music-item" v-for="item in queryResult">
+                        <!-- 播放按钮 -->
+                        <input type="radio" name="play" class="music-play" title="播放" v-on:click="playState( item.id )">
+                        <i class="icon-play iconfont"></i>
+                        <!-- 歌曲名称 -->
+                        <p class="song-name" v-bind:title="item.name">
+                            {{ item.name }}&nbsp;---&nbsp;{{ item.artists[0].name }}
+                        </p>
+                        <!-- MV 按钮 -->
+                        <i class="icon-video iconfont" title="MV" v-show="item.mvid!=0" v-on:click="playMV( item.mvid )"></i>
+                    </div>
+                </div>
+
+                <!-- 播放器 -->
+                <div id="player">
+                    <!-- 光盘 -->
+                    <div id="optical-disc">
+                        <!-- 反光光泽 -->
+                        <div class="sheen"></div>
+                        <!-- 音乐光碟 -->
+                        <div class="disc">
+                            <!-- 纹理 -->
+                            <div class="disc-texture">
+                                <!-- 内部 -->
+                                <div class="disc-inside">
+                                    <!-- 封面 -->
+                                    <div class="disc-cover">
+                                        <img v-bind:src="picUrl" v-on:dblclick="viewLarger" alt="封面" class="disc-cover-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 读取器 -->
+                    <div id="reader">
+                        <!-- 固定部分 -->
+                        <div class="reader-fixed"></div>
+                        <!-- 读取杆 -->
+                        <div class="reader-pole">
+                            <!-- 细 -->
+                            <div class="fine"></div>
+                            <!-- 宽 -->
+                            <div class="wide"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 热门评论 -->
+                <div id="comment">
+                    <!-- 标题 -->
+                    <h3 class="comment-title">热门评论</h3>
+
+                    <!-- 评论列表 -->
+                    <ul class="comment-list">
+                        <!-- 评论项目 -->
+                        <li class="comment-item" v-for="item in userComments">
+                            <!-- 用户头像 -->
+                            <span class="user-img">
+                                <img v-bind:src="item.user.avatarUrl" alt="用户头像" class="user-img-src">
+                            </span>
+                            <!-- 用户名称 -->
+                            <span class="user-name" >
+                                {{ item.user.nickname }}
+                            </span>
+                            <!-- 评论内容 -->
+                            <span class="user-comment">
+                                {{ item.content }}
+                            </span>
+                            <!-- 评论时间 -->
+                            <span class="user-comment-time">
+                                {{ item.timeStr }}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+
+            <!-- 页面页脚 -->
+            <footer id="page-footer">
+                <!-- 歌曲信息 -->
+                <div class="song-info">
+                    <img v-bind:src="thisSongInfo.songImg" alt="封面小图" class="song-img">
+                    <p class="song-info-content">
+                        <span class="song-name" v-bind:title="thisSongInfo.songName">
+                            {{ thisSongInfo.songName }}
+                        </span>
+                        <span class="singer-name">
+                            {{ thisSongInfo.singerName }}
+                        </span>
+                    </p>
+                </div>
+
+                <!-- 播放状态 -->
+                <audio v-bind:src="musicUrl" v-on:play="play" @pause="pause" id="play-state" loop="loop" controls="controls" autoplay="autoplay"></audio>
+            </footer>
+        </div>
+
+        <!-- 顶端图层 -->
+        <div id="topmost-layer">
+            <!-- MV -->
+            <div id="video-MV" v-show="isShow">
+                <!-- 遮罩层 -->
+                <div id="shade-layer" @click="hideVideo"></div>
+                <video v-bind:src="MVUrl" controls="controls" class="video-MV-src" 
+                style="
+                    width: calc( 650px * 16 / 9 ); height: 650px; 
+                    position: absolute; top: 8.5%; left: 12.5%; 
+                    background-color: #000000;
+                "></video>
+            </div>
+
+            <!-- 查看大图 -->
+            <div id="view-larger-picture" v-show="viewLargerImage" @click="viewsmaller">
+                <img v-bind:src="picUrl" alt="查看大图" class="larger-picture-src" title="点击关闭大图">
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入 Vue Axios 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        'use strict';
+
+        let app = new Vue( {
+            el: "#body", 
+            data: {
+                // 搜索内容
+                query: "薛之谦", 
+                // 搜索结果
+                queryResult: [], 
+                // 播放地址
+                musicUrl: "", 
+                // 歌曲封面
+                picUrl: "#", 
+                // 热门评论
+                userComments: [], 
+                // 播放状态
+                isPlaying: false, 
+                // MV地址
+                MVUrl: "#", 
+                // 遮罩层
+                isShow: false, 
+                // 显示大图
+                viewLargerImage: false, 
+                // 当前歌曲
+                thisSongInfo: {
+                    songImg: '#', 
+                    songName: "", 
+                    singerName: ""
+                }
+            }, 
+            methods: {
+                // === === === 获取歌曲 === === ===
+                querySong: function() {
+                    let $this = this;
+                    axios.get( "https://autumnfish.cn/search?keywords=" + this.query )
+                    .then( function( response ) {
+                        $this.queryResult = response.data.result.songs;
+                        if ( $this.queryResult ) {
+                            document.querySelector( '#music-list' ).style.opacity = '1';
+                        }
+                    }, function( error ) {
+                        console.log( error );
+                    } );
+                }, 
+                // === === === 获取歌曲信息 === === ===
+                playState: function( musicId ) {
+                    // === 获取歌曲地址 ===
+                    let $this = this;
+                    axios.get( "https://autumnfish.cn/song/url?id=" + musicId )
+                    .then( function( response ) {
+                        $this.musicUrl = response.data.data[0].url;
+                    }, function( error ) {
+                        console.log( error );
+                    } );
+                    // === 获取歌曲封面 ===
+                    axios.get( "https://autumnfish.cn/song/detail?ids=" + musicId )
+                    .then( function( response ) {
+                        $this.picUrl = response.data.songs[0].al.picUrl;
+                        $this.thisSongInfo.songImg = $this.picUrl;
+                    }, function( error ) {
+                        console.log( error );
+                    } );
+                    // === 获取歌曲评论 ===
+                    axios.get( "https://autumnfish.cn/comment/hot?type=0&id=" + musicId )
+                    .then( function( response ) {
+                        $this.userComments = response.data.hotComments;
+                        if ( $this.userComments ) {
+                            document.querySelector( '#comment' ).style.opacity = '1';
+                        }
+                    }, function( error ) {
+                        console.log( error );
+                    } );
+                    let thisSong = event.target.parentNode.querySelector( '.song-name' ).innerHTML.trim().split( '&nbsp;' );
+                    this.thisSongInfo.songName = thisSong[0];
+                    this.thisSongInfo.singerName = thisSong[2];
+                    if ( this.thisSongInfo.songImg ) {
+                        document.querySelector( '.song-info' ).style.opacity = '1';
+                        document.querySelector( '#play-state' ).style.opacity = '1';
+                    }
+                }, 
+                // === === === 歌曲播放 === === ===
+                play: function() {
+                    this.isPlaying = true;
+                    document.querySelector( '#player' ).style.opacity = '1';
+                    document.querySelector( '#reader' ).style.transform = `rotateZ( 0deg )`;
+                    document.querySelector( '#optical-disc' ).style.animationPlayState = `running`;
+                    document.querySelector( '.disc-cover-img' ).title = '双击查看大图';
+                }, 
+                // === === === 歌曲暂停 === === ===
+                pause: function() {
+                    this.isPlaying = false;
+                    document.querySelector( '#reader' ).style.transform = `rotateZ( -25deg )`;
+                    document.querySelector( '#optical-disc' ).style.animationPlayState = `paused`;
+                }, 
+                // === === === MV 播放 === === ===
+                playMV: function( mvid ) {
+                    let $this = this;
+                    axios.get( "https://autumnfish.cn/mv/url?id=" + mvid )
+                    .then( function( response ) {
+                        $this.isShow = true;
+                        $this.MVUrl = response.data.data.url;
+                        if ( $this.isShow ) {
+                            document.querySelector( '#video-MV' ).style.opacity = '1';
+                        }
+                    }, function( error ) {
+                        console.log( error );
+                    } );
+                }, 
+                // === === === MV 停止 === === ===
+                hideVideo: function() {
+                    this.isShow = false;
+                    this.MVUrl = "#";
+                }, 
+                // === === === 查看大图 === === ===
+                viewLarger: function() {
+                    if ( this.picUrl !== '#' ) {
+                        this.viewLargerImage = true;
+                        document.querySelector( '#view-larger-picture' ).style.opacity = '1';
+                    }
+                }, 
+                // === === === 还原视图 === === ===
+                viewsmaller: function() {
+                    this.viewLargerImage = false;
+                }, 
+                getThisSong: function() {
+                    console.log( event.target );
+                }
+                // thisSong: {
+                //     songImg: '#', 
+                //     songName: "", 
+                //     singerName: ""
+                // }
+            }
+        } );
+    </script>
+</body>
+</html>

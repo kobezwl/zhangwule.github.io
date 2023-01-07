@@ -1,0 +1,683 @@
+/* === === === 页面 === === === */
+#page {
+    position: relative;
+    width: 1000px;
+    height: 650px;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+
+
+/* === === === 页面头部 === === === */
+#page header {
+    width: 100%;
+    height: 60px;
+    background-color: var( --page-bg-color );
+    text-align: center;
+    line-height: 60px;
+}
+
+
+/* === 顶部导航 === */
+header nav#header-nav {
+    width: 100%;
+    height: inherit;
+    display: grid;
+    grid-template-rows: repeat( 1, 1fr );
+    grid-template-columns: repeat( 6, 1fr );
+    grid-template-areas: 'name . search search . interaction';
+}
+
+/* --- 应用名称 --- */
+nav#header-nav .app-name {
+    position: relative;
+    width: auto;
+    height: inherit;
+    grid-area: name;
+    color: inherit;
+    text-align: center;
+    line-height: inherit;
+}
+.app-name i {
+    position: absolute;
+    top: calc( 50% - 24px / 2 );
+    left: 10px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    line-height: 24px;
+}
+.app-name h1 {
+    margin-left: 20px;
+    width: 150px;
+    height: inherit;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+}
+
+/* --- 搜索框 --- */
+nav#header-nav .search-box {
+    position: relative;
+    width: auto;
+    height: inherit;
+    grid-area: search;
+}
+.search-box .search-input {
+    padding: 0 25px 0 15px;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    background-color: #4a494b;
+    color: inherit;
+    font-size: 12px;
+    outline: none;
+    box-sizing: border-box;
+}
+.search-box i.iconfont {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: left;
+    font-size: 20px;
+    line-height: 30px;
+}
+.search-box i.iconfont::before {
+    cursor: pointer;
+}
+
+/* --- 交互设置 --- */
+nav#header-nav .interaction {
+    width: auto;
+    height: inherit;
+    grid-area: interaction;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.interaction > div {
+    width: 40px;
+    height: 40px;
+    border: 1px solid transparent;
+    line-height: 40px;
+}
+.interaction > div i {
+    margin: calc( 50% - 24px / 2 ) auto;
+    display: block;
+    width: 24px;
+    height: 24px;
+    color: inherit;
+    font-size: 24px;
+    line-height: 24px;
+}
+.interaction > div i:hover {
+    color: #ff0000;
+    cursor: pointer;
+}
+
+/* 皮肤 */
+.interaction .clothes {
+    position: relative;
+}
+.interaction .clothes:hover {
+    border-color: #ffffff;
+}
+.interaction .clothes .clothes-content {
+    position: absolute;
+    top: 40px;
+    left: -150px;
+    display: grid;
+    grid-template-rows: repeat( 3, 1fr );
+    grid-template-columns: repeat( 5, 1fr );
+    justify-items: center;
+    grid-template-areas: "title title title title title";
+    width: 240px;
+    height: 144px;
+    border: var( --test-border );
+    z-index: 10;
+}
+.clothes-content .clothes-title {
+    padding-left: 50px;
+    width: 100%;
+    grid-area: title;
+    text-align: left;
+    box-sizing: border-box;
+}
+.clothes-content .clothes-color {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.clothes-content .clothes-color:hover {
+    cursor: pointer;
+    transform: scale( 1.1 );
+}
+.clothes-color.color-987bff {
+    background-color: #987bff;
+}
+.clothes-color.color-99c7ed {
+    background-color: #99c7ed;
+}
+.clothes-color.color-ccbeff {
+    background-color: #ccbeff;
+}
+.clothes-color.color-39363f {
+    background-color: #39363f;
+}
+.clothes-color.color-75c1c4 {
+    background-color: #75c1c4;
+}
+.clothes-color.color-ea517f {
+    background-color: #ea517f;
+}
+.clothes-color.color-ea517f {
+    background-color: #ea517f;
+}
+.clothes-color.color-ea517f {
+    background-color: #ea517f;
+}
+.clothes-color.color-ea517f {
+    background-color: #ea517f;
+}
+.clothes-color.color-ea517f {
+    background-color: #ea517f;
+}
+
+/* 主页 */
+.interaction .home {
+    /*  */
+}
+
+/* 历史 */
+.interaction .record {
+    /*  */
+}
+
+
+
+/* === === === 页面主体 === === === */
+#page main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 81%;
+    background-color: rgba( 43, 43, 43, 0.9 );
+}
+
+
+/* === 音乐列表 === */
+#music-list {
+    width: 28%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    opacity: 0;
+}
+#music-list::-webkit-scrollbar {
+    width: 3px;
+}
+#music-list::-webkit-scrollbar-thumb {
+    background-color: #2B2B2B;
+}
+#music-list:hover::-webkit-scrollbar {
+    /* width: 3px; */
+    background-color: #616060;
+}
+
+/* --- 音乐项目 --- */
+#music-list .music-item {
+    position: relative;
+    width: 100%;
+    height: 35px;
+}
+#music-list .music-item:nth-child(odd) {
+    background-color: rgb( 109, 109, 109 );
+}
+#music-list .music-item:hover {
+    background-color: rgb( 153, 152, 152 );
+}
+
+/* 播放按钮 */
+.music-item .music-play {
+    position: absolute;
+    top: 6.5px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    cursor: pointer;
+}
+.music-item .music-play:hover ~ .icon-play,  
+.music-item .icon-video:hover {
+    color: #ff0000 !important;
+    cursor: pointer;
+}
+.music-item .icon-play, 
+.music-item .icon-video {
+    position: absolute;
+    top: 6.5px;
+    left: 2.5px;
+    /* color: #b4b4b4; */
+    display: block;
+    width: 20px;
+    height: 20px;
+    font-size: 24px;
+    line-height: 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 歌曲名称 */
+.music-item .song-name {
+    position: relative;
+    top: calc( 50% - 24px / 2 );
+    left: 0;
+    margin-left: 30px;
+    width: 79%;
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* MV 按钮 */
+.music-item .icon-video {
+    left: 91%;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+
+/* === 播放器 === */
+#player {
+    position: relative;
+    width: calc( 100% - 28% * 2 );
+    height: 100%;
+    opacity: 0;
+}
+
+/* --- 光盘 --- */
+#optical-disc {
+    position: absolute;
+    top: calc( 50% - 350px / 2 );
+    left: calc( 50% - 350px / 2 );
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-color: #363636;
+    transform: rotateZ( 0deg );
+    animation: opticalDiscRotation 30s linear infinite paused;
+}
+@keyframes opticalDiscRotation {
+    to {
+        transform: rotateZ( 360deg );
+    }
+}
+
+/* 反光光泽 */
+#optical-disc .sheen {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: linear-gradient( 
+        45deg, 
+        transparent 35%, 
+        rgba( 255, 255, 255, 0.2 ) 45%, 
+        rgba( 255, 255, 255, 0.3 ) 50%, 
+        rgba( 255, 255, 255, 0.2 ) 55%, 
+        transparent 
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 音乐光碟 */
+#optical-disc .disc {
+    position: absolute;
+    top: calc( 50% - 300px / 2 );
+    left: calc( 50% - 300px / 2 );
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #1A1B1D;
+}
+/* 纹理 */
+#optical-disc .disc-texture {
+    position: absolute;
+    top: calc( 50% - 270px / 2 );
+    left: calc( 50% - 270px / 2 );
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background-image: repeating-radial-gradient( #313234, #313234 1px, #1C1C1C 2px );
+}
+/* 内部 */
+#optical-disc .disc-inside {
+    position: absolute;
+    top: calc( 50% - 240px / 2 );
+    left: calc( 50% - 240px / 2 );
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background-color: #1A1B1D;
+}
+/* 封面 */
+#optical-disc .disc-cover {
+    position: absolute;
+    top: calc( 50% - 210px / 2 );
+    left: calc( 50% - 210px / 2 );
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 1;
+}
+#optical-disc .disc-cover-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    pointer-events: auto;
+    z-index: 12;
+}
+#optical-disc .disc-cover-img:hover {
+    cursor: pointer;
+}
+
+/* --- 读取器 --- */
+#reader {
+    position: relative;
+    top: 15px;
+    left: 190px;
+    width: 80px;
+    height: 200px;
+    transform: rotateZ( -25deg );
+    transform-origin: left top;
+    transition: all 0.3s linear;
+    pointer-events: none;
+}
+
+/* 固定部分 */
+#reader .reader-fixed {
+    position: relative;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #5d5c5c;
+}
+#reader .reader-fixed::before {
+    position: absolute;
+    top: 5px;
+    left: calc( 50% - 20px / 2 );
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #222222;
+    content: '';
+}
+#reader .reader-fixed::after {
+    position: absolute;
+    top: 7px;
+    left: calc( 50% - 15px / 2 + 0.4px );
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    content: '';
+}
+
+/* 读取杆 */
+#reader .reader-pole {
+    position: absolute;
+    top: 0px;
+    left: 26px;
+    width: 70px;
+    height: 70px;
+    border: 5px solid #ffffff;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-radius: 0px 0px 0px 30%;
+    transform: skew( 20deg, 40deg );
+    transform-origin: left bottom;
+}
+/* 细 */
+#reader .reader-pole .fine {
+    position: absolute;
+    top: 69px;
+    left: 56px;
+    width: 25px;
+    height: 10px;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #ffffff;
+    transform: skew( -20deg, -40deg ) rotateZ( 40deg );
+}
+#reader .reader-pole .fine::before {
+    position: absolute;
+    top: calc( 50% - 1px / 2 );
+    left: 15px;
+    width: 10px;
+    height: 1px;
+    background-color: #000000;
+    content: '';
+}
+/* 宽 */
+#reader .reader-pole .wide {
+    position: absolute;
+    top: 66px;
+    left: 71px;
+    width: 10px;
+    height: 15px;
+    border-left: 0.1px solid #CDCDCD;
+    border-radius: 3px;
+    background-color: #ffffff;
+    transform: skew( -20deg, -40deg ) rotateZ( 40deg );
+    z-index: 1;
+}
+#reader .reader-pole .wide::before, 
+#reader .reader-pole .wide::after {
+    position: absolute;
+    top: calc( 50% - 1px / 2 - 2.5px );
+    left: calc( 50% - 7px / 2 );
+    width: 7px;
+    height: 1px;
+    background-color: #a5a5a5;
+    content: '';
+}
+#reader .reader-pole .wide::after {
+    top: calc( 50% - 1px / 2 + 2.5px );
+}
+
+
+/* === 热门评论 === */
+#comment {
+    width: 28%;
+    height: 100%;
+    overflow: auto;
+    opacity: 0;
+}
+#comment::-webkit-scrollbar {
+    width: 0px;
+}
+#comment::-webkit-scrollbar {
+    width: 3px;
+}
+#comment::-webkit-scrollbar-thumb {
+    background-color: #39363f;
+}
+#comment:hover::-webkit-scrollbar {
+    /* width: 3px; */
+    background-color: #b2b2b2;
+}
+
+/* --- 标题  */
+#comment .comment-title {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #414043;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+    z-index: 10;
+}
+
+/* --- 评论列表 --- */
+#comment .comment-list {
+    width: 100%;
+    height: auto;
+}
+
+/* 评论项目 */
+#comment .comment-item {
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+/* 用户头像 */
+.comment-item .user-img {
+    position: relative;
+    float: left;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.comment-item .user-img .user-img-src {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+/* 用户名称 */
+.comment-item .user-name {
+    position: relative;
+    top: 0px;
+    left: 5px;
+    display: block;
+    width: 140px;
+    height: 35px;
+    color: #9dc5e5;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 35px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+/* 评论内容 */
+.comment-item .user-comment {
+    padding-right: 10px;
+    float: right;
+    width: 86%;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    box-sizing: border-box;
+}
+/* 评论时间 */
+.comment-item .user-comment-time {
+    margin-left: 40px;
+    clear: both;
+    display: block;
+    width: 100px;
+    height: 25px;
+    color: rgb( 159, 159, 159 );
+    font-size: 12px;
+    line-height: 25px;
+}
+
+
+
+/* === === === 页面页脚 === === === */
+#page footer {
+    position: relative;
+    width: 100%;
+    height: calc( 100% - 60px - 81% );
+    /* background-color: #F2F3F5; */
+    background-color: #222222;
+    color: #ffffff;
+}
+
+
+/* === 歌曲信息 === */
+footer .song-info {
+    position: absolute;
+    top: calc( 50% - 60px / 2 );
+    left: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    opacity: 0;
+}
+footer .song-info .song-img {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+footer .song-info .song-info-content {
+    width: 120px;
+    height: 50px;
+}
+.song-info-content .song-name, 
+.song-info-content .singer-name {
+    display: block;
+    width: 100%;
+    height: 25px;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: left;
+    line-height: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-info-content .singer-name {
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+
+/* === 播放状态 === */
+footer #play-state {
+    position: absolute;
+    top: calc( 50% - 40px / 2 );
+    left: calc( 50% - 780px / 2 + 100px );
+    width: 780px;
+    height: 40px;
+    opacity: 0;
+    background-color: inherit;
+}

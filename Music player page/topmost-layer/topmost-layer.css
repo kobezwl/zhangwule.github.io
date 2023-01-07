@@ -1,0 +1,73 @@
+/* === === === 顶端图层 === === === */
+#topmost-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* display: none; */
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 5;
+}
+
+
+/* === MV === */
+#topmost-layer #video-MV {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* --- 遮罩层 --- */
+#topmost-layer #shade-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    /* display: none; */
+    background-color: rgba( 0, 0, 0, 0.5 );
+    pointer-events: auto;
+}
+
+#topmost-layer #video-MV-src {
+    position: absolute;
+    top: 8.5%;
+    left: 12.5%;
+    left: 400px;
+    width: calc( 650px * 16 / 9 );
+    height: 650px;
+    background-color: #000000;
+    pointer-events: auto;
+}
+
+
+/* === 查看大图 === */
+#topmost-layer #view-larger-picture {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    /* display: none; */
+    width: 100%;
+    height: 100%;
+    background-color: rgba( 0, 0, 0, 0.5 );
+    transition: all 0.5s linear;
+    pointer-events: auto;
+    opacity: 0;
+    z-index: 20;
+}
+#topmost-layer .larger-picture-src {
+    position: absolute;
+    top: calc( 50% - 550px / 2 );
+    left: calc( 50% - 550px / 2 );
+    width: 550px;
+    height: 550px;
+    pointer-events: auto;
+    z-index: 20;
+}
