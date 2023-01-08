@@ -129,13 +129,14 @@ header .menu-item span {
     top: 0;
     right: var( --page-header-switch-right );
     height: 70%;
-    color: #000000;
+    /* color: #000000; */
+    color: var( --default-color );
 }
 #head-nav .sidebar-switch i {
     font-size: 20px;
 }
 #head-nav .sidebar-switch i:hover {
-    color: var( --default-color );
+    color: #ea517f;
     cursor: pointer;
 }
 
@@ -369,6 +370,7 @@ header #down-more i {
         color: rgba( 255, 255, 255, 0.5 );
     }
 }
+
 
 
 /* === === === 页面主体 === === === */
