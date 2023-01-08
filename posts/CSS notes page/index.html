@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 笔记</title>
+    <link rel="stylesheet" href="./bg-layer/base.css">
+    <link rel="stylesheet" href="./bg-layer/bg-layer.css">
+    <link rel="stylesheet" href="./page/page.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3849029_bobj2gk0rjt.css">
+</head>
+<body>
+    <!-- 背景图层 -->
+    <div id="bg-layer">
+        <!-- 背景图片 -->
+        <div id="bg-img"></div>
+    </div>
+
+    <!-- 页面 -->
+    <div id="page">
+        <!-- 页面头部 -->
+        <header id="page-header">
+            <!-- 头部导航 -->
+            <nav id="head-nav">
+                <!-- 博客名字 -->
+                <div class="blog-name">
+                    <a class="site" href="https://kobezwl.gitee.io/zhangwule">zwl的开发笔记</a>
+                </div>
+                <!-- 菜单 -->
+                <div class="menus">
+                    <div class="menu-item search">
+                        <a href="javascript:void(0);">
+                            <i class="icon-search iconfont"></i>
+                            <span>搜索</span>
+                        </a>
+                    </div>
+                    <div class="menu-item home-page">
+                        <a href="https://kobezwl.gitee.io/zhangwule">
+                            <i class="icon-index iconfont"></i>
+                            <span>主页</span>
+                        </a>
+                    </div>
+                    <div class="menu-item subject">
+                        <a href="javascript:void(0);">
+                            <i class="icon-subject iconfont"></i>
+                            <span>主题</span>
+                        </a>
+                    </div>
+                    <div class="menu-item label">
+                        <a href="javascript:void(0);">
+                            <i class="icon-label iconfont"></i>
+                            <span>标签</span>
+                        </a>
+                    </div>
+                    <div class="menu-item classify">
+                        <a href="javascript:void(0);">
+                            <i class="icon-classify iconfont"></i>
+                            <span>分类</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 站点信息 -->
+            <div id="site-info">
+                <!-- 站点标题 -->
+                <h2 class="site-title">CSS 笔记</h2>
+                <!-- 站点时间 -->
+                <div class="site-time">
+                    <p>
+                        <i class="icon-item iconfont"></i>&nbsp;
+                        创建于 <span class="create-time">2023-01-04</span>
+                        &nbsp;|&nbsp;
+                        <i class="icon-update iconfont"></i>&nbsp;
+                        更新于 <span class="update-time">2023-01-08</span>
+                        &nbsp;|&nbsp;
+                        <i class="icon-label iconfont"></i>&nbsp;
+                        <span class="post-label">CSS</span>
+                        &nbsp;|&nbsp;
+                        <i class="icon-comment iconfont"></i>
+                        <span class="post-comment">0</span>条评论
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- 页面主体 -->
+        <main id="page-main">
+            <!-- 侧边栏 -->
+            <div id="sidebar">
+                <!-- 信息卡片 -->
+                <div class="author-card card">
+                    <!-- 个人图片 -->
+                    <div class="author-img">
+                        <img src="../../index page/image/logo/myLogo(110x110).jpg" alt="author-logo">
+                        <span class="author-name">zwl</span>
+                    </div>
+                    <!-- 站点数据 -->
+                    <div class="site-data">
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>文章</h4>
+                                <p class="data-count">02</p>
+                            </a>
+                        </div>
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>标签</h4>
+                                <p class="data-count">06</p>
+                            </a>
+                        </div>
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>分类</h4>
+                                <p class="data-count">02</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 联系作者 || 作者更多 -->
+                    <a href="javascript:void(0);" class="author-contact-link">
+                        <i class="icon-contact iconfont"></i>
+                        Contact Me
+                    </a>
+                </div>
+
+                <!-- 公告卡片 -->
+                <div class="announce-card card ">
+                    <!-- 公告标题 -->
+                    <div class="announce-title">
+                        <i class="icon-reminder iconfont"></i>
+                        <span class="title-text">公告</span>
+                    </div>
+                    <!-- 公告内容 -->
+                    <p class="announce-content content">
+                        欢迎来到我的博客
+                    </p>
+                </div>
+
+                <!-- 目录卡片 -->
+                <div class="directory-card card">
+                    <!-- 目录标题 -->
+                    <div class="directory-title">
+                        <i class="icon-item iconfont"></i>
+                        <span class="title-text">目录</span>
+                    </div>
+                    <!-- 目录内容 -->
+                    <div class="directory-content content">
+                        <ul>
+                            <li class="post-active">
+                                <a href="#post-document">文档</a>
+                            </li>
+                            <li>
+                                <a href="#post-introduction">简介</a>
+                            </li>
+                            <li>
+                                <a href="#post-characteristic">特性</a>
+                            </li>
+                            <li>
+                                <a href="#post-label">HTML 标签</a>
+                            </li>
+                            <li>
+                                <a href="#post-notes">HTML 笔记</a>
+                            </li>
+                            <li>
+                                <a href="#post-example">案例</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 帖子内容 -->
+            <div id="post-content">
+                <!-- 帖子文章 -->
+                <article class="post-article">
+                    <!-- 文档 -->
+                    <div class="post">
+                        <h2 class="document article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-document">文档</a>
+                        </h2>
+                        <p class="article-text">
+                            官方文档：
+                            <a href="https://www.w3school.com.cn/css/index.asp" target="_blank">https://www.w3school.com.cn/css/index.asp</a>
+                        </p>
+                    </div>
+                    <!-- 简介 -->
+                    <div class="post">
+                        <h2 class="introduction article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-introduction">简介</a>
+                        </h2>
+                        <p class="article-text">
+                            层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。
+                        </p>
+                    </div>
+                    <!-- 特性 -->
+                    <div class="post">
+                        <h2 class="characteristic article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-characteristic">特性</a>
+                        </h2>
+                        <ul class="article-text">
+                            <li>
+                                <span>层叠性</span>：
+                                相同选择器给设置相同的样式，此时一个样式会覆盖（层叠)另一个 冲突的样式。原则：就近原则（样式冲突） 不冲突就不层叠
+                            </li>
+                            <li>
+                                <span>继承性</span>：
+                                子标签会继承父标签的某些样式。（text-，font-，line-这些元素开头的可以继承，以及color属性）与文字相关
+                            </li>
+                            <li>
+                                <span>优先级</span>：
+                                当同一个元素指定多个选择器，选择器相同时，则执行层叠性，选择器不同时，则根据选择器权重执行
+                            </li>
+                            <li>
+                                <span>权重的叠加</span>：
+                                复合选择器会有权重叠加的问题，权重会叠加，但不会有进位
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- HTML 标签 -->
+                    <div class="post">
+                        <h2 class="label article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-label">HTML 标签</a>
+                        </h2>
+                        <p class="article-text">
+                            官方文档：
+                            <a href="https://www.w3school.com.cn/cssref/index.asp" target="_blank">CSS 参考手册</a>
+                        </p>
+                    </div>
+                    <!-- HTML 笔记 -->
+                    <div class="post">
+                        <h2 class="notes article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-notes">CSS 笔记</a>
+                        </h2>
+                        <ul class="notes-list article-text">
+                            <h3>--- CSS 属性 ---</h3>
+                            <span>(一) 盒模型属性</span>
+                            <li>width 宽度</li>
+                            <li>height 高度</li>
+                            <li>border 边框</li>
+                            <li>margin 外边距定位</li>
+                            <li>padding 内边距，留白</li>
+                            <li>background 背景</li>
+                            <li>background-color 背景颜色</li>
+                            <li>background-image 背景图像</li>
+                            <li>float 浮动</li>
+                            <li>display 生成盒的（模式）方式</li>
+                            <li>position（top right bottom left） 位置定位</li>
+                            <li>overflow 溢出属性</li>
+                            <li>box-sizing 盒子大小</li>
+                            <span>(二) 字体文本属性</span>
+                            <li>color 字体颜色</li>
+                            <li>font-family 字体</li>
+                            <li>font-size 字号</li>
+                            <li>font-weight 字体加粗</li>
+                            <li>text-align 水平对齐方式</li>
+                            <li>line-height 行高</li>
+                            <li>text-indent 首行缩进</li>
+                            <span>(三) 超链接及列表属性</span>
+                            <li>text-decoration 文本修饰</li>
+                            <li>list-style 列表样式</li>
+                            <h3>--- 随笔记录 ---</h3>
+                            <li>
+                                文本溢出处理<br/>
+                                单行: <br/>
+                                    white-space: nowrap;&nbsp;&nbsp;&nbsp;/* 禁止换行 */<br/>
+                                    overflow: hidden;&nbsp;&nbsp;&nbsp;/* 溢出隐藏 */<br/>
+                                    text-overflow: ellipsis;&nbsp;&nbsp;&nbsp;/* 文本溢出处理 */<br/>
+                                多行: <br/>
+                                    display: -webkit-box;&nbsp;&nbsp;&nbsp;/* 禁止换行 */<br/>
+                                    -webkit-line-clamp: 3;&nbsp;&nbsp;&nbsp;/* 文本显示行数 */<br/>
+                                    -webkit-box-orient: vertical;&nbsp;&nbsp;&nbsp;/* 文本排列方向 */<br/>
+                                    text-overflow: ellipsis;&nbsp;&nbsp;&nbsp;/* 文本溢出处理 */<br/>
+                                    ( 存在兼容性问题 )<br/>
+                                    或<br/>
+                                    height: 90px;<br/>
+                                    line-height: 30px;<br/>
+                                    overflow: hidden;<br/>
+                                    ( 不存在兼容性问题, 但不会有省略号 )
+                            </li>
+                            <li>
+                                像素阴影: <br/>
+                                filter: drop-shadow( x, y, 模糊度, 颜色 );
+                            </li>
+                            <li>
+                                模糊背景: <br/>
+                                backdrop-filter: blur();
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 案例 -->
+                    <div class="post">
+                        <h2 class="example article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-example">案例</a>
+                        </h2>
+                        <ul class="example-list article-text">
+                            <li>
+                                <a href="./CSS/css实现轮播图.html" target="_blank">css实现轮播图</a>
+                            </li>
+                            <li>
+                                <a href="./CSS/float浮动.html" target="_blank">float浮动</a>
+                            </li>
+                            <li>
+                                <a href="./CSS/弹性盒响应式布局.html" target="_blank">弹性盒响应式布局</a>
+                            </li>
+                            <li>
+                                <a href="./CSS/选项卡(css).html" target="_blank">选项卡(css)</a>
+                            </li>
+                            <li>
+                                <a href="./CSS/镂空效果.html" target="_blank">镂空效果</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 评论 -->
+                <div class="post-comment">
+                    <!-- 评论标题 -->
+                    <h3 class="comment-title">
+                        <i class="icon-comment iconfont"></i>
+                        评论
+                    </h3>
+                    <!-- 评论表单 -->
+                    <form action="javascript:void(0);">
+                        <textarea name="comment-input" class="comment-input" cols="30" rows="10" placeholder="留下你的精彩评论"></textarea>
+                        <input type="submit" value="发送">
+                    </form>
+                    <!-- 评论列表 -->
+                    <ul class="comment-list">
+                        <!--  -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- 页面页脚 -->
+        <footer id="page-footer">
+            <!-- 版权 -->
+            <div id="copyright">
+                <!-- 个人 -->
+                <div class="personal-copyright">
+                    <p>&copy;2022&nbsp;-&nbsp;2023 By ZhangWuLe</p>
+                </div>
+                <!-- 平台 -->
+                <div class="platform-copyright">
+                    <p>
+                        平台:&nbsp;
+                        <a href="https://gitee.com/" target="_blank">Gitee</a>
+                        |
+                        <a href="https://github.com/" target="_blank">GitHub</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 来源 -->
+            <div id="source">
+                <p>
+                    字体来源:&nbsp;
+                    <a href="https://www.iconfont.cn/" target="_blank">iconfont-阿里巴巴矢量图标库</a>
+                    |
+                    图片来源:&nbsp;
+                    <span title="图片来源于网络, 如有侵权请告知删除">网络图片</span>
+                </p>
+            </div>
+
+            <!-- 结尾语 -->
+            <div id="ending">
+                <p class="ending-word">
+                    良言一句三冬暖，恶语伤人六月寒。
+                    <a href="https://gitee.com/Kobezwl" target="_blank">My Gitee</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./init/init.js"></script>
+    <script src="./page/page.js"></script>
+    <script>
+        'use strict';
+    </script>
+</body>
+</html>
