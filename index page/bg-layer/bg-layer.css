@@ -120,3 +120,17 @@ div.card .digital::after {
     font-size: 66px;
     line-height: 90px;
 }
+
+
+
+/* 背景烟花 */
+#bg-layer #bg-fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#bg-layer #bg-fireworks canvas {
+    /* background-color: rgba( 255, 255, 255, 0.1 ); */
+}
