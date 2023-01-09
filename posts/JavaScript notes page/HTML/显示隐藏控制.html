@@ -1,0 +1,84 @@
+<!DOCTYPE html>   <!-- 文档类型声明 -->
+<html>   <!-- 根标签，内容类型 -->
+
+<head>   <!-- 头部标签 -->
+    <meta charset="UTF-8" />   <!-- 说明文档 字符编码 方式 -->   <!-- meta（元信息标签） -->
+    <title>显示隐藏控制</title>   <!-- 定义文档的标题 -->
+    <style type="text/css">   /* 定义文档的样式信息 */
+   *{
+    margin:0px;
+    padding:0px;
+   }
+   #zwl{
+   width:300px;
+   border:1px solid #999;
+   margin:2px auto;
+   padding:15px;
+   }
+   #zwl1{
+    font-family:"微软雅黑";
+    font-size:20px;
+    background-color:#a6a7a8;
+    color:#ff0;
+    height:35px;
+    line-height:35px;
+    padding-left:20px;
+    cursor:pointer;
+   }
+   #zwl2{
+    font-family:"微软雅黑";
+    font-size:13px;
+    list-style-type:none;
+    display:block;
+   }
+   #zwl2 li{
+    height:25px;
+    line-height:25px;
+    padding-left:10px;
+    margin-top:5px;
+    background-color:#e6e7e8;
+   }
+   #zwl2 li a{
+    text-decoration:none;
+   }
+   #zwl2 li a:hover{
+    color:#ee2021;
+    text-decoration:underline;
+   }
+    </style>   <!-- 结束定义文档的样式信息 -->
+    <script>
+        window.onload=function()
+        {
+           // var lxx=document.getElementById('zwl1');
+            var llz=document.getElementById('zwl2');
+
+        zwl.onclick=function()   //单击任意位置即可执行程序
+        {
+            if(llz.style.display=="block")
+            {
+                llz.style.display="none";
+            }
+            else
+            {
+                llz.style.display="block";
+            }
+        }
+    }
+    </script>
+</head>   <!-- 头部标签结束标签 -->
+
+<body>   <!-- 主体标签 -->
+      <div   id="zwl">
+       <h2 id="zwl1"> 播放列表... </h2>
+       <ul id="zwl2">
+           <li><a href="#"> 字符占位 </a></li>
+           <li><a href="#"> 字符占位 </a></li>
+           <li><a href="#"> 字符占位 </a></li>
+           <li><a href="#"> 字符占位 </a></li>
+           <li><a href="#"> 字符占位 </a></li>
+           <li><a href="#"> 字符占位 </a></li>
+       </ul>
+   </div>
+</body>   <!-- 主体标签结束标签 -->
+
+</html>   <!-- 根标签结束标签 -->

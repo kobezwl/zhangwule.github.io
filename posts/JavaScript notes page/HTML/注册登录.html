@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>登录</title>   <!-- 定义文档的标题 -->
+      <style type="text/css">   /* 定义文档的样式信息 */
+         #reg{
+            width:560px;
+            height:350px;
+            border:1px solid #ccc;
+            position:absolute;
+            background:#fff;
+         }
+         #reg form{
+            margin:20px 5px 20px 90px;
+         }
+         #reg h2{
+            height:40px;
+            line-height:40px;
+            text-align:center;
+            font-size:16px;
+            letter-spacing:1px;
+            color:#fff;
+            background:#044599;
+            padding:0;
+            border-bottom:1px solid #ccc;
+            margin:0 0 20px 0;
+         }
+         #reg div{
+            font-size:14px;
+            color:#666;
+            padding:5px 0;
+            text-align:left;
+         }
+         #reg input.text{
+            width:200px;
+            height:25px;
+            border:1px solid #ccc;
+            background:#fff;
+            font-size:14px;
+         }
+         .pc{
+            margin:0 8px;
+            color:#E4393c;
+         }
+         #reg input.submoit{
+            width:107px;
+            height:40px;
+            background-color:limegreen;
+            border:none;
+            cursor:pointer;
+            color:#FFFFFF;
+            font-size:22px;
+            font-family:"微软雅黑";
+            margin:20px 120px;
+            border-radius:6px;
+         }
+      </style>   <!-- 结束定义文档的样式信息 -->
+</head>   <!-- 头部标签结束标签 -->
+
+<body>   <!-- 主体标签 -->
+   <div id="reg">
+      <h2>用户注册</h2>
+      <form name="regform" action="">
+         <div>用户账号：
+            <input type="text" id="user" name="user" autofocus required pattern="^[0-9a-zA-Z]\w{3,15}$" class="text"/>
+            <span class="pc">*</span>
+         </div>
+
+         <div>用户密码：
+            <input type="password" id="pass" name="pass" required pattern="^\w{6,12}$" class="text"/>
+            <span class="pc">*</span>
+         </div>
+
+         <div>确认密码：
+            <input type="password" name="rpass" required class="text"/>
+            <span class="pc">*</span>
+         </div>
+
+         <div>个人邮箱：
+            <input type="email" type="email" name="email" required class="text"/>
+            <span class="pc">*</span>
+         </div>
+
+         <div>手机号码：
+            <input id="tel" type="tel" name="tel" required pattern="^1[3458]\d{9}$" class="text"/>
+            <span class="pc">*</span>
+         </div>
+
+         <input type="subimt" name="sub" class="subimt" value="注册">
+      </form>
+   </div>
+</body>   <!-- 主体标签结束标签 -->
+<script>
+   function fromCheck(o,info)
+   {
+      if(o.validity.valid){
+         o.nextElementSibling.innerHTML='&radic;';
+         o.nextElementSibling.style.color='#008000';}
+      else{
+         o.nextElementSibling.style.color='red';
+         o.nextElementSibling.innerHTML=info;}
+   }
+   var uname=regform.user;
+   uname.onblur=function(){fromCheck(this,'4-16数字或字母组成');}
+   var pass=regform.pass;
+   pass.onblur=function(){fromCheck(this,'6-12位数字/字母/英文符号');}
+   var rpass=regform.rpass;
+   rpass.onblur=function(){
+      fromCheck(this,'不能为空！');
+      if(pass.value!=rpass.value){
+         this.nextElementSibling.innerHTML='两次密码不一致！';
+         regform.sub.disabled=true;
+      }
+      else{
+         regform.sub.disabled=false;
+      }
+   }
+   email=regform.email;
+   email.onblur=function(){fromCheck(this,'邮箱格式有误');}
+   tel=regform.tel;
+   tel.onblur=function(){fromCheck(this,'电话号码格式非法');}
+</script>
+</html>   <!-- 根标签结束标签 -->
