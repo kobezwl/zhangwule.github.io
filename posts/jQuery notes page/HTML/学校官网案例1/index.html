@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>湖南安全技术职业学院</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./icon/阿里云控制台官方图标库/iconfont.css">
+    <script src="./JavaScript/jquery-1.12.1.min.js"></script>
+    <script src="./JavaScript/script.js"></script>
+    <!-- 办事大厅 -->
+    <script>
+        window.onload = function(){
+                    // ---- 办事大厅 ----
+            var mBC_cur = document.querySelectorAll('.mBC_cur li');
+            var mBC_active = document.querySelectorAll('.mBC_active > div')
+            var mBC_last = mBC_cur[0];
+            // console.log(mBC_active);    // test
+
+            for(var i = 0; i < mBC_cur.length; i++){
+                mBC_cur[i].index = i;
+
+                mBC_cur[i].onclick = function(){
+                    mBC_last.style.color = "#000000";
+                    mBC_last.style.borderBottom = "0px";
+                    mBC_active[mBC_last.index].style.display = "none";
+
+                    this.style.color = "#429CD7";
+                    this.style.borderBottom = "2px solid #429CD7";
+
+                    mBC_active[this.index].style.display = "block";
+
+                    mBC_last = this;
+                }
+            }
+
+                    // ---- 综合服务 ----
+            var hallNav = document.querySelectorAll('.hallNav li');
+            var hallMain = document.querySelectorAll('.hallMain > ul > li');
+
+            for(var j = 0; j < hallNav.length; j++){
+                hallNav[j].index = j;
+                hallNav[j].onclick = function(){
+                    for(var j = 0;j < hallNav.length; j++){
+                        hallNav[j].style.color = '#444444';
+                        hallNav[j].style.borderBottom = '0px';
+                        hallMain[j].style.display = 'none';
+
+                        this.style.color = '#429CD7';
+                        this.style.borderBottom = '0.5px solid #429CD7';
+                        hallMain[this.index].style.display = 'block';
+                    }
+                }
+            }
+
+                    // ---- 教学 ----
+            var Dot = document.querySelectorAll('.hallMain_cur2 > div > img');
+            var HM_c2 = document.querySelectorAll('.hallMain_cur2 > ul');
+            for(let i = 0; i < Dot.length; i++){
+                // Dot[i].index = i;
+                Dot[i].onclick = function(){
+                    for(let i = 0; i < Dot.length;i++){
+                        Dot[i].style.display = 'block';
+                        HM_c2[i].style.display = "block";
+
+                    }
+                    Dot[i].style.display = 'none';
+                    HM_c2[i].style.display = 'none';
+                }
+            }
+            
+                    // ---- 综合服务-领导查询 ----
+            var Dot_1 = document.querySelectorAll('.serveMain_cur2 > div > img');
+            var HM_c2_1 = document.querySelectorAll('.serveMain_cur2 > ul');
+            console.log(HM_c2_1);
+            for(let j = 0; j < Dot_1.length; j++){
+                Dot_1[j].onclick = function(){
+                    for(let j = 0; j < Dot_1.length;j++){
+                        Dot_1[j].style.display = 'block';
+                        HM_c2_1[j].style.display = "block";
+
+                    }
+                    Dot_1[j].style.display = 'none';
+                    HM_c2_1[j].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <!-- 导航栏 -->
+        <div class="headerTop">
+            <div class="headerTRight">
+                <!-- 提示语 -->
+                <div class="headerTRspan">
+                    <span>
+                        教师：
+                        <p>上午好，欢迎您的登录 </p>
+                    </span>
+                </div>
+                <!-- 小图标 -->
+                <div class="headerTRi_1">
+                    <i class="icon-cog-fill iconfont" title="退出"></i>
+                </div>
+                <div class="headerTRi_2">
+                    <i class="iconfont" title="设置">&#xe7a4;</i>
+                </div>
+            </div>
+        </div>
+        <!-- Logo -->
+        <div class="headerBottom">
+            <div class="headerBLogo">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体 -->
+    <section id="main">
+        <!-- 用户信息、新闻动态... -->
+        <section class="mainTop">
+            <!-- User信息 -->
+            <section class="mainTLeft">
+                <!-- User图片、信息 -->
+                <div class="mainTLTop">
+                    <div class="User_img">
+                        <img src="./image/pic.jpg" alt="">
+                    </div>
+                    <div class="User_info">
+                            <span>教师：</span>
+                            <p>工号:11200604</p>
+                            <p>部门：烟花爆竹工程系</p>
+                    </div>
+                </div>
+                <!-- 小图标 -->
+                <div class="mainTLBottom">
+                    <span>
+                        <i class="icon-lock-fill iconfont"></i>
+                        <a>修改密码</a>
+                    </span>
+                    <span>
+                        <i class="icon-poweroff iconfont"></i>
+                        <a>退出登录</a>
+                    </span>
+                </div>
+            </section>
+            <!-- 新闻动态... -->
+            <section class="mainTRight">
+                <!-- 新闻动态...导航 -->
+                <div class="mainTR_option">
+                    <ul class="option">
+                        <li class="cur_1">新闻动态</li>
+                        <li class="cur_2">校内通知公告</li>
+                        <li class="cur_3">公文传阅</li>
+                    </ul>
+                </div>
+                <!-- 新闻动态...内容 -->
+                <div class="active">
+                    <!-- 新闻动态--内容 -->
+                    <div class="mainTR_option_1">
+                        <img src="./image/pic1.jpg" alt="img" class="pic_1">
+                        <ul>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>会计教研室上虞毕业生实习调研会计教研室上虞毕业生实习调研</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>我院与北邮在线签订专业共建战略合</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>会计与金融学院“正保会计班”开班会计与金融学院“正保会计班”开班</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>职业生涯规划系列讲座顺利举办</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>会计计与金融学院2015年新生专业介绍会会计计与金融学院2015年新生专业介绍会</a>
+                                <span>2022-07-11</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="more_a">查看更多<img src="./image/more.png" alt="more" class="more"></a>
+                    </div>
+                    <!-- 校内通知公告--内容 -->
+                    <div class="mainTR_option_2">
+                        <ul>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>会计教研室上虞毕业生实习调研会计教研室上虞毕业生实习调研</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>我院与北邮在线签订专业共建战略合</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>会计与金融学院“正保会计班”开班会计与金融学院“正保会计班”开班</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>职业生涯规划系列讲座顺利举办</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>会计计与金融学院2015年新生专业介绍会会计计与金融学院2015年新生专业介绍会</a>
+                                <span>2022-07-11</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="more_a">查看更多<img src="./image/more.png" alt="more" class="more"></a>
+                    </div>
+                    <!-- 公文传阅--内容 -->
+                    <div class="mainTR_option_3">
+                        <ul>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>会计教研室上虞毕业生实习调研会计教研室上虞毕业生实习调研</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>我院与北邮在线签订专业共建战略合</a>
+                                <span>2022-07-11</span>
+                            </li>
+                            <li>
+                                <img src="./image/arrs.png" alt="arrs" class="arrs">
+                                <a>会计与金融学院“正保会计班”开班会计与金融学院“正保会计班”开班</a>
+                                <span>2022-07-11</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="more_a">查看更多<img src="./image/more.png" alt="more" class="more"></a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- 应用系统、办事大厅、系统提示 -->
+        <section class="mainBottom">
+            <!-- 应用系统 -->
+            <section class="mainBLeft">
+                <!-- 标题 -->
+                <span>
+                    应用系统
+                </span>
+                <!-- 图标内容 -->
+                <div>
+                    <ul>
+                        <li>
+                            <span>
+                                <i class="icon-terminal-fill iconfont"></i>
+                                <p>一卡通</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="icon-layergroup-fill iconfont"></i>
+                                <p>图书</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="icon-edit iconfont"></i>
+                                <p>教务</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="icon-user-fill iconfont"></i>
+                                <p>学工</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="icon-userplus-fill iconfont"></i>
+                                <p>人事</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="icon-collection-fill iconfont"></i>
+                                <p>阳光服务</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="icon-flag-fill iconfont"></i>
+                                <p>离校系统</p>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <i class="icon-chart-area iconfont"></i>
+                                <p>数据分析</p>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 办事大厅... -->
+            <section class="mainBCenter">
+                <!-- 办事大厅、综合服务 导航 -->
+                <div>
+                    <ul class="mBC_cur">
+                        <li  class="mBC_cur1">
+                            办事大厅
+                        </li>
+                        <li  class="mBC_cur2">
+                            综合服务
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 办事大厅、综合服务 内容 -->
+                <div class="mBC_active">
+                    <!-- 办事大厅--内容 -->
+                    <div class="hall">
+                        <!-- 办事大厅--内容--导航 -->
+                        <div class="hallNav">
+                            <ul>
+                                <li>行政办公</li>
+                                <li>教学</li>
+                                <li>人事</li>
+                                <li>统计数据</li>
+                            </ul>
+                        </div>
+                        <!-- 办事大厅--选项卡中的内容 -->
+                        <div class="hallMain">
+                            <ul>
+                                <li class="hallMain_cur1">内容一</li>
+                                <li class="hallMain_cur2">
+                                    <ul class="hM_c2_L">
+                                        <li>
+                                            <img src="./image/HU_03.png" alt="HU_03">
+                                            <p>教学任务</p>
+                                            <a href="#">教学任务</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/HU_05.png" alt="HU_05">
+                                            <p>调课申请</p>
+                                            <a href="#">调课申请</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/HU_09.png" alt="HU_09">
+                                            <p>个人课表</p>
+                                            <a href="#">个人课表</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/HU_10.png" alt="HU_10">
+                                            <p>考场安排</p>
+                                            <a href="#">考场安排</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/HU_13.png" alt="HU_13">
+                                            <p>网上评价</p>
+                                            <a href="#">网上评价</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/HU_17.png" alt="HU_17">
+                                            <p>培养方案</p>
+                                            <a href="#">培养方案</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/HU_14.png" alt="HU_14">
+                                            <p>问卷调查</p>
+                                            <a href="#">问卷调查</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/HU_13.png" alt="HU_13">
+                                            <p>网上评价</p>
+                                            <a href="#">网上评价</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="hM_c2_R">
+                                        <li>
+                                            <img src="./image/HU_17.png" alt="HU_17">
+                                            <p>问卷调查</p>
+                                            <a href="#">问卷调查</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/HU_13.png" alt="HU_13">
+                                            <p>网上评价</p>
+                                            <a href="#">网上评价</a>
+                                        </li>
+                                    </ul>
+                                    <div>
+                                        <img src="./image/dot.png" alt="dot" class="dot_1">
+                                        <img src="./image/dot.png" alt="dot" class="dot_11">
+                                    </div>
+                                </li>
+                                <li class="hallMain_cur3">内容三</li>
+                                <li class="hallMain_cur4">内容四</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 综合服务--内容 -->
+                    <div class="serve">
+                        <!-- 综合服务--内容--导航 -->
+                        <div class="serveNav">
+                            <ul>
+                                <li class="serveNav_Cur">校园风光</li>
+                                <li>领导查询</li>
+                                <li>教学查询</li>
+                                <li>在校学习</li>
+                                <li>求职</li>
+                            </ul>
+                        </div>
+                        <!-- 综合服务--选项卡中的内容 -->
+                        <div class="serveMain">
+                            <ul>
+                                <li class="serveMain_cur1">
+                                    <ul>
+                                        <li>
+                                            <img src="./image/pic_05.png" alt="pic_05">
+                                            <p>校园风光</p>
+                                            <a href="#">校园风光</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="serveMain_cur2">
+                                    <ul class="sM_c2_L">
+                                        <li>
+                                            <img src="./image/pic_05.png" alt="pic_05">
+                                            <p>报道环节查询</p>
+                                            <a href="#">报道环节查询</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_06.png" alt="pic_06">
+                                            <p>缴费统计</p>
+                                            <a href="#">缴费统计</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_07.png" alt="pic_07">
+                                            <p>教学信息</p>
+                                            <a href="#">教学信息</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_08.png" alt="pic_08">
+                                            <p>就业分步查询</p>
+                                            <a href="#">就业分步查询</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_09.png" alt="pic_09">
+                                            <p>就业进度查询</p>
+                                            <a href="#">就业进度查询</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_11.png" alt="pic_11">
+                                            <p>课程查询</p>
+                                            <a href="#">课程查询</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="sM_c2_R">
+                                        <li>
+                                            <img src="./image/pic_22.png" alt="pic_22">
+                                            <p>未报到统计</p>
+                                            <a href="#">未报到统计</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_33.png" alt="pic_33">
+                                            <p>学生查询</p>
+                                            <a href="#">学生查询</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_44.png" alt="pic_44">
+                                            <p>学生信息</p>
+                                            <a href="#">学生信息</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_55.png" alt="pic_55">
+                                            <p>就业进度查询</p>
+                                            <a href="#">就业进度查询</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_00.png" alt="pic_00">
+                                            <p>就业统计</p>
+                                            <a href="#">就业统计</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_66.png" alt="pic_66">
+                                            <p>迎新统计</p>
+                                            <a href="#">迎新统计</a>
+                                        </li>
+                                    </ul>
+                                    <div>
+                                        <img src="./image/dot.png" alt="dot" class="dot_2">
+                                        <img src="./image/dot.png" alt="dot" class="dot_22">
+                                    </div>
+                                </li>
+                                <li class="serveMain_cur3">
+                                    <ul>
+                                        <li>
+                                            <img src="./image/pic_jx_01.png" alt="pic_jx_01">
+                                            <p>按周查询</p>
+                                            <a href="#">按周查询</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_jx_02.png" alt="pic_jx_02">
+                                            <p>教学任务查询</p>
+                                            <a href="#">教学任务查询</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_jx_03.png" alt="pic_jx_03">
+                                            <p>上课查询</p>
+                                            <a href="#">上课查询</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="serveMain_cur4">
+                                    <ul>
+                                        <li>
+                                            <img src="./image/pic_77.png" alt="pic_77">
+                                            <p>按周查询</p>
+                                            <a href="#">按周查询</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_88.png" alt="pic_77">
+                                            <p>学生课表</p>
+                                            <a href="#">学生课表</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_12.png" alt="pic_77">
+                                            <p>教室使用状态</p>
+                                            <a href="#">教室使用状态</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="serveMain_cur5">
+                                    <ul>
+                                        <li>
+                                            <img src="./image/pic_qz_01.png" alt="pic_qz_01">
+                                            <p>招聘会信息</p>
+                                            <a href="#">招聘会信息</a>
+                                        </li>
+                                        <li>
+                                            <img src="./image/pic_qz_02.png" alt="pic_qz_02">
+                                            <p>职位信息</p>
+                                            <a href="#">职位信息</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 系统提示... -->
+            <section class="mainBRight">
+                <!-- 系统提示 -->
+                <div class="mainBRTop">
+                    <div>系统提示</div>
+                    <ul>
+                        <li><span>【图书】</span>1本待还,0本过期</li>
+                        <li><span>【图书】</span>1本待还,0本过期</li>
+                        <li><span>【图书】</span>1本待还,0本过期</li>
+                        <li><span>【图书】</span>1本待还,0本过期</li>
+                        <li><span>【图书】</span>1本待还,0本过期</li>
+                    </ul>
+                </div>
+                <!-- 常用服务 -->
+                <div class="mainBRBottom">
+                    <div>常用服务</div>
+                    <ul>
+                        <li>
+                            <span>知网空间</span>
+                            <img src="./image/arrs.png" alt="arrs">
+                        </li>
+                        <li>
+                            <span>学信网</span>
+                            <img src="./image/arrs.png" alt="arrs">
+                        </li>
+                        <li>
+                            <span>世界大学城</span>
+                            <img src="./image/arrs.png" alt="arrs">
+                        </li>
+                        <li>
+                            <span>学生就业网</span>
+                            <img src="./image/arrs.png" alt="arrs">
+                        </li>
+                        <li>
+                            <span>证书查询</span>
+                            <img src="./image/arrs.png" alt="arrs">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        版权信息：© 2022 湖南安全技术职业学院
+    </footer>
+</body>
+</html>
