@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡(css)</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #div{
+            float: left;
+            position: absolute;
+            top: 100px;
+            left: calc(50% - 400px / 2);
+            text-align: center;
+            position: relative;
+        }
+        #div > div{
+            width: 100px;
+            height: 40px;
+            float: left;
+            line-height: 40px;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+        .option_1{
+            background-color: rgb(239, 108, 108);
+            border-radius: 10px 0px 0px 0px;
+        }
+        .option_1 > div{
+            /* display: none; */
+            width: 400px;
+            height: 80px;
+            color: #000;
+            position: absolute;
+            top: 40px;
+            left: 0px;
+            background: linear-gradient(50deg,rgb(239, 108, 108),red);
+            text-align: center;
+            border-radius: 0px 0px 10px 10px;
+        }
+        .option_1 > div > span{
+            font-size: 18px;
+            color: #FFFFFF;
+            margin-right: 15px;
+        }
+        .option_1 > div > a > button{
+            color: #000000;
+            background: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            padding: 3px 10px;
+        }
+        .option_2{
+            background-color: rgb(106, 235, 106);
+        }
+        .option_2 > div{
+            display: none;
+            width: 400px;
+            height: 80px;
+            color: #000;
+            position: absolute;
+            top: 40px;
+            left: 0px;
+            background: linear-gradient(50deg,rgb(106, 235, 106),green);
+            text-align: center;
+            border-radius: 0px 0px 10px 10px;
+        }
+        .option_2 > div > span{
+            font-size: 18px;
+            color: #FFFFFF;
+            margin-right: 15px;
+        }
+        .option_2 > div > a > button{
+            color: #000000;
+            background: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            padding: 3px 10px;
+        }
+        .option_3{
+            background-color: rgb(39, 99, 252);
+        }
+        .option_3 > div{
+            display: none;
+            width: 400px;
+            height: 80px;
+            color: #000;
+            position: absolute;
+            top: 40px;
+            left: 0px;
+            background: linear-gradient(50deg,rgb(39, 99, 252),blue);
+            text-align: center;
+            border-radius: 0px 0px 10px 10px;
+        }
+        .option_3 > div > span{
+            font-size: 18px;
+            color: #FFFFFF;
+            margin-right: 15px;
+        }
+        .option_3 > div > a > button{
+            color: #000000;
+            background: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            padding: 3px 10px;
+        }
+        .option_4{
+            background-color: rgb(180, 140, 218);
+            border-radius: 0px 10px 0px 0px;
+        }
+        .option_4 > div{
+            display: none;
+            width: 400px;
+            height: 80px;
+            color: #000;
+            position: absolute;
+            top: 40px;
+            left: 0px;
+            background: linear-gradient(50deg,rgb(180, 140, 218),blueviolet);
+            text-align: center;
+            border-radius: 0px 0px 10px 10px;
+        }
+        .option_4 > div > span{
+            font-size: 18px;
+            color: #FFFFFF;
+            margin-right: 15px;
+        }
+        .option_4 > div > a > button{
+            color: #000000;
+            background: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            padding: 3px 10px;
+        }
+        #div > div:hover > div{
+            display: block;
+        } 
+    </style>
+</head>
+<body>
+    <div id="div">
+        <div class="option_1">
+            选项一
+            <div>
+                <span>$1000</span>
+                <a href="#"><button>按钮</button></a>
+            </div>
+        </div>
+        <div class="option_2">
+            选项二
+            <div>
+                <span>$2000</span>
+                <a href="#"><button>按钮</button></a>
+            </div>
+        </div>
+        <div class="option_3">
+            选项三
+            <div>
+                <span>$3000</span>
+                <a href="#"><button>按钮</button></a>
+            </div>
+        </div>
+        <div class="option_4">
+            选项四
+            <div>
+                <span>$4000</span>
+                <a href="#"><button>按钮</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

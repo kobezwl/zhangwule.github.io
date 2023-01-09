@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS实现轮播图</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        #wrapper{
+            width: 500px;
+            height: 180px;
+            border: 1px solid red;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        #box{
+            width: 2500px;
+            height: 180px;
+            /* 加入动画 */
+            animation: slideshow 10s infinite linear normal;
+        }
+        #box:hover{
+            animation-play-state: paused;
+        }
+        #box > div{
+            float: left;
+            width: 500px;
+            height: 180px;
+        }
+        @keyframes slideshow{
+            25%{
+                margin-left: -500px;
+            }
+            50%{
+                margin-left: -1000px;
+            }
+            75%{
+                margin-left: -1500px;
+            }
+            100%{
+                margin-left: -2000px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="box">
+            <div style="background-color: #cca4e3;"></div>
+            <div style="background-color: #75c1c4;"></div>
+            <div style="background-color: #c17db6;"></div>
+            <div style="background-color: #ea517f;"></div>
+            <div style="background-color: #39363f;"></div>
+        </div>
+    </div>
+</body>
+</html>

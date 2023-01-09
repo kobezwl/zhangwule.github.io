@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float浮动和clear清浮动</title>
+    <style>
+        #wrapper{
+            width: 600px;
+            height: 600px;
+            background-color: red;
+            /* 不设置宽高的情况下，让父类可以感知子类的高度 */
+            /* overflow: hidden; /* 1. 超出父类隐藏，在float里可以感知子类高度 */
+            float: left; /* 2. 可以感知，但被子类遮挡 */
+        }
+        #wrapper > div:first-child{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            text-align: center;
+            line-height: 200px;
+            float: left;
+        }
+        #wrapper > div:nth-child(2){
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            text-align: center;
+            line-height: 200px;
+            float: left;
+            /* clear: both; */
+        }
+        #wrapper > div:nth-child(3){
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            text-align: center;
+            line-height: 200px;
+            float: left;
+        }
+        #wrapper > div:last-child{
+            width: 400px;
+            height: 400px;
+            background-color: #000;
+            text-align: center;
+            line-height: 200px;
+            /* clear: both; /* 清除两边浮动 */
+            float: left; /* 左浮动 */
+        }
+        /* span{
+            width: 200px;
+            height: 200px;
+            color: #fff;
+            background-color: #000;
+            float: left;
+        } */
+        a{
+            color: rgb(120,100,225);
+            text-decoration: none;
+            border: 1px solid #000;
+        }
+        a:hover{
+            color: red;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <!-- <span>
+        十年之约
+    </span> -->
+    <a href="https://www.bilibili.com/video/BV1Ak4y1R7t9?p=2&spm_id_from=pageDriver&vd_source=ce37f5918163f08a3ffc75ed15cd1cb3">浮动属性</a>
+</body>
+</html>
