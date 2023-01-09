@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 笔记</title>
+    <link rel="stylesheet" href="../bg-layer/base.css">
+    <link rel="stylesheet" href="../bg-layer/bg-layer.css">
+    <link rel="stylesheet" href="../page/page.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3849029_bobj2gk0rjt.css">
+    <style>
+        #bg-img, #page footer {
+            background-image: url( '../image/background/sunset\ bubble_3.png' );
+        }
+        ul.notes-list h3 {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景图层 -->
+    <div id="bg-layer">
+        <!-- 背景图片 -->
+        <div id="bg-img"></div>
+    </div>
+
+    <!-- 页面 -->
+    <div id="page">
+        <!-- 页面头部 -->
+        <header id="page-header">
+            <!-- 头部导航 -->
+            <nav id="head-nav">
+                <!-- 博客名字 -->
+                <div class="blog-name">
+                    <a class="site" href="https://kobezwl.gitee.io/zhangwule">zwl的开发笔记</a>
+                </div>
+                <!-- 菜单 -->
+                <div class="menus">
+                    <div class="menu-item search">
+                        <a href="javascript:void(0);">
+                            <i class="icon-search iconfont"></i>
+                            <span>搜索</span>
+                        </a>
+                    </div>
+                    <div class="menu-item home-page">
+                        <a href="https://kobezwl.gitee.io/zhangwule">
+                            <i class="icon-index iconfont"></i>
+                            <span>主页</span>
+                        </a>
+                    </div>
+                    <div class="menu-item subject">
+                        <a href="javascript:void(0);">
+                            <i class="icon-subject iconfont"></i>
+                            <span>主题</span>
+                        </a>
+                    </div>
+                    <div class="menu-item label">
+                        <a href="javascript:void(0);">
+                            <i class="icon-label iconfont"></i>
+                            <span>标签</span>
+                        </a>
+                    </div>
+                    <div class="menu-item classify">
+                        <a href="javascript:void(0);">
+                            <i class="icon-classify iconfont"></i>
+                            <span>分类</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 站点信息 -->
+            <div id="site-info">
+                <!-- 站点标题 -->
+                <h2 class="site-title">JavaScript 笔记</h2>
+                <!-- 站点时间 -->
+                <div class="site-time">
+                    <p>
+                        <i class="icon-item iconfont"></i>&nbsp;
+                        创建于 <span class="create-time">2023-01-04</span>
+                        &nbsp;|&nbsp;
+                        <i class="icon-update iconfont"></i>&nbsp;
+                        更新于 <span class="update-time">2023-01-09</span>
+                        &nbsp;|&nbsp;
+                        <i class="icon-label iconfont"></i>&nbsp;
+                        <span class="post-label">JavaScript</span>
+                        &nbsp;|&nbsp;
+                        <i class="icon-comment iconfont"></i>
+                        <span class="post-comment">0</span>条评论
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- 页面主体 -->
+        <main id="page-main">
+            <!-- 侧边栏 -->
+            <div id="sidebar">
+                <!-- 信息卡片 -->
+                <div class="author-card card">
+                    <!-- 个人图片 -->
+                    <div class="author-img">
+                        <img src="../../index page/image/logo/myLogo(110x110).jpg" alt="author-logo">
+                        <span class="author-name">zwl</span>
+                    </div>
+                    <!-- 站点数据 -->
+                    <div class="site-data">
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>文章</h4>
+                                <p class="data-count">03</p>
+                            </a>
+                        </div>
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>标签</h4>
+                                <p class="data-count">06</p>
+                            </a>
+                        </div>
+                        <div class="site-data-link">
+                            <a href="javascript:void(0);">
+                                <h4>分类</h4>
+                                <p class="data-count">03</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 联系作者 || 作者更多 -->
+                    <a href="javascript:void(0);" class="author-contact-link">
+                        <i class="icon-contact iconfont"></i>
+                        Contact Me
+                    </a>
+                </div>
+
+                <!-- 公告卡片 -->
+                <div class="announce-card card ">
+                    <!-- 公告标题 -->
+                    <div class="announce-title">
+                        <i class="icon-reminder iconfont"></i>
+                        <span class="title-text">公告</span>
+                    </div>
+                    <!-- 公告内容 -->
+                    <p class="announce-content content">
+                        欢迎来到我的博客
+                    </p>
+                </div>
+
+                <!-- 目录卡片 -->
+                <div class="directory-card card">
+                    <!-- 目录标题 -->
+                    <div class="directory-title">
+                        <i class="icon-item iconfont"></i>
+                        <span class="title-text">目录</span>
+                    </div>
+                    <!-- 目录内容 -->
+                    <div class="directory-content content">
+                        <ul>
+                            <li class="post-active">
+                                <a href="#post-document">文档</a>
+                            </li>
+                            <li>
+                                <a href="#post-introduction">简介</a>
+                            </li>
+                            <li>
+                                <a href="#post-characteristic">特性</a>
+                            </li>
+                            <li>
+                                <a href="#post-label">HTML 标签</a>
+                            </li>
+                            <li>
+                                <a href="#post-notes">HTML 笔记</a>
+                            </li>
+                            <li>
+                                <a href="#post-example">案例</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 帖子内容 -->
+            <div id="post-content">
+                <!-- 帖子文章 -->
+                <article class="post-article">
+                    <!-- 文档 -->
+                    <div class="post">
+                        <h2 class="document article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-document">文档</a>
+                        </h2>
+                        <p class="article-text">
+                            官方文档：
+                            <a href="https://www.w3school.com.cn/js/index.asp" target="_blank">https://www.w3school.com.cn/js/index.asp</a>
+                        </p>
+                    </div>
+                    <!-- 简介 -->
+                    <div class="post">
+                        <h2 class="introduction article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-introduction">简介</a>
+                        </h2>
+                        <p class="article-text">
+                            JavaScript（简称“JS”）是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式、声明式、函数式编程范式。
+                        </p>
+                    </div>
+                    <!-- 特性 -->
+                    <div class="post">
+                        <h2 class="characteristic article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-characteristic">特性</a>
+                        </h2>
+                        <ul class="article-text">
+                            <li>
+                                <span>脚本语言</span>：
+                                JavaScript是一种解释型的脚本语言，C、c++等语言先编译后执行，而JavaScript是在程序的运行过程中逐行进行解释。
+                            </li>
+                            <li>
+                                <span>基于对象</span>：
+                                JavaScript是一种基于对象的脚本语言，它不仅可以创建对象，也能使用现有的对象。
+                            </li>
+                            <li>
+                                <span>动态性</span>：
+                                JavaScript是一种采用事件驱动的脚本语言，它不需要经过WEB服务器就可以对用户的输入做出响应。在访问一个网页时，鼠标在网页中进行鼠标点击或上下移、窗口移动等操作JavaScript都可直接对这些事件给出相应的响应。
+                            </li>
+                            <li>
+                                <span>跨平台性</span>：
+                                JavaScript脚本语言不依赖于操作系统，仅需要浏览器的支持。因此一个JavaScript脚本在编写后可以带到任意机器上使用，前提上机器上的浏览器支持JavaScript脚本语言，目前JavaScript已被大多数的浏览器所支持。
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- JavaScript 教程 -->
+                    <div class="post">
+                        <h2 class="label article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-label">JavaScript 教程</a>
+                        </h2>
+                        <p class="article-text">
+                            官方文档：
+                            <a href="https://www.w3school.com.cn/js/index.asp" target="_blank">JavaScript 教程</a>
+                        </p>
+                    </div>
+                    <!-- JavaScript 笔记 -->
+                    <div class="post">
+                        <h2 class="notes article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-notes">JavaScript 笔记</a>
+                        </h2>
+                        <ul class="notes-list article-text">
+                        <!--  -->
+                            <h3>--- JavaScript 进阶 ---</h3>
+                            <!-- 声明变量 -->
+                            <span>--- 声明变量 ---</span>
+                            <li>var 变量提升</li>
+                            <li>let 产生临时性的死区TDZ( 推荐使用 )</li>
+                            <li>const 定义常量</li>
+                            <li>name 在 window 中, 声明变量名因避开</li>
+                            <li>JavaScript 解析前会先分析, 进行变量提升</li>
+                            <li>JavaScript 是弱类型 变量根据值发生改变</li>
+                            <!-- var let const 共同点 -->
+                            <span>--- var let const 共同点 ---</span>
+                            <li>函数中可访问外部全局变量</li>
+                            <li>函数内部声明是私有的, 若不声明, 会向上一级查找</li>
+                            <!-- 块作用域 -->
+                            <span>--- 块作用域 ---</span>
+                            <li>不加关键词声明变量, 会污染全局</li>
+                            <li>建议开启 "use strict"; 严格模式</li>
+                            <li>var 没有块作用域   在 for () {} 中, 建议使用 let const</li>
+                            <li>( function() {</li>
+                            <li>// 立即执行函数</li>
+                            <li>}.bind( window )());</li>
+                            <li>{</li>
+                            <li>// 块作用域</li>
+                            <li>}</li>
+                            <!-- const -->
+                            <span>--- const ---</span>
+                            <li>const 和 let 都有块作用域及 TDZ</li>
+                            <li>常量不能被改变( 前提: 同一作用域 )</li>
+                            <li>常量名全大写</li>
+                            <li>不能改变内存地址的引用</li>
+                            <li>基本引用类型不可以, 但引用类型可以</li>
+                            <!-- window 全局污染和重复声明 -->
+                            <span>--- window 全局污染和重复声明 ---</span>
+                            <li>var 会作为 window 属性( 全局 ) let 不会</li>
+                            <li>同一作用域, 重复声明, var 不会抛出异常, let const 会</li>
+                            <!-- object.freeze 冻结变量 -->
+                            <span>--- object.freeze 冻结变量 ---</span>
+                            <li>解决引用类型会被改变</li>
+                            <li>object.freeze( 不会变 ); ( 静态方法, 锁定 )</li>
+                            <!-- 标量与引用类型的传值与传址 -->
+                            <span>--- 标量与引用类型的传值与传址 ---</span>
+                            <li>'小数据' => 传值   基本量( 标量 )</li>
+                            <li>'大数据' => 传址   引用类型</li>
+                            <li>涉及 深拷贝与浅拷贝</li>
+                            <!-- null 和 undefined -->
+                            <span>--- null 和 undefined ---</span>
+                            <li>引用类型 => null( 空值 )   基本类型 => undefined( 未定义值 )</li>
+                            <li>函数返回值   空函数( 没有return ) => undefined   形参( 未传值 ) => undefined</li>
+                            <li>typeof _____; 查看数据类型</li>
+                            <li>没有值, 没声明 => undefined</li>
+                            <!-- 严格模式 -->
+                            <span>--- 严格模式 ---</span>
+                            <li>"use strict";</li>
+                            <li>也有作用域的问题 ( 作用于当前作用域及其子作用域 )</li>
+                        <!-- --- --- -->
+                            <h3>--- JavaScript 运算符和流程控制 ---</h3>
+                            <!-- ++ 前置域后置 -->
+                            <span>--- ++ 前置域后置 ---</span>
+                            <li>n++; 先运算后 +1</li>
+                            <li>++n; 先 +1后运算</li>
+                            <!-- 短路运算 -->
+                            <span>--- 短路运算 ---</span>
+                            <li>true || false( 不运行 )</li>
+                            <li>repeat(); 重复输出</li>
+                            <li>trim(); 删除前后空格</li>
+                            <li>.checked 复选框状态</li>
+                            <li>.preventDefault(); 禁止默认行为</li>
+                            <!-- 流程控制 -->
+                            <span>--- 流程控制 ---</span>
+                            <li>if () {</li>
+                            <li>// 执行语句</li>
+                            <li>}</li>
+                            <li>else {</li>
+                            <li>// 执行语句</li>
+                            <li>}</li>
+                            <li></li>
+                            <li>___ ? : ;</li>
+                            <li></li>
+                            <li>switch ( key ) {</li>
+                            <li>case value: </li>
+                            <li>// 执行语句</li>
+                            <li>break;</li>
+                            <li>default: </li>
+                            <li>// 执行语句</li>
+                            <li>break;</li>
+                            <li></li>
+                            <li>for () {</li>
+                            <li>// 执行语句</li>
+                            <li>}</li>
+                            <li></li>
+                            <li>while ( condition ) {
+                            <li>// 执行语句</li>
+                            <li>}</li>
+                            <li></li>
+                            <li>do {</li>
+                            <li>// 执行语句( 至少执行一次 )</li>
+                            <li>} while ( condition );</li>
+                            <li></li>
+                            <li>continue; 终止一次</li>
+                            <li>也可以在某个位置打上"标签"跳转</li>
+                            <li>break; 终止整个</li>
+                            <!-- 对引用类型的循环 -->
+                            <span>--- 对引用类型的循环 ---</span>
+                            <li>for ( const key in object ) {</li>
+                            <li>&nbsp;&nbsp;&nbsp;if ( Object.hasOwnProperty.call( object, key ) ) {</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const element = object[key];</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// key 下标</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// object[key] 元素</li>
+                            <li>&nbsp;&nbsp;&nbsp;}</li>
+                            <li>}</li>
+                            <li></li>
+                            <li>for (const iterator of object) {</li>
+                            <li>&nbsp;&nbsp;&nbsp;for (const key in object) {</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Object.hasOwnProperty.call(object, key)) {</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const element = object[key];</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 迭代</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+                            <li>&nbsp;&nbsp;&nbsp;}</li>
+                            <li>}</li>
+                        <!-- --- --- -->
+                            <h3>--- JavaScript 值类型使用 ---</h3>
+                            <!-- 类型判断 -->
+                            <span>--- 类型判断 ---</span>
+                            <li>typeof______;</li>
+                            <li>数组和对象, return object</li>
+                            <li>没有声明, return undefined</li>
+                            <li>______ instanceof Array</li>
+                            <li>.prototype</li>
+                            <li>判断对象的原型是否在原型链上</li>
+                            <li>__proto__</li>
+                            <li>判断是否由__创建的</li>
+                            <li>throw new Error( '抛出错误' );</li>
+                            <!-- 字符串( String ) -->
+                            <span>--- 字符串( String ) ---</span>
+                            <li>let str = new String( '' );</li>
+                            <li>str.toString();</li>
+                            <li>let str = '';</li>
+                            <li>字面量</li>
+                            <li>转义: \</li>
+                            <li>`${}` 模板字符串</li>
+                            <li>str.length 长度</li>
+                            <li>str.toUpperCase();( 大写 ) <=> str.toLowerCase();( 小写 )</li>
+                            <li>str.trim(); 去除前后空白</li>
+                            <li>str.charAt();</li>
+                            <!-- 字符串截取 -->
+                            <span>--- 字符串截取 ---</span>
+                            <li>str.slice( start, end );</li>
+                            <li>str.substr( start, count );</li>
+                            <li>str.substring();</li>
+                            <!-- 字符串检索 -->
+                            <span>--- 字符串检索 ---</span>
+                            <li>str.indexOf( '', start );</li>
+                            <li>return 索引, 找不到 return -1</li>
+                            <li>str.includes( '', start );</li>
+                            <li>return 布尔值</li>
+                            <li>str.lastIndexOf( '', start );</li>
+                            <li>从后向前查找</li>
+                            <li>str.startsWith( '' ); ( 区分大小写 )</li>
+                            <li>是否在开始出现</li>
+                            <li>str.endsWith( '' ); ( 区分大小写 )</li>
+                            <li>是否以某个字符结束</li>
+                            <!-- 字符串替换 -->
+                            <span>--- 字符串替换 ---</span>
+                            <li>str.replace( '替换目标', '替换为' );</li>
+                            <!-- 类型转换 -->
+                            <span>--- 类型转换 ---</span>
+                            <li>String => Number</li>
+                            <li>1. * 1 ( 除了加法, 隐式 )</li>
+                            <li>2. Number( str )</li>
+                            <li>Number => String</li>
+                            <li>1. + ''</li>
+                            <li>2. String( num )</li>
+                            <!-- 布尔类型( Boolean ) -->
+                            <span>--- 布尔类型( Boolean ) ---</span>
+                            <li>let boll = new Boolean( true );</li>
+                            <li>boll.valueOf();</li>
+                            <li>true 除0以外</li>
+                            <li>false 0</li>
+                            <li>比较: 都转为数值</li>
+                            <li>例: console.log( 24 == true ) => false</li>
+                            <li>console.log( [] == false ); => true</li>
+                            <li>Number => Bollean</li>
+                            <li>1. Bollean( num );</li>
+                            <li>Boolean([]), Boolean({}) => true</li>
+                            <li>引用类型 => true</li>
+                            <li>比较和转换是两件事</li>
+                            <!-- 数值类型( Number ) -->
+                            <span>--- 数值类型( Number ) ---</span>
+                            <li>let num = new Number( 24 )</li>
+                            <li>num.valueOf();</li>
+                            <!-- NaN -->
+                            <span>--- NaN ---</span>
+                            <li>Not a Number</li>
+                            <li>console.log( NaN == NaN ); => false</li>
+                            <li>isNaN();</li>
+                            <li>object.is( __, NaN )</li>
+                        <!--  -->
+                            <h3>--- JavaScript 值类型使用 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript 数组 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript symbol类型 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript set与weakset类型 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript map与weakmap类型 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript 函数 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript 闭包 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript 对象 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript 原型和继承链 ---</h3>
+                        <!--  -->
+                            <h3>--- ES6 类 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript 模块化开发 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript 正则表达式 ---</h3>
+                        <!--  -->
+                            <h3>--- 异步编程 ---</h3>
+                        <!--  -->
+                            <h3>--- JavaScript 宏任务与微任务 ---</h3>
+                        </ul>
+                    </div>
+                    <!-- 案例 -->
+                    <div class="post">
+                        <h2 class="example article-title">
+                            <i class="icon-link iconfont"></i>
+                            <a href="javascript:void(0);" name="post-example">案例</a>
+                        </h2>
+                        <ul class="example-list article-text">
+                            <li>
+                                <a href="./HTML/电商网站/index.html" target="_blank">电商网站</a>
+                            </li>
+                            <li>
+                                <a href="./HTML/小红书Web/index.html" target="_blank">小红书Web</a>
+                            </li>
+                            <li>
+                                <a href="./HTML/注册登录.html" target="_blank">注册登录</a>
+                            </li>
+                            <li>
+                                <a href="./HTML/显示隐藏控制.html" target="_blank">显示隐藏控制</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 评论 -->
+                <div class="post-comment">
+                    <!-- 评论标题 -->
+                    <h3 class="comment-title">
+                        <i class="icon-comment iconfont"></i>
+                        评论
+                    </h3>
+                    <!-- 评论表单 -->
+                    <form action="javascript:void(0);">
+                        <textarea name="comment-input" class="comment-input" cols="30" rows="10" placeholder="留下你的精彩评论"></textarea>
+                        <input type="submit" value="发送">
+                    </form>
+                    <!-- 评论列表 -->
+                    <ul class="comment-list">
+                        <!--  -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- 页面页脚 -->
+        <footer id="page-footer">
+            <!-- 版权 -->
+            <div id="copyright">
+                <!-- 个人 -->
+                <div class="personal-copyright">
+                    <p>&copy;2022&nbsp;-&nbsp;2023 By ZhangWuLe</p>
+                </div>
+                <!-- 平台 -->
+                <div class="platform-copyright">
+                    <p>
+                        平台:&nbsp;
+                        <a href="https://gitee.com/" target="_blank">Gitee</a>
+                        |
+                        <a href="https://github.com/" target="_blank">GitHub</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 来源 -->
+            <div id="source">
+                <p>
+                    字体来源:&nbsp;
+                    <a href="https://www.iconfont.cn/" target="_blank">iconfont-阿里巴巴矢量图标库</a>
+                    |
+                    图片来源:&nbsp;
+                    <span title="图片来源于网络, 如有侵权请告知删除">网络图片</span>
+                </p>
+            </div>
+
+            <!-- 结尾语 -->
+            <div id="ending">
+                <p class="ending-word">
+                    良言一句三冬暖，恶语伤人六月寒。
+                    <a href="https://gitee.com/Kobezwl" target="_blank">My Gitee</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../init/init.js"></script>
+    <script src="../page/page.js"></script>
+    <script>
+        'use strict';
+    </script>
+</body>
+</html>
