@@ -1,0 +1,219 @@
+div#container {
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1170px;
+    height: auto;
+    height: 580px;
+    box-sizing: border-box;
+}
+
+
+
+div#container header {
+    width: 70%;
+    height: 80px;
+}
+header a.img {
+    padding: 15px;
+    display: inline-block;
+    width: 79px;
+    height: 20px;
+}
+header div.jump {
+    padding: 0px 30px 0px 15px;
+    margin-top: 27px;
+    float: right;
+    width: auto;
+    height: 20px;
+}
+div.jump a {
+    color: #64a8dc;
+    font-size: 14px;
+}
+div.jump span {
+    margin: 0px 4px;
+    color: #cbbccb;
+}
+div.jump span:nth-child(2) {
+    margin: 0px 4px 0px 3.2px;
+}
+
+
+
+div#container div#main {
+    position: relative;
+    width: 70%;
+    height: 500px;
+    background-image: url( '../../img2/登录背景.jpg' );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+div#main div.bjimg {
+    margin: 100px auto 0px;
+    width: 50%;
+    height: 300px;
+    border-radius: 10%;
+    background-color: blue;
+    opacity: 0.1;
+}
+div#main div.cont {
+    position: absolute;
+    top: 100px;
+    left: calc( 50% - 50% / 2 );
+    width: 50%;
+    height: 300px;
+    border-radius: 10%;
+}
+div.cont h2 {
+    margin-top: 14px;
+    margin-left: 7px;
+    width: calc( 100% - 10px );
+    color: #1696e4;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+}
+div.cont input[type="text"] {
+    margin-top: 20px;
+    margin-left: 36px;
+    padding: 5px;
+    width: 231.012px;
+    height: 19.800px;
+    border-width: 2px;
+    border-color: #1696e4;
+    border-radius: 30%;
+    color: #1696e4;
+    font-size: 18px;
+    font-weight: bold;
+    outline: none;
+}
+div.cont input:nth-child(3) {
+    margin-top: 10px;
+}
+div.cont div.btn {
+    margin-top: 26px;
+    margin-right: 27px;
+    padding-left: 0.7px;
+    float: right;
+    width: 84px;
+    height: 21.6px;
+    color: #1696e4;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px outset #4f4f4f;
+    border-radius: 2px;
+    background-color: #f0f0f0;
+    text-align: center;
+    line-height: 21.6px;
+    box-sizing: border-box;
+}
+div.cont div.btn:hover {
+    background-color: #E5E5E5;
+    cursor: pointer;
+}
+div.cont div.btn:active {
+    background-color: #F5F5F5;
+}
+
+div.cont input[type="checkbox"] {
+    cursor: pointer;
+}
+div.cont div.tips {
+    margin-top: 19px;
+    margin-left: 46.5px;
+    width: 226.8px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+}
+div.cont div.agreement {
+    margin-left: 46.5px;
+    width: 226.8px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+}
+div.tips span {
+    margin-left: 7.5px;
+    color: #1696e4;
+}
+div.tips a {
+    float: right;
+    color: #337ab7;
+}
+div.agreement a {
+    margin-left: 7.5px;
+    color: #337ab7;
+}
+div.tips a:hover, 
+div.agreement a:hover {
+    color: #23527c;
+    text-decoration: underline;
+}
+
+div.cont div.hint {
+    position: absolute;
+    top: 235px;
+    left: 0px;
+    padding: 0px 10px;
+    width: 150px;
+    height: 24px;
+    color: red;
+    line-height: 24px;
+    box-sizing: border-box;
+}
+
+div.cont input[type="submit"] {
+    margin: 33.5px 158px;
+    width: 105px;
+    height: 26.5px;
+    background-color: #1a7be7;
+    color: yellow;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+}
+div.cont input[type="submit"]:hover {
+    background-color: #1b75dc;
+    cursor: pointer;
+}
+div.cont input[type="submit"]:active {
+    background-color: #4193f0;
+}
+
+
+
+/* 其他登录方式 */
+div#main div.cont div.other {
+    margin-top: 33px;
+    margin-left: 72px;
+    color: #1696e4;
+    font-size: 16px;
+    font-weight: bold;
+}
+div#main div.cont div.other span {
+    float: left;
+}
+div#main div.cont div.other a {
+    margin-top: 0.5px;
+    margin-right: 8px;
+    margin-left: 1px;
+    display: block;
+    float: left;
+    width: 25px;
+    height: 25px;
+}
+div#main div.cont div.other a:nth-child(2) {
+    width: 26px;
+    height: 24.8px;
+}
+div#main div.cont div.other a:nth-child(3) {
+    margin-right: 10px;
+}
+div#main div.cont div.other a img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

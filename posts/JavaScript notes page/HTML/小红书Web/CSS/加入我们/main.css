@@ -1,0 +1,73 @@
+div#main {
+    width: 100%;
+    /* height: 100vh; */
+    height: 792px;
+    background-image: url( '../../img1/bg-img.jpg' );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+div#main div.search-box {
+    position: relative;
+    top: 350px;
+    left: 0px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+    height: 68.85px;
+}
+div.search-box > div.search-container {
+    padding: 0px 30px;
+    width: 50%;
+    height: auto;
+    box-sizing: border-box;
+}
+div.search-container > div.search {
+    width: 100%;
+    height: auto;
+}
+div.search input.searchInput {
+    padding: 10px 16px;
+    width: 100%;
+    height: 46px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: none;
+    color: #555555;
+    font-size: 18px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color ease-in-out 0.15s;
+}
+div.search input.searchInput:focus {
+    border: 1px solid rgb( 102, 175, 233 );
+}
+
+ul.hot {
+    width: 100%;
+    height: auto;
+}
+ul.hot > li {
+    float: left;
+    margin-left: 15px;
+    padding-right: 15px;
+    width: 92.987px;
+    height: 22.85px;
+    text-align: center;
+}
+ul.hot > li:first-child {
+    margin: 0px;
+}
+ul.hot > li:last-child {
+    padding: 0px;
+}
+ul.hot > li > a {
+    color: black;
+    font-size: 16px;
+    line-height: 21px;
+}
+ul.hot > li > a:hover {
+    color: #23527c;
+    text-decoration: underline;
+}

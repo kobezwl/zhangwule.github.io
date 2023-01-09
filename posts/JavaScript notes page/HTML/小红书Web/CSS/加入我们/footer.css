@@ -1,0 +1,66 @@
+footer {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 161.825px;
+    background-image: url( '../../img1/footer-bg.png' );
+}
+footer > div.footer-msg {
+    margin-left: 25%;
+    padding: 20px 0px;
+    float: left;
+    width: 25%;
+    box-sizing: border-box;
+}
+footer > div.footer-msg:nth-child(2) {
+    margin: 0px;
+}
+div.footer-msg > div.msg-title {
+    height: 38px;
+}
+div.msg-title h4 {
+    float: left;
+    color: #333333;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+}
+div.msg-title a {
+    margin-right: 0.1px;
+    float: right;
+    color: #333333;
+    font-size: 12px;
+}
+div.msg-title a span {
+    position: relative;
+    top: -0.5px;
+    left: -0.8px;
+    letter-spacing: -2px;
+}
+div.footer-msg > p {
+    margin-bottom: 10px;
+    color: #333333;
+    font-size: 16px;
+}
+
+footer div.QR-Code {
+    padding: 20px 0px;
+    float: left;
+    width: 100px;
+    height: auto;
+    box-sizing: border-box;
+}
+div.QR-Code > img {
+    width: 100%;
+}
+
+footer div.copyright {
+    padding: 0px 15px;
+    clear: both;
+    width: 100%;
+    color: #333333;
+    font-size: 12px;
+    text-align: center;
+    box-sizing: border-box;
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区精选</title>
+    <link rel="stylesheet" href="../CSS/base.css">
+    <link rel="stylesheet" href="../CSS/header.css">
+    <link rel="stylesheet" href="../CSS/社区精选/falls.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3513097_fj5ji32i1an.css">
+    <style>
+        /* 页面样式 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 顶部导航样式重写 */
+        header {
+            top: 0px;
+            border-bottom: 1px solid #e7e7e7;
+            background-color: #f8f8f8;
+        }
+
+        /* 次级导航 */
+        nav#nav {
+            position: fixed;
+            top: 50px;
+            left: 0px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 50px;
+            /* background-color: white; */
+            z-index: 99;
+        }
+        nav#nav > div.nav-content {
+            width: 1170px;
+            height: 40px;
+            background-color: white;
+        }
+        div.nav-content > span {
+            float: left;
+            padding: 0px 15px;
+            display: block;
+            width: 67.5px;
+            height: 40px;
+        }
+        div.nav-content > span > a {
+            margin-top: 4.5px;
+            display: block;
+            width: 30px;
+            height: 34px;
+            color: black;
+            font-size: 15px;
+            text-align: center;
+            line-height: 40px;
+        }
+        a.color-red {
+            border-bottom: 2px solid red !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../img/logo.png" alt="logo">
+                </a>
+            </div>
+            <nav class="header-nav">
+                <ul class="nav_ul">
+                    <li><a href="../index.html"><span>首页</span></a></li>
+                    <li><a href="../HTML/社区精选.html"><span class="style-red">社区精选</span></a></li>
+                    <li><a href="../HTML/媒体报道.html"><span>媒体报道</span></a></li>
+                    <li><a href="../joinIndex.html"><span>加入我们</span></a></li>
+                    <li><a href="./招商合作.html"><span>招商合作</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 次级导航 -->
+    <nav id="nav">
+        <div class="nav-content">
+            <span><a href="javascript:void(0);" class="color-red">推荐</a></span>
+            <span><a href="javascript:void(0);">时尚</a></span>
+            <span><a href="javascript:void(0);">美妆</a></span>
+            <span><a href="javascript:void(0);">美食</a></span>
+            <span><a href="javascript:void(0);">运动</a></span>
+            <span><a href="javascript:void(0);">影音</a></span>
+            <span><a href="javascript:void(0);">旅行</a></span>
+            <span><a href="javascript:void(0);">居家</a></span>
+            <span><a href="javascript:void(0);">母婴</a></span>
+            <span><a href="javascript:void(0);">读书</a></span>
+            <span><a href="javascript:void(0);">男士</a></span>
+            <span><a href="javascript:void(0);">音乐</a></span>
+        </div>
+    </nav>
+
+    <!-- 主体部分 瀑布流 -->
+    <div id="falls">
+        <!-- <a href="./社区精选二级页面.html" class="item">
+            <img src="../img3/0.jpg" alt="picture">
+            <span class="text">占位字符占位字符占位字符占位字符占位字符</span>
+            <div class="info">
+                <span class="info_user">
+                    <img src="../img3/8.jpg" alt="User Picture">
+                    <span class="user_name">corain</span>
+                </span>
+                <span class="info_praise">
+                    <span>824</span>
+                </span>
+            </div>
+        </a> -->
+    </div>
+
+    <!-- 加载动画 -->
+    <div id="loading">
+        <i class="icon-loading iconfont"></i>
+    </div>
+
+    <!-- 回到顶部 -->
+    <div id="back-top">
+        <a href="javascript:scroll(0,0);" id="back-top">
+            <i class="icon-arrow-to-top iconfont"></i>
+        </a>
+    </div>
+
+    <script src="../JS/custom.js"></script>
+    <script>
+        // 严格模式
+        'use strict';
+
+        // 导航切换
+        let itemList = document.querySelectorAll( 'nav#nav > div.nav-content span a' );
+
+        itemList.forEach( item => {
+            item.addEventListener( 'click', function() {
+                let active = document.querySelector( 'nav#nav > div.nav-content span a.color-red' );
+                active.classList.remove( 'color-red' );
+                item.classList.add( 'color-red' );
+            } );
+        } );
+
+        // 瀑布流布局
+        let falls = document.querySelector( 'div#falls' );
+        let itemWidth = 254;
+        let key = 0;
+        function more() {
+            for ( let i = 0; i < 12; i++ ) {
+                API.falls.createAdd( 
+                        falls, 
+                        'a', 
+                        './社区精选二级页面.html', 
+                        `<img src="../img3/${ i % 4 }.jpg" alt="picture" title="picture.${ i % 4 + 1 }"><span class="text">占位字符占位字符占位字符占位字符占位字符</span><div class="info"><span class="info_user"><img src="../img3/8.jpg" alt="User Picture"><span class="user_name">corain</span></span><span class="info_praise"><span>824</span></span></div>`, 
+                        'class', 
+                        'item' 
+                    );
+            }
+            let info = undefined;
+            let init = null;
+            init = setInterval( function() {
+                info = API.falls.calculate( falls, itemWidth, 'between' );
+                API.falls.setPosition( info, falls );
+            }, 0 );
+            window.onload = function() {
+                info = API.falls.calculate( falls, itemWidth, 'between' );
+                API.falls.setPosition( info, falls );
+                clearInterval( init );
+                falls.style.opacity = 1;
+                key = 1;
+            }
+
+            let timer = null;
+            window.onresize = function() {
+                if ( timer ) {
+                    clearTimeout( timer );
+                }
+                timer = setInterval( () => {
+                    info = API.falls.calculate( falls, itemWidth, 'between' );
+                    API.falls.setPosition( info, falls );
+                    clearTimeout( timer );
+                }, 300 );
+            }
+
+            setTimeout( () => {
+                info = API.falls.calculate( falls, itemWidth, 'between' );
+                API.falls.setPosition( info, falls );
+            }, 300 );
+        }
+        more();
+
+
+
+        // 加载更多
+        let loading = document.querySelector( 'div#loading' );
+        let observe = new IntersectionObserver( function( entries ) {
+            let entry = entries[0];
+            let timer = null;
+            if ( entry.isIntersecting && key != 0 ) {
+                timer = setInterval( () => {
+                    for ( let i = 0; i < API.random.random( 1, 2 ); i++ ) {
+                        more();
+                    }
+                    clearInterval( timer );
+                }, 500 );
+            }
+        }, {
+            thresholds: 1
+        } );
+        observe.observe( loading );
+    </script>
+</body>
+</html>

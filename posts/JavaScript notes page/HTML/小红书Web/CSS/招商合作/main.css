@@ -1,0 +1,291 @@
+div#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* 申请 */
+section#apply-for {
+    margin-top: 100px;
+    width: 1170px;
+    height: auto;
+}
+section#apply-for div.picture, 
+section#apply-for div.explain {
+    padding: 0px 15px;
+    float: left;
+    width: 50%;
+    height: auto;
+    box-sizing: border-box;
+}
+div.picture > img {
+    width: 100%;
+}
+section#apply-for div.explain {
+    margin-top: 29.5px;
+    color: #333333;
+}
+div.explain h2 {
+    margin-bottom: 10.5px;
+    font-size: 42px;
+}
+div.explain h4 {
+    margin-bottom: 11px;
+    font-size: 22px;
+}
+div.explain p {
+    margin-bottom: 10.5px;
+    font-size: 16px;
+    line-height: 22.9px;
+}
+div.explain a.apply {
+    padding: 10px 16px;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    background-color: red;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    line-height: 28px;
+    box-sizing: border-box;
+}
+div.explain a.apply:hover {
+    color: #333333;
+}
+div.explain a.download {
+    position: relative;
+    top: -4px;
+    left: -1px;
+    color: black;
+    font-size: 12px;
+}
+
+
+
+/* 流程图 */
+section#flow-chart {
+    margin-top: 100px;
+    padding: 50px 0px;
+    width: 1170px;
+    height: auto;
+    background-color: #f4f4f4;
+    color: #333333;
+}
+section#flow-chart h4 {
+    margin-bottom: 29px;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 32px;
+}
+section#flow-chart div.process-top, 
+section#flow-chart div.process-bottom {
+    overflow: hidden;
+}
+div.process-top div.process, 
+div.process-bottom div.process {
+    padding: 0px 15px;
+    float: left;
+    width: 400px;
+    height: 81.412px;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+}
+div.process-top div.process:first-child, 
+div.process-bottom div.process:first-child {
+    padding: 0px 15px 0px 0px;
+    width: calc( 400px - 15px );
+}
+div.process-top div.process:last-child, 
+div.process-bottom div.process:last-child {
+    padding: 0px 0px 0px 15px;
+    width: calc( 400px - 15px );
+}
+div.process h6 {
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+}
+div.process p {
+    margin-bottom: 10.5px;
+}
+section#flow-chart div.process-picture {
+    width: 100%;
+    height: auto;
+}
+div.process-picture img {
+    margin: 0px auto;
+    display: block;
+}
+
+
+
+/* 入驻指南 */
+section#entry-guide {
+    margin-top: 29.5px;
+    padding: 0px 15px;
+    width: 1170px;
+    height: 676px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+section#entry-guide > ul.guide_nav {
+    position: relative;
+    width: 100%;
+    height: 67.713px;
+}
+ul.guide_nav > li {
+    position: absolute;
+    top: 0px;
+    right: -15px;
+    padding-left: 15px;
+    width: 585px;
+    height: 100%;
+    color: #333333;
+    box-sizing: border-box;
+}
+ul.guide_nav > li:first-child {
+    left: -15px;
+}
+ul.guide_nav > li h2 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    line-height: 23px;
+}
+ul.guide_nav > li.selected {
+    border-bottom: 2px solid blue;
+}
+
+section#entry-guide > ul.guide_content {
+    width: calc( 100% * 2 );
+    height: auto;
+    color: #333333;
+    transition: all 0.3s linear;
+    overflow: hidden;
+}
+ul.guide_content > li {
+    float: left;
+    /* width: 100%; */
+    width: calc( 100% / 2 );
+    height: 100%;
+}
+ul.guide_content > li > div.info {
+    width: 100%;
+    height: 131.4px;
+    overflow: hidden;
+}
+div.info > h4 {
+    padding: 0px 15px;
+    float: left;
+    width: 380px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    box-sizing: border-box;
+}
+div.info > div {
+    padding: 0px 15px;
+    float: left;
+    width: 760px;
+    height: 100%;
+    box-sizing: border-box;
+}
+div.info > div > p {
+    margin-bottom: 11px;
+    font-size: 16px;
+    line-height: 22px;
+}
+section#entry-guide > a {
+    position: relative;
+    top: 0px;
+    left: calc( 50% - 200px / 2 );
+    padding: 10px 16px;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: red;
+    box-sizing: border-box;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    line-height: 31px;
+}
+section#entry-guide > a:hover {
+    color: #333333;
+}
+
+
+
+/* 服务 */
+section#service {
+    width: 1170px;
+    height: auto;
+    overflow: hidden;
+}
+
+section#service > ul.service_nav {
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+ul.service_nav > li {
+    padding: 0px 15px;
+    float: left;
+    width: 25%;
+    height: 28.563px;
+    border-radius: 16px;
+    background-color: #f4f4f4;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    line-height: 27px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+section#service ul.service_nav li.selected {
+    background-color: #333333;
+    color: white;
+}
+
+section#service > ul.service_content {
+    width: calc( 100% * 4 );
+    height: 100%;
+    transition: all 0.4s ease-in-out;
+    overflow: hidden;
+}
+ul.service_content > li {
+    float: left;
+    width: calc( 100% / 4 );
+    height: 100%;
+}
+ul.service_content > li > div.service_info {
+    padding: 0px 15px;
+    width: 100%;
+    height: 74.275px;
+    box-sizing: border-box;
+}
+div.service_info h4 {
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    color: #333333;
+    font-size: 20px;
+    font-weight: 400;
+}
+div.service_info p {
+    color: #818181;
+    font-size: 18px;
+}

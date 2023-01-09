@@ -1,0 +1,389 @@
+div#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    /* background-color: rgb( 204, 190, 255 ); */
+}
+
+
+
+/* 头部图片 */
+div#head {
+    width: 100%;
+    height: 270px;
+    background-image: url( '../../img/quanshijie.jpg' );
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+
+
+/* 内容 */
+div#container {
+    /* position: relative;
+    top: -40px;
+    left: 0px; */
+    margin-top: -40px;
+    display: flex;
+    justify-content: space-between;
+    width: 1024px;
+    height: auto;
+    height: 896.225px;
+    /* background-color: rgb( 210, 197, 255 ); */
+}
+
+/* 内容-左侧 */
+div#container div.cont_l {
+    width: 267px;
+    height: 408px;
+    color: #333333;
+}
+div.cont_l > div.cont_l_top, 
+div.cont_l > div.cont_l_bottom {
+    padding: 15px;
+    width: 100%;
+    height: 194px;
+    border: 1px solid #999;
+    background-color: white;
+    box-sizing: border-box;
+}
+div.cont_l_top > span:first-child, 
+div.cont_l_bottom > span:first-child, 
+div.search p > span {
+    padding: 1px 10px 1px 15px;
+    font-size: 17px;
+    background-image: url( '../../img/hongdian.png' );
+    background-repeat: no-repeat;
+    background-position: 0px 50%;
+    line-height: 27px;
+}
+div.cont_l_top > span:nth-child(2), 
+div.cont_l_bottom > span:nth-child(2) {
+    position: relative;
+    top: 3px;
+    left: 3px;
+    display: inline-block;
+    width: calc( 100% - 100px );
+    border-bottom: 1px solid red;
+} 
+div.cont_l_top > a, 
+div.cont_l_bottom > a {
+    padding-left: 15px;
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 39px;
+    color: black;
+    box-sizing: border-box;
+}
+div.cont_l_top > a:nth-child(3) {
+    margin-top: 10px;
+}
+div.cont_l_top > a:nth-child(4) {
+    border-top: 1px dashed #ff2741;
+    border-bottom: 1px dashed #ff2741;
+}
+div.cont_l_top > a:hover, 
+div.cont_l_bottom > a:hover {
+    color: #23527c;
+}
+div.cont_l > div.cont_l_bottom {
+    margin-top: 20px;
+}
+div.cont_l_bottom > span:first-child {
+    padding: 1px 10px 3px 15px;
+    line-height: 25px;
+}
+div.cont_l_bottom > span:nth-child(2) {
+    top: 4px;
+    height: 17.5px;
+    background-image: url( '../../img/more.png' );
+    background-repeat: no-repeat;
+    background-position: 100% 0px;
+}
+div.cont_l_bottom > a {
+    margin-top: 12px;
+    background-image: url( '../../img/honggang.png' );
+    background-repeat: no-repeat;
+    background-position: 0px 50%;
+    line-height: 40px;
+}
+
+/* 内容-右侧 */
+div#container div.cont_r {
+    padding: 15px;
+    width: 715px;
+    height: 100%;
+    border: 1px solid #d3d3d4;
+    background-color: white;
+    box-sizing: border-box;
+}
+div.cont_r > div.search {
+    width: 100%;
+    height: 92.275px;
+}
+div.search p {
+    width: 100%;
+    height: 21px;
+    border-bottom: 1px solid red;
+    color: #333333;
+    font-size: 17px;
+}
+div.search p > span {
+    padding-right: 17.5px;
+    background-color: white;
+}
+div.search div.search-input {
+    margin: 30px 150px 0px;
+    width: 535px;
+    height: 40px;
+}
+div.search-input > div {
+    display: block;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+div.search-input > div.input_l {
+    width: 20.5px;
+    height: 100%;
+    background-image: url( '../../img/sousuokuangzuo.png' );
+    background-position: 100% 0px;
+}
+div.search-input > div.input_c {
+    width: 344.5px;
+    height: 100%;
+    border: 1px solid #ff2741;
+    border-right: none;
+    border-left: none;
+    box-sizing: border-box;
+}
+div.search-input > div.input_c input {
+    margin: 10px 0px;
+    width: 100%;
+    height: 18px;
+    border: none;
+    background-color: none;
+    color: #444444;
+    font-size: 14px;
+    outline: none;
+}
+div.search-input > a.input_r {
+    display: block;
+    float: left;
+    width: 40px;
+    height: 100%;
+    background-image: url( '../../img/sousuo.png' );
+    cursor: pointer;
+}
+
+div.cont_r > div.classify {
+    margin: 30px 90px 0px;
+    width: 503px;
+    height: 113.250px;
+    color: #333333;
+}
+div.classify ul {
+    margin-bottom: 13px;
+    width: 100%;
+    height: auto;
+    height: 18.563px;
+    font-size: 13px;
+}
+div.classify ul h4 {
+    margin-right: 17.5px;
+    display: block;
+    float: left;
+}
+div.classify ul li {
+    margin-right: 13.3px;
+    float: left;
+}
+div.classify ul li a {
+    color: #333333;
+}
+div.classify ul li.selected a {
+    color: #ff9059;
+}
+
+div.cont_r > div.recruit-info {
+    margin-top: 30px;
+    width: 100%;
+    height: 528.138px;
+    color: #333333;
+}
+div.recruit-info ul {
+    width: 100%;
+}
+div.recruit-info ul.recruit-title {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #f5f5f5;
+    font-size: 12px;
+    font-weight: 600;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+ul.recruit-title > li {
+    margin-right: 3.2px;
+    float: left;
+    width: 80px;
+}
+ul.recruit-title > li:nth-child(1) {
+    margin-right: 3.4px;
+    width: 341px;
+}
+ul.recruit-title > li:nth-child(3) {
+    margin-right: 3.3px;
+}
+div.recruit-info ul.recruit-cont {
+    width: 100%;
+    height: 35px;
+    font-size: 12px;
+}
+ul.recruit-cont li {
+    margin: 0px 3.2px 0.05px 0px;
+    float: left;
+    width: 80px;
+    height: 100%;
+    line-height: 35px;
+}
+ul.recruit-cont li:nth-child(1) {
+    margin-left: 15px;
+    margin-right: 3.4px;
+    width: 341px;
+}
+
+div.cont_r > div.paging {
+    margin-top: 20px;
+    width: 100%;
+    height: 30.563px;
+    color: #333333;
+    font-size: 12px;
+}
+div.paging ul {
+    width: 100%;
+    height: 100%;
+    line-height: 29px;
+}
+div.paging ul span {
+    float: left;
+    line-height: 31px;
+}
+div.paging ul span:first-child {
+    margin: 0px 152px 0px 19.5px;
+    line-height: 29px;
+}
+div.paging ul span:nth-child(2) {
+    margin-right: 0.5px;
+}
+div.paging ul li {
+    margin-right: 4px;
+    float: left;
+}
+div.paging ul li a {
+    padding: 5px 14px;
+    display: block;
+    width: auto;
+    height: 18.563px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    color: black;
+    font-size: 13px;
+    line-height: 18px;
+}
+div.paging ul li a:hover {
+    color: #23527c;
+    background-color: #EEEEEE;
+}
+div.paging ul input {
+    margin: 3px 3px 0px -2px;
+    float: left;
+    width: 21px;
+    height: 20.5px;
+    font-size: 12px;
+    outline: none;
+}
+
+
+
+/* 公司简介 */
+div#main div#container {
+    height: auto;
+}
+div#main div#container div.cont_r > div.search {
+    height: auto;
+}
+div#main div#container div.cont_r > div.picture {
+    width: 100%;
+    height: auto;
+}
+div.picture img {
+    margin: 20px auto;
+    display: block;
+    width: 655px;
+    height: 633.262px;
+}
+div.picture img:last-child {
+    margin-bottom: 19px;
+}
+div#main div#container div.cont_r > div.manifesto {
+    margin-bottom: 1.5px;
+    width: 100%;
+    height: auto;
+}
+div.manifesto div {
+    width: 100%;
+    height: 25.712px;
+    text-align: center;
+    color: #333333;
+    font-size: 14px;
+}
+div.manifesto div i {
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+}
+div.manifesto b {
+    display: block;
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+
+/* 页脚 */
+footer {
+    margin: 20px auto;
+    width: 1024px;
+    height: 44px;
+    border-top: 1px solid #999;
+    color: #333333;
+    font-size: 13px;
+    text-align: center;
+    line-height: 45px;
+}
+footer a {
+    padding-left: 23px;
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    background-image: url( '../../img/plc.png' );
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 0px 50%;
+    color: black;
+}
+footer a:hover {
+    color: #23527c;
+    text-decoration: underline;
+}
+footer img {
+    vertical-align: middle;
+}

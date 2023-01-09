@@ -1,0 +1,130 @@
+footer {
+    width: 100%;
+    height: 300px;
+    background-color: #39393b;
+}
+div.footer_t {
+    position: relative;
+    width: 100%;
+    height: 236.41px;
+    border-bottom: 1px solid rgba( 217, 217, 217, 0.2 );
+    overflow: hidden;
+}
+div.footer_t > div.footer_content {
+    position: absolute;
+    top: 50px;
+    left: calc( 50% - 940px / 2 );
+    display: flex;
+    justify-content: space-between;
+    width: 940px;
+    height: 136.41px;
+    /* background-color: white; */
+}
+div.footer_content > div.content_l {
+    width: 214px;
+    height: auto;
+}
+div.content_l > img {
+    width: 214px;
+    height: 87px;
+}
+div.content_l > div.footer-path {
+    margin-top: 8.5px;
+    /* border: 1px solid red; */
+}
+div.footer-path > a {
+    float: left;
+    display: block;
+    width: 31.5px;
+    height: 22px;
+}
+div.footer-path > a > img {
+    width: 22px;
+    height: 22.5px;
+}
+div.footer-path > a:nth-child(3), 
+div.footer-path > a:nth-child(4) {
+    width: 60px;
+    height: 22px;
+}
+div.footer-path > a:nth-child(3) > img, 
+div.footer-path > a:nth-child(4) > img {
+    position: relative;
+    top: 0px;
+    left: -1px;
+    width: 51.5px;
+    height: 22.5px;
+}
+div.footer-path > a:nth-child(4) > img {
+    position: relative;
+    top: 0px;
+    left: 3px;
+}
+div.footer_content > div.content_r {
+    display: flex;
+    justify-content: space-between;
+    width: 288px;
+    height: 100%;
+}
+div.content_r > ul {
+    margin-left: 40px;
+    width: 56px;
+    height: auto;
+}
+div.content_r > ul h4 {
+    margin-bottom: 20px;
+    color: #d5d5d5;
+    font-weight: 300;
+}
+div.content_r > ul li {
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+div.content_r > ul li:nth-child(2) {
+    margin-bottom: 15.5px;
+}
+div.content_r > ul li:hover > a {
+    text-decoration: underline;
+}
+div.content_r > ul a {
+    color: #d5d5d5;
+}
+div.footer_b {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc( 100% - 240px );
+}
+div.copyright {
+    margin-top: 4px;
+    width: 940px;
+    height: 44px;
+    color: #d5d5d5;
+    font-size: 12px;
+    text-align: center;
+}
+div.info > a {
+    color: #d5d5d5;
+    font-size: 12px;
+    letter-spacing: -0.2px;
+}
+div.info > a:hover {
+    text-decoration: underline;
+}
+div.copyright div.url {
+    position: relative;
+    top: 10.5px;
+    left: -10px;
+    letter-spacing: -0.3px;
+}
+div.url > span {
+    position: relative;
+}
+div.url > span > img {
+    position: absolute;
+    top: 0px;
+    left: 330px;
+    width: 18px;
+    height: 18px;
+}

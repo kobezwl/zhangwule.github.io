@@ -1,0 +1,54 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, 
+dl, dt, dd, ul, ol, li, 
+pre, 
+fieldset, lengend, button, input, textarea, 
+th, td {
+    margin: 0px;
+    padding: 0px;
+}
+li {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+img {
+    vertical-align: top;
+}
+body {
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: default;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+#test-btn {
+    position: fixed;
+    top: 100px;
+    left: 0px;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    background-image: linear-gradient( to right, #c17db6, #99c7ed );
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+#test-btn:hover {
+    background-image: linear-gradient( to right, rgba( 193, 125, 182, 0.5 ), rgba( 153, 199, 237, 0.5 ) );
+}
+#test-btn:active {
+    background-image: linear-gradient( to right, #d497ca, #a5ccec );
+    color: black;
+}
+.background-color {
+    background-color: rgb( 210, 197, 255 );
+    background-color: rgb( 204, 190, 255 );
+    background-color: rgb( 193, 125, 182 );
+    background-color: rgb( 212, 151, 202 );
+    background-color: rgb( 153, 199, 237 );
+    background-color: rgb( 165, 204, 236 );
+}
