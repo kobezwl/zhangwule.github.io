@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例.天气查询</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        li {
+            list-style-type: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            cursor: default;
+        }
+        div#wrapper {
+            position: relative;
+            width: 900px;
+            height: 600px;
+            /* border: 1px solid red; */
+        }
+        #wrapper h2 {
+            position: relative;
+            top: 0px;
+            left: calc( 50% - 240px / 2 );
+            width: 240px;
+            height: 80px;
+            /* border: 1px solid red; */
+            /* color: linear-gradient(200deg, #5EE7DF, rgb(120, 100, 225); */
+            font-size: 40px;
+            text-align: center;
+            line-height: 200%;
+            letter-spacing: 5px;
+        }
+        div.query {
+            position: relative;
+            top: 10px;
+            left: calc( 50% - 480px / 2 );
+            width: 480px;
+            height: 30px;
+            border: 1px solid #399ACF;
+            border-radius: 5px;
+        }
+        input.text {
+            padding-left: 10px;
+            width: calc( 480px - 10px * 2 );
+            height: 30px;
+            border:none;
+            background:none;
+            outline:none;
+        }
+        div.btn {
+            position: absolute;
+            right: -1px;
+            display: inline-block;
+            width: 81px;
+            height: 31px;
+            /* border: 1px solid red; */
+            border-radius: 0px 5px 5px 0px;
+            background-color: #399ACF;
+            color: white;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 190%;
+            cursor: pointer;
+            user-select: none;
+        }
+        div.btn:active {
+            background-color: #317ea8;
+        }
+        ul.choice {
+            position: relative;
+            top: 15px;
+            left: 210px;
+            width: 240px;
+            height: 24px;
+            /* border: 1px solid red; */
+            overflow: hidden;
+        }
+        ul.choice li {
+            margin-right: 10px;
+            float: left;
+            cursor: pointer;
+        }
+        ul.choice li > a {
+            color: #999999;
+            font-size: 12px;
+        }
+        div#weather {
+            position: relative;
+            top: 50px;
+            left: calc( 50% - 800px / 2 );
+            width: 800px;
+            /* height: 200px; */
+            /* border: 1px solid red; */
+        }
+        div#weather ul {
+            display: flex;
+            justify-content: space-around;
+            /* align-items: center; */
+            width: 100%;
+            height: 100%;
+            /* border: 1px solid red; */
+        }
+        div#weather ul > li {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid rgb( 120, 100, 225 ); */
+        }
+        div#weather ul > li::after {
+            position: absolute;
+            top: calc( 50% - 70px / 2 );
+            right: -2px;
+            display: block;
+            width: 0px;
+            height: 70px;
+            border-left: 1px solid #999999;
+            content: '';
+        }
+        div#weather ul > li:last-child:after {
+            border: none;
+        }
+        div#weather ul > li h3{
+            margin-bottom: 30px;
+            color: #F59547;
+            font-size: 27px;
+            font-weight: 500;
+            text-align: center;
+        }
+        div#weather ul > li span.low, 
+        div#weather ul > li span.high{
+            color: #F59547;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            /* white-space: nowrap; */
+        }
+        div#weather ul > li span.high {
+            margin-bottom: 10px;
+        }
+        div#weather ul > li span.temperature {
+            margin-bottom: 30px;
+            color: #F59547;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+        div#weather ul > li span.interval {
+            color: #F59547;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+        div#weather ul > li span.date{
+            font-size: 16px;
+            text-align: center;
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <h2>天气查询</h2>
+        <div class="query">
+            <input type="text" class="text" placeholder="请输入查询的天气" v-model="city" v-on:keyup.enter="searchWeather">
+            <div class="btn" v-on:click="searchWeather">搜索</div>
+            <!-- <input type="button" value="搜索" class="btn"> -->
+        </div>
+        <ul class="choice">
+            <li><a href="javascript:void(0)" @click="changeCity('太原')">太原</a></li>
+            <li><a href="javascript:void(0)" @click="changeCity('北京')">北京</a></li>
+            <li><a href="javascript:void(0)" @click="changeCity('西安')">西安</a></li>
+            <li><a href="javascript:void(0)" @click="changeCity('呼和浩特')">呼和浩特</a></li>
+            <li><a href="javascript:void(0)" @click="changeCity('武汉')">武汉</a></li>
+        </ul>
+        <div id="weather">
+            <ul>
+                <li v-for="item in weathers">
+                    <h3>{{ item.type }}</h3>
+                    <!-- <span class="low">{{ item.low }}</span>
+                    <span class="interval">~</span>
+                    <span class="high">{{ item.high }}</span> -->
+                    <span class="temperature">{{ item.low }} ~ {{ item.high }}</span>
+                    <span class="date">{{ item.date }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        let app = new Vue( {
+            el: "#wrapper",
+            data: {
+                city: "",
+                weathers: []
+            },
+            methods: {
+                searchWeather: function() {
+                    // console.log( '天气查询' );
+                    // console.log( this.city );
+                    // this.city
+                    let $this = this;
+                    axios.get( "http://wthrcdn.etouch.cn/weather_mini?city=" + this.city )
+                    .then( function( response ) {
+                        // console.log( response.data.data.forecast );
+                        $this.weathers = response.data.data.forecast;
+                        // console.log( $this.weathers );
+                    }, function( error ) {
+                        console.log( error );
+                    } );
+                },
+                changeCity: function( city ) {
+                    this.city = city;
+                    this.searchWeather();
+                }
+            }
+        } );
+    </script>
+</body>
+</html>

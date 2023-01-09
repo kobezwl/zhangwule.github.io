@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例.计数器</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 50vh;
+            cursor: default;
+            user-select: none;
+        }
+        div#wrapper {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 550px;
+            height: 100px;
+            /* border: 1px solid red; */
+            border: 1px solid #C6C6C6;
+            border-radius: 15px;
+            background-color: #C6C6C6;
+            box-shadow: 5px 5px 10px 1px #A1A1A1;
+        }
+        div#wrapper > div {
+            position: relative;
+            /* float: left; */
+            width: 190px;
+            height: 100px;
+            /* border: 1px solid blue; */
+        }
+        div.left {
+            border-radius: 15px 0px 0px 15px;
+            cursor: pointer;
+        }
+        span.left-icon {
+            position: absolute;
+            top: calc( 50% - 5px / 2 );
+            left: calc( 50% - 20px / 2 );
+            display: block;
+            width: 20px;
+            height: 5px;
+            background-color: #b94528;
+        }
+        div.container {
+            background-color: white;
+            text-align: center;
+            line-height: 100px;
+            font-size: 48px;
+        }
+        div.right {
+            border-radius: 0px 15px 15px 0px;
+            cursor: pointer;
+        }
+        div.right > span {
+            position: absolute;
+            top: calc( 50% - 5px / 2 );
+            left: calc( 50% - 25px / 2 );
+            display: block;
+            width: 25px;
+            height: 5px;
+            /* border: 1px solid red; */
+            background-color: #b94528;
+        }
+        span.right-icon-2 {
+            transform: rotateZ(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="left" @click="remove">
+            <span class="left-icon"></span>
+        </div>
+        <div class="container">
+            {{ value }}
+        </div>
+        <div class="right" @click='add'>
+            <span class="right-icon-1"></span>
+            <span class="right-icon-2"></span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let wrapper = new Vue( {
+            el: '#wrapper',
+            data: {
+                value: 1
+            },
+            methods: {
+                add: function() {
+                    console.log( '这是(增加)的方法' );
+                    if ( this.value < 10 ) {
+                        // this.value += 1;
+                        this.value ++;
+                    }
+                    // ( this.value == 10 )
+                    else {
+                        alert( '不得大于 10' );
+                    }
+                },
+                remove: function() {
+                    console.log( '这是(减少)的方法' );
+                    if ( this.value > 0 ) {
+                        // this.value -= 1;
+                        this.value --;
+                    }
+                    // ( this.value == 10 )
+                    else {
+                        alert( '不得小于 0' );
+                    }
+                }
+            }
+        } );
+    </script>
+</body>
+</html>

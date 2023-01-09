@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3505213_svgybfwdqb.css">
+    <title>案例.记事本</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 70vh;
+            background-color: #F4F4F4;
+        }
+        ul {
+            list-style-type: none;
+        }
+        #wrapper {
+            position: relative;
+            width: 470px;
+            height: 420px;
+        }
+        #wrapper h3 {
+            position: absolute;
+            top: 10px;
+            left: calc( 50% - 300px / 2 + 10px );
+            width: 300px;
+            height: 55px;
+            color: orange;
+            font-size: 40px;
+            font-weight: 100;
+            text-align: center;
+            letter-spacing: 24px;
+        }
+        #container {
+            position: relative;
+            margin-top: 110px;
+            margin-left: 15px;
+            width: 430px;
+            /* height: 230px; */
+            border: 1px solid #E2E2E2;
+            background-color: white;
+            box-shadow: 1px 1px 5px 1px #E2E2E2;
+            z-index: 2;
+        }
+        #container ul li {
+            position: relative;
+            padding: 0px 10px;
+            width: calc( 100% - 20px );
+            height: 45px;
+            border-bottom: 1px solid #E3E1E1;
+            font-size: 20px;
+            line-height: 240%;
+            user-select: none;
+        }
+        #container ul li.text {
+            border-bottom: 2px solid #DCDCDC;
+            line-height: 0px;
+        }
+        #container ul li.text input[type="text"] {
+            margin-top: 2.5px;
+            width: 100%;
+            height: 40px;
+            border:none;
+            background:none;
+            font-size: 24px;
+            color: #CCCCCC;
+            /* outline:none; */
+        }
+        i.icon-times {
+            position: absolute;
+            right: 10px;
+            /* display: none; */
+            color: red;
+            cursor: pointer;
+        }
+        #container div.items {
+            margin-top: 10px;
+            width: 120px;
+            height: 24px;
+            /* border: 1px solid red; */
+            text-align: center;
+            color: #b0b0b0;
+            cursor: pointer;
+        }
+        div.eliminate {
+            float: right;
+            margin-top: -24px;
+            right: 10px;
+            width: 70px;
+            height: 24px;
+            /* border: 1px solid red; */
+            text-align: center;
+            color: #b0b0b0;
+            cursor: pointer;
+        }
+        /* .effect:nth-child(3) {
+            position: absolute;
+            top: 114px;
+            left: 20px;
+            width: 420px;
+            height: 230px;
+            border: 1px solid #E2E2E2;
+            background-color: white;
+            box-shadow: 1px 1px 5px 1px #E2E2E2;
+            z-index: 1;
+        }
+        .effect:nth-child(4) {
+            position: absolute;
+            top: 118px;
+            left: 25px;
+            width: 410px;
+            height: 230px;
+            border: 1px solid #E2E2E2;
+            background-color: white;
+            box-shadow: 1px 1px 5px 1px #E2E2E2;
+        } */
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <h3>记事本</h3>
+        <div id="container">
+            <ul>
+                <li class="text">
+                    <input type="text" placeholder="请输入任务" autofocus="autofocus" autocomplete="off" v-model="inputValue" @keyup.enter="add">
+                </li>
+                <li v-for="( item,index ) in liArr">
+                    {{ index + 1 }}.&emsp;{{ item }}
+                    <i class="icon-times iconfont" v-on:click="remove(index)"></i>
+                </li>
+            </ul>
+            <div class="items" v-show="liArr.length != 0">{{ liArr.length }} items left</div>
+            <div class="eliminate" v-show="liArr.length != 0" @click="reset">reset</div>
+        </div>
+        <div class="effect"></div>
+        <div class="effect"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let app = new Vue( {
+            el: "#wrapper",
+            data: {
+                liArr: [ '写代码', '上课', '吃饭' ],
+                inputValue: '请输入任务',
+                isShow: true
+            },
+            methods: {
+                add: function() {
+                    this.liArr.push( this.inputValue );
+                    // if ( this.liArr.length == 0 ) {
+                    //     this.isShow = false;
+                    // }
+                    // else {
+                    //     this.isShow = true;
+                    // }
+                },
+                remove: function( index ) {
+                    this.liArr.splice( index, 1 );
+                    // if ( this.liArr.length == 0 ) {
+                    //     this.isShow = false;
+                    // }
+                    // else {
+                    //     this.isShow = true;
+                    // }
+                },
+                reset: function() {
+                    this.liArr = [];
+                    // if ( this.liArr.length == 0 ) {
+                    //     this.isShow = false;
+                    // }
+                    // else {
+                    //     this.isShow = true;
+                    // }
+                }
+            }
+        } );
+    </script>
+</body>
+</html>

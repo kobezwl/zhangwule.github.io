@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断用户名是否被占用</title>
+    <style>
+        span.showUserName {
+            position: relative;
+            top: 1px;
+            left: 0px;
+            padding: 1px 2px;
+            display: inline-block;
+            width: 162.4px;
+            height: 16px;
+            border: 2px solid red;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <input type="text" v-model="UserName">
+        <span class="showUserName" v-if="TipsKey"> {{ Tips }} </span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+    <script>
+        let app = new Vue( {
+            el: "#wrapper",
+            data: {
+                UserName: '',
+                AjaxUserName: [
+                    '1',
+                    '2',
+                    '3',
+                    '0',
+                    '00',
+                    '000',
+                    '0000',
+                    'admin'
+                ],
+                Tips: '',
+                TipsKey: false
+            },
+            methods: {
+                // 
+            },
+            filters: {
+                // 
+            },
+            watch: {
+                UserName ( newval, oldval) {
+                    if ( newval === '' ) {
+                        this.TipsKey = true;
+                        this.Tips = '用户名不得为空';
+                        return false;
+                    }
+                    else {
+                        this.TipsKey = false;
+                        this.Tips = '';
+                        // 1. 调用 Ajax 发起请求, 判断 newval 是否被占用
+                        // $.get( 'https://www.escook.cn/api/finduser/' + newval, function ( res ) {
+                        //     console.log( res );
+                        // } );
+                        let key = this.AjaxUserName.includes( newval );
+                        if ( key ) {
+                            this.TipsKey = true;
+                            this.Tips = '该用户名已被占用';
+                            return false;
+                            console.log( '该用户名已被占用' );
+                        }
+                        else {
+                            this.TipsKey = false;
+                            this.Tips = '';
+                            console.log( '该用户名可用' );
+                        }
+                    }
+                }
+            }
+        } );
+    </script>
+</body>
+</html>
