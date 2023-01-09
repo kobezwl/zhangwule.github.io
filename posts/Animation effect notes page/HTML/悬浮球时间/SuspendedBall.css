@@ -1,0 +1,101 @@
+/* *{
+    margin: 0px;
+    padding: 0px;
+}
+li{
+    list-style-type: none;
+} */
+/* body{
+    height: 100vh;
+    background-image: linear-gradient(200deg, #DDD6F3, #FAACA8);
+    overflow: hidden;
+    , body
+} */
+#SuspendedBallBox, #SuspendedBallContainer, .SuspendedBallThisTime{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#SuspendedBallBox{
+    /* position: relative; */
+    /* width: 50px;
+    height: 50px; */
+    /* background-image: linear-gradient(200deg, #DDD6F3, #FAACA8); */
+    cursor: default;
+    user-select: none;
+    /* border: 1px solid red; */
+}
+#SuspendedBallContainer{
+    position: absolute;
+    /* top: 240px;
+    left: calc(50% - 80px / 2); */
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    background-image: linear-gradient(200deg, #5EE7DF, #B490CA);
+    border-radius: 50px;
+    box-shadow: 1px 1px 5px 1px black;
+    z-index: 99999;
+    cursor: move;
+}
+.SuspendedBallCheckBox{
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    cursor: pointer;
+}
+.SuspendedBallIcon, .SuspendedBallSS{
+    position: absolute;
+    top: calc(25px - 30px / 2 - 1px);
+    left: calc(25px - 30px / 2 - 1px);
+    width: 30px;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    background-image: linear-gradient(200deg, rgb(120, 100, 225), rgb(157, 0, 255));
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-align: center;
+    pointer-events: none;
+    /* transform-style: preserve-3d; */
+    transition: all 0.3s ease-in-out;
+}
+i.icon-icon-test5{
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: transparent;
+    font-size: 30px;
+    line-height: 30.5px;
+}
+.SuspendedBallSS{
+    color: transparent;
+    line-height: 30px;
+    background-image: linear-gradient(200deg, rgb(208, 198, 255), rgb(120, 100, 225), rgb(114, 110, 132));
+}
+.SuspendedBallThisTime{
+    width: 240px;
+    /* background-color: #FFFFFF; */
+    border-radius: 5px;
+    background-image: linear-gradient(200deg, rgb(194, 181, 255), rgb(120, 100, 225));
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+    overflow: hidden;
+    transition: all 0.3s;    /* 0.1s */
+}
+.SuspendedBallThisTime li{
+    font-size: 20px;
+    font-weight: 700;
+    color: transparent;
+    white-space: nowrap;
+    /* text-shadow: 1px 0px 100px #000000; */
+}
+#SuspendedBallContainer .SuspendedBallCheckBox:checked ~ .SuspendedBallIcon{
+    transform: rotate(360deg);
+}
+#SuspendedBallContainer .SuspendedBallCheckBox:checked ~ .SuspendedBallThisTime{
+    width: 0px;
+}

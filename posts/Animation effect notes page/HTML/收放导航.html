@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../jQuery notes page/HTML/jQuery 库/jquery-3.1.1.min.js"></script>
+    <title>收放导航</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        body{
+            /* width: 1536px; */
+            height: 100vh;
+            background-image: linear-gradient(200deg, #DDD6F3, #FAACA8);
+            overflow: hidden;
+            cursor: default;
+        }
+        #box, body, #container, #container ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #box{
+            position: relative;
+            width: 1536px;
+            height: 100vh;
+            /* top: calc(50% - 80px / 2);
+            left: calc(50% - 80px / 2); */
+            /* border: 1px solid rgb(120, 100, 255); */
+            background-image: linear-gradient(200deg, #DDD6F3, #FAACA8);
+            /* overflow: hidden; */
+        }
+        #container{
+            position: absolute;
+            top: 240px;
+            /* left: 740px; */
+            left: -40px;
+            padding: 20px;
+            background-color: #FFFFFF;
+            /* border: 1px solid rgb(120, 100, 255); */
+            border-radius: 50px;
+            box-shadow: 1px 1px 5px 1px black;
+            z-index: 999999;
+        }
+        #container input{
+            width: 40px;
+            height: 40px;
+            opacity: 0;
+            cursor: pointer;
+        }
+        #container span{
+            position: absolute;
+            top: calc(50% - 10px);
+            left: calc(20px + 10px / 2);
+            width: 30px;
+            height: 4px;
+            background-color: #999999;
+            border-radius: 15px;
+            pointer-events: none;   /* 是否对指针事件做出反应 */
+            transition: transform 0.3s ease-in-out, top 0.3s ease-in-out 0.3s;
+        }
+        #container span:nth-child(3){
+            top: calc(50% + 6px);
+        }
+        #container ul{
+            width: 0px;
+            overflow: hidden;
+            transition: all 0.5s 0.1s;
+        }
+        #container ul > li{
+            display: none;
+            margin: 0px 15px;
+        }
+        #container ul > li > a{
+            font-size: 20px;
+            font-weight: 700;
+            color: #333333;
+            white-space: nowrap;
+        }
+        /* #container:hover{
+            transform: translate(0px, -1px);
+        } */
+        #container ul > li > a:hover{
+            color: #FB7299;
+        }
+        #container input:checked ~ ul{
+            width: 350px;
+        }
+        #container input:checked ~ span:nth-child(2){
+            top: calc(50% - 2px);
+            transform: rotate(-45deg);
+            background-color: #FB7299;
+            transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+        }
+        #container input:checked ~ span:nth-child(3){
+            top: calc(50% - 2px);
+            transform: rotate(45deg);
+            background-color: #FB7299;
+            transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
+        }
+        .position, .mousedown, .mouseup{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100px;
+            height: 60px;
+            border: 1px solid red;
+        }
+        .mousedown{
+            top: 70px;
+        }
+        .mouseup{
+            top: 140px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="container">
+            <input type="checkbox">
+            <span></span>
+            <span></span>
+            <ul>
+                <li><a href="javascript:void(0)">测试</a></li>
+                <li><a href="javascript:void(0)">测试</a></li>
+                <li><a href="javascript:void(0)">测试</a></li>
+                <li><a href="javascript:void(0)">测试</a></li>
+                <li><a href="javascript:void(0)">测试</a></li>
+                <li><a href="javascript:void(0)">测试</a></li>
+                <li><a href="javascript:void(0)">测试</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="position"></div>
+
+    <script>
+        $(function(){
+            var $box = $('#box');
+            var $container = $('#container');
+            var $date = {};
+            var $btn = $('#container > input');
+            var $menu = $('#container > ul > li');
+            // var $taim = ('0.5s');
+            var $translateIn = ('translate(0px, -1px)');
+            var $translateOut = ('translate(0px, 0px)');
+
+            $container.mousedown(function(e){
+                // =================================================================
+                //获得鼠标偏移量
+                $date.left = e.pageX;
+                $date.top = e.pageY;
+                //获取paimeng初始位置
+                $date.sPositionX = $(this).position().left;
+                $date.sPositionY = $(this).position().top;
+                // console.log($date);
+                // =================================================================
+                $(document).mousemove(function(e){
+                    // ===================================
+                    //新的偏移位置
+                    $date.newleft = e.pageX;
+                    $date.newtop = e.pageY;
+                    //偏移量
+                    $date.x = $date.newleft - $date.left;
+                    $date.y = $date.newtop - $date.top;
+                    //$container 新的位置
+                    $date.newPositionX = $date.sPositionX + $date.x;
+                    $date.newPositionY = $date.sPositionY + $date.y;
+                    // ===================================
+                    /* 位置限制 */
+                    if($date.newPositionY < 0){
+                        //当上边的偏移量小于0的时候，就是上边的临界点，就让新的位置为0
+                        $date.newPositionY = 0;
+                    }
+                    //如果向下的偏移量大于文档对象的高度减去自身的高度，就让它等于这个高度
+                    if($date.newPositionY > $(document).height() - $container.height()){
+                        $date.newPositionY = $(document).height() - $container.height();
+                    }
+                    //右限制
+                    // if($date.newPositionX > $(document).width() - $container.width()){
+                    //     $date.newPositionX = $(document).width() - $container.width();
+                    // }
+                    if($date.newPositionX > $box.width() - 40){
+                        $date.newPositionX = $box.width() - 40;
+                    }
+                    if($date.newPositionX < -40){
+                        //左边的偏移量小于0的时候设置 左边的位置为0
+                        $date.newPositionX = -40;
+                    }
+                    // ===================================
+                    // 改变位置
+                    $container.css({
+                        left: $date.newPositionX + "px",
+                        top: $date.newPositionY + "px",
+                    });
+                    // ===================================
+                    //鼠标抬起事件
+                    $(document).mouseup(function(e){
+                        $(document).off("mousemove");
+                    });
+                    // ===================================
+                });
+            });
+
+            $btn.click(function(){
+                // console.log($date);
+                if($menu.is(':hidden')){
+                    $menu.show();
+                    // console.log('this is hidden');
+                }
+                else{
+                    $menu.hide(200);
+                    // console.log('this is visible');
+                }
+                if($date.newPositionX >= -40 && $date.newPositionX <= 0){
+                        //左边的偏移量小于0的时候设置 左边的位置为0
+                    $date.newPositionX = 0;
+                    $container.css({
+                        left: $date.newPositionX + "px",
+                        top: $date.newPositionY + "px",
+                        // transitionProperty: 'left',
+                        // transitionDuration: $taim,
+                    });
+                    // console.log('leftLimit');
+                }
+                if($date.newPositionX <= $box.width() && $date.newPositionX >= $box.width() - 80){
+                    // console.log('rightLimit');
+                    console.log('rightLimit');
+                    $date.newPositionX = $box.width() - 430;
+                    $container.css({
+                        left: $date.newPositionX + "px",
+                        top: $date.newPositionY + "px",
+                    });
+                }
+                    // console.log($date.newPositionX);    // 1496     1478    1375
+                    // console.log($box.width());    // 1534
+                    // console.log($box.width() - 40);   // 1496       1494
+                if($date.newPositionY <= $(document).height() - $container.height() && $date.newPositionY > $(document).height() - 80){
+                    // 盒子的位置 <= 浏览器高度 - 自身高度 == 295
+                    // console.log('bottomLimit');
+                    $date.newPositionY = $(document).height() - $container.height() - 40;
+                    $container.css({
+                        left: $date.newPositionX + "px",
+                        top: $date.newPositionY + "px",
+                    });
+                }
+                // console.log('盒子的位置：' + $date.newPositionY);    // 295    250    158/\
+                // console.log('浏览器高度：' + $(document).height());    // 335 - 80 == 255
+                // console.log('自身高度：' + $container.height());   // 40
+                $container.css({
+                    transform: $translateOut,
+                });
+            });
+
+            $container.hover(
+                function(){
+                    if($menu.is(':hidden')){
+                        $container.css({
+                            transform: $translateIn,
+                        });
+                    }
+                }
+                ,function(){
+                    $container.css({
+                        transform: $translateOut,
+                    });
+            });
+
+            $(function () {
+                $("body").mousemove(function (position) {
+                    var $position = "(" + position.pageX + "," + position.pageY + ")";
+                    $(".position").text($position);
+                    // console.log($position);
+                });
+            });
+
+            // var i = 0;
+            // var timer_1 = null;
+            // var timer_2 = null;
+            // timer_1 = setInterval(function(){
+                
+            //     if(container.offsetLeft == -40){
+            //         container.onmouseover = function(){
+            //             timer_2 = setTimeout(function(){
+            //                 container.style.left = '0px';
+            //             }, 500);
+            //         };
+            //         container.onmouseout = function(){
+            //             clearTimeout(timer_2);
+            //             container.style.left = '-40px';
+            //         };
+            //         i++;
+            //         console.log(container.offsetLeft + '--' + i);
+            //     }
+            // }, 1000);
+            // container.onmouseover = function(){
+            //     timer_1 = setInterval(function(){
+            //         i++;
+            //         console.log('0000');
+            //     }, 1000);
+            //     timer_2 = setTimeout(function(){
+            //         container.style.left = '0px';
+            //     }, 500);
+            // };
+            // container.onmouseout = function(){
+            //     clearInterval(timer_1);
+            //     clearTimeout(timer_2);
+            //     container.style.left = '-40px';
+            // };
+        });
+    </script>
+    <script>
+        console.log(window.frames);
+    </script>
+
+</body>
+</html>

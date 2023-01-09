@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环形旋转效果</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #box {
+            position: relative;
+            width: 432px;
+            height: 432px;
+            /* border: 1px solid red; */
+            border-radius: 100%;
+            animation: boxRotate 10s infinite linear;
+        }
+        @keyframes boxRotate {
+            to {
+                transform: rotate( 360deg );
+            }
+        }
+        .item {
+            position: absolute;
+            top: calc( 50% - 120px / 2 );
+            left: calc( 50% - 120px / 2 );
+            width: 120px;
+            height: 120px;
+        }
+        .item > img {
+            width: 120px;
+            height: 120px;
+            /* border: 1px solid red; */
+            border-radius: 100%;
+            animation: itemRotate 10s infinite linear;
+            filter: drop-shadow( 3px 3px 1.5px #000000 );
+        }
+        @keyframes itemRotate {
+            to {
+                transform: rotate( -360deg );
+            }
+        }
+        .centre {
+            position: absolute;
+            top: calc( 50% - 180px / 2 );
+            left: calc( 50% - 180px / 2 );
+            width: 180px;
+            height: 180px;
+            /* border: 1px solid red; */
+            border-radius: 100%;
+            background-image: url( '../../Vue notes page/HTML/卡通猫/cat.jpg' );
+            background-repeat: no-repeat;
+            /* background-position: center; */
+            background-size: contain;
+            animation: itemRotate 10s infinite linear;
+            box-shadow: 3px 3px 5px 1px #000000;
+            /* filter: drop-shadow( 5px 5px 1px #000000 ); */
+        }
+        #centreBox {
+            position: absolute;
+            top: calc( 50% - 180px / 2 );
+            left: calc( 50% - 180px / 2 );
+            width: 180px;
+            height: 180px;
+            border: 1px solid red;
+            /* border-radius: 100%; */
+            animation: itemRotate 10s infinite linear;
+            opacity: 0;
+            outline: none;
+            /* -webkit-appearance: none; */
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="item">
+            <img src="../../Vue notes page/HTML/卡通猫/cat1.gif" alt="cat">
+        </div>
+        <div class="item">
+            <img src="../../Vue notes page/HTML/卡通猫/cat2.gif" alt="cat">
+        </div>
+        <div class="item">
+            <img src="../../Vue notes page/HTML/卡通猫/cat3.gif" alt="cat">
+        </div>
+        <div class="item">
+            <img src="../../Vue notes page/HTML/卡通猫/cat4.gif" alt="cat">
+        </div>
+        <div class="item">
+            <img src="../../Vue notes page/HTML/卡通猫/cat5.gif" alt="cat">
+        </div>
+        <div class="item">
+            <img src="../../Vue notes page/HTML/卡通猫/cat6.gif" alt="cat">
+        </div>
+        <div class="centre">
+            <!-- <img src="../../Vue notes page/HTML/卡通猫/cat.jpg" alt="cat"> -->
+        </div>
+        <input type="checkbox" name="checkbox" id="centreBox">
+    </div>
+
+    <script>
+        window.onload = function () {
+            // 获取项目
+            let items = document.querySelectorAll( '#box .item' );
+            // 获取半径
+            let radius = document.querySelector( '#box' ).clientWidth / 2;
+            // 获取图片数量
+            let count = items.length;
+            // 获取一份的角度
+            let oneRadian = 360 / count;
+            // console.log( oneRadian );
+
+            for ( let i = 0; i < count; i++ ) {
+                // 获取每个item所在的角度
+                let t = i * oneRadian;
+                // 转为每个item所在的弧度
+                t = ( Math.PI / 180 ) * t;
+                // 获取x, y的值
+                let x = Math.sin( t ) * radius;
+                let y = -Math.cos( t ) * radius;
+                // 设置x, y
+                items[ i ].style.transform = `translate( ${x}px, ${y}px )`;
+            };
+
+            let box = document.querySelector( '#box' );
+            let centre = document.querySelector( '.centre' );
+            // centre.addEventListener( 'click', function () {
+            //     box.style.animation = `boxRotate 0s infinite linear`;
+            // }, true );
+            // function centerOnClick () {
+            //     console.log( 'getting' );
+            // };
+            // centerOnClick();
+        };
+    </script>
+</body>
+</html>

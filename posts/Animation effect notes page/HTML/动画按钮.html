@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3501374_k398qnltt2h.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3513097_fj5ji32i1an.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3505213_svgybfwdqb.css">
+    <title>动画按钮</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            cursor: default;
+            color: #2D2D2D;
+            /* overflow-x: hidden; */
+            overflow-y: auto;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul,li{
+            list-style-type: none;
+        }
+        #Wrapper{
+            position: absolute;
+            top: 100px;
+            left: calc(50% - (1200px - 20px) / 2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0px 10px;
+            width: calc(1200px - 20px);
+            height: 600px;
+            /* background-color: #CDCDCD; */
+        }
+        #Wrapper div{
+            position: relative;
+            width: calc(120px - 2px);
+            height: calc(60px - 2px);
+            border: 1px solid transparent;
+            /* background-color: #DCDCDC; */
+        }
+        #Wrapper div > input{
+            position: absolute;
+            top: 4.5px;
+            left: 9px;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        /* btn */
+        #Wrapper > div.btn_1 > a{
+        position: absolute;
+        top: 7px;
+        left: 14px;
+        width: 90px;
+        height: 45px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        box-shadow: 0px -1px 5px 0px #000, inset 0 1px 0 rgba(255,255,255,0.8);
+        color: rgb(120,100,225);
+        text-align: center;
+        line-height: 240%;
+        cursor: pointer;
+        transition:all 0.2s linear;
+    }
+    #Wrapper > div.btn_1 > a > span{
+        display: block;
+        color: rgb(120,100,225);
+        font-size: 24px;
+        transition:all 0.3s ease-in-out;
+    }
+    #Wrapper > div.btn_1 > a:hover{
+        transform:scale(1.005);
+    }
+    #Wrapper > div.btn_1 > a:active{
+        transform:scale(0.95);
+        box-shadow: 0px -1px 0px 0px #000, inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+    #Wrapper > div.btn_1 > a:hover .icon-icon-test57{
+        opacity:0.5;
+        transform:rotate(360deg);
+    }
+    /* ================================================================= */
+    #Wrapper .btn_2 > a{
+        position: absolute;
+        top: 7px;
+        left: 14px;
+        display: block;
+        width: 90px;
+        height: 45px;
+        border-radius: 5px;
+        box-shadow: 0px -1px 5px 0px #000, inset 0 1px 0 rgba(255,255,255,0.8);
+        text-align: center;
+        line-height: 280%;
+        transition: all 0.5s ease-in-out;
+    }
+    .btn_2 > a > i{
+        display: block;
+        color: rgb(120,100,225);
+        font-size: 24px;
+        transition: all 0.5s ease-in-out;
+    }
+    .btn_2:hover > a{
+        background-color: aliceblue;
+        transform: scale(1.05);
+        box-shadow: 10px 0px 10px 1px #000;
+    }
+    .btn_2:hover > a > i{
+        color: black;
+        transform: scale(1.5);
+        text-shadow: 3px 0px 0px #A1A1A1;
+    }
+    .btn_2 > a:active{
+        transform: scale(1);
+
+    }
+    .btn_2 > a:active > i{
+        transform: scale(1);
+        text-shadow: 3px 0px 3px #A1A1A1;
+    }
+    /* ================================================================= */
+    .btn_3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btn_3 > span{
+        position: relative;
+        display: block;
+        width: 80%;
+        height: 80%;
+        border-radius: 5px;
+        box-shadow: 1px 0px 5px 0px #000;
+        overflow: hidden;
+    }
+    /* .btn_3 > span > a{
+        display: block;
+        border: 1px solid red;
+    } */
+    .btn_3 i{
+        position: absolute;
+        top: 0px;
+        left: calc(50% - 24px / 2);
+        display: block;
+        color: rgb(120,100,225);
+        font-size: 24px;
+        z-index: 1;
+    }
+    .btn_3 p{
+        position: absolute;
+        bottom: 0px;
+        display: block;
+        width: 100%;
+        color: rgb(120,100,225);
+        text-align: center;
+        letter-spacing: 5px;
+    }
+    .btn_3 > span:hover{
+        background-color: aliceblue;
+    }
+    .btn_3 > span:hover i{
+        text-shadow: 0px 0px 3px #7864E1;
+        color: transparent;
+        animation: moveFromTop 400ms ease;
+    }
+    .btn_3 > span:hover p{
+        animation: moveFromBottom 400ms ease;
+    }
+    @keyframes moveFromTop{
+        0%{
+            transform: translateY(-300%);
+        }
+        100%{
+            transform: translateY(0%);
+        }
+    }
+    @keyframes moveFromBottom {
+        from {
+            transform: translateY(200%);
+        }
+        to {
+            transform: translateY(0%);
+        }
+    }
+    .btn_3 > span:active{
+        background-color: #EEEEEE;
+    }
+    .btn_3 > span:active i{
+        text-shadow: 0px 0px 1px #7864E1;
+        color: transparent;
+    }
+    </style>
+</head>
+<body>
+    <article id="Wrapper">
+        <div class="btn_1">
+            <a href="javascript:;">
+                <span class="icon-icon-test57 iconfont"></span>
+            </a>
+        </div>
+
+        <div class="btn_2">
+            <a href="javascript:void(0);">
+                <i class="icon-icon-test12 iconfont"></i>
+            </a>
+        </div>
+
+        <div class="btn_3">
+            <span>
+                <a href="javascript:void(0);">
+                    <i class="icon-icon-test13 iconfont"></i>
+                    <p>test</p>
+                </a>
+            </span>
+        </div>
+        <div>
+            <input type="button"></input>
+        </div>
+        <div>
+            <input type="button"></input>
+        </div>
+        <div>
+            <input type="button"></input>
+        </div>
+    </article>
+</body>
+</html>

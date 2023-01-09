@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../jQuery notes page/HTML/jQuery 库/jquery-3.1.1.min.js"></script>
+    <title>滑块动画菜单</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+        }
+        #wrapper{
+            width: 720px;
+            height: 45px;
+            margin: 200px auto;
+            background-color: #CDCDCD;
+            /* border: 1px solid red; */
+            border-radius: 10px;
+            position: relative;
+            padding: 5px 10px;
+        }
+        li{
+            float: left;
+            width: auto;
+            height: 40px;
+            line-height: 260%;
+            color: #686868;
+            padding: 0px 40px;
+            /* border: 1px solid red; */
+            /* background-color: #CDCDCD; */
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        li:hover{
+            color: black;
+        }
+        .active{
+            /* display: none; */
+            position: absolute;
+            top: 6px;
+            z-index: 1;
+            width: 109px;
+            height: 41px;
+            border-radius : 8px;
+            background : rgba(0,0,0,.20);
+            transition: all .4s ease-in-out;
+        }
+    </style>
+    <script>
+        $(function(){
+            var $testleft = ($('#wrapper .temporary').offset().left - $('#wrapper').offset().left) + 'px';
+            // 11px
+            var $testwidth = $('#wrapper .temporary').width() + 80 + 'px';
+            // 108px
+            $('.active').css({
+                'width': $testwidth,
+                'left': $testleft
+            });
+            $('li').click(function(){
+                var $left = $(this).offset().left- ($(this).parents('#wrapper').offset().left + 10);
+                // 获取当前的左边距离 - 祖先元素的左边距(318px) + 15(左内边距)
+                var $width = $(this).width() + 80 + "px";
+                // 当前li标签的宽度
+                var $sictranslate = "translate("+$left+"px, 0px)";
+                // 移动位置
+                $(this).parent('ul').next('div.active').css({
+                    "width": $width, // 改变宽度
+                    "transform": $sictranslate
+                });
+                console.log($testleft,$testwidth,$left);
+            });
+        });
+    </script>
+</head>
+<body>
+    <article id="wrapper">
+        <ul>
+            <li class="temporary">111</li>
+            <li>222</li>
+            <li>3333</li>
+            <li>4444</li>
+            <li>55555</li>
+            <li>66666</li>
+        </ul>
+        <div class="active"></div>
+    </article>
+</body>
+</html>

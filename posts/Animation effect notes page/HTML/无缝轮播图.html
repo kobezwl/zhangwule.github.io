@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../jQuery 库/jquery-3.1.1.min.js"></script>
+    <title>无缝轮播图</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        ul {
+            list-style-type: none;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #box {
+            position: relative;
+            /* top: 160px; */
+            /* left: 160px; */
+            width: 320px;
+            height: 240px;
+            /* background-color: rgb( 120, 90, 225 ); */
+            overflow: hidden;
+        }
+        #box .container {
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            width: calc( 320px * 3 );
+            height: 100%;
+        }
+        #box .container > li {
+            float: left;
+            width: 320px;
+            height: 240px;
+            /* border: 1px solid rgb( 120, 90, 225 ); */
+        }
+        #box .container > li > img {
+            width: 100%;
+            height: 100%;
+        }
+        #box .indicator {
+            position: absolute;
+            bottom: 10px;
+            left: calc( 50% - 150px / 2 );
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 150px;
+            height: 30px;
+            z-index: 10;
+        }
+        #box .indicator > li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba( 255, 255, 255, 0.25 );
+        }
+        #box .indicator > li:hover {
+            background-color: rgba( 255, 255, 255, 0.5 );
+            cursor: pointer;
+        }
+        #box .indicator > li.active {
+            background-color: white;
+        }
+        #box .arrows {
+            position: absolute;
+            top: calc( 50% - 30px / 2 );
+            right: 0px;
+            width: 15px;
+            height: 30px;
+        }
+        #box .arrows:hover {
+            cursor: pointer;
+        }
+        #box .arrows:hover > span{
+            background-color: rgba( 255, 255, 255, 0.5 );
+        }
+        #box .arrows:active > span{
+            background-color: white;
+        }
+        #box .left {
+            left: 1px;
+        }
+        #box .left > span,
+        #box .right > span {
+            position: absolute;
+            top: calc( 50% - 3px / 2 );
+            left: calc( 50% - 18px / 2 );
+            display: block;
+            width: 18px;
+            height: 3px;
+            background-color: rgba( 255, 255, 255, 0.25 );
+            transform: rotateZ( -45deg ) skew( 45deg );
+        }
+        #box .left > span.left-top,
+        #box .right > span.right-top {
+            top: calc( 50% - 3px / 2 - 6.38px );
+        }
+        #box .left > span.left-bottom,
+        #box .right > span.right-bottom {
+            top: calc( 50% - 3px / 2 + 6.38px );
+            transform: rotateZ( 45deg ) skew( -45deg );
+        }
+        #box .right > span {
+            transform: rotateZ( 45deg ) skew( -45deg );
+        }
+        #box .right > span.right-bottom {
+            transform: rotateZ( -45deg ) skew( 45deg );
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul class="container">
+            <li>
+                <img src="../image/KB1.jpg" alt="KB1">
+            </li>
+            <li>
+                <img src="../image/KB2.jpg" alt="KB2">
+            </li>
+            <li>
+                <img src="../image/KB3.jpg" alt="KB3">
+            </li>
+        </ul>
+        <ul class="indicator">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="left arrows">
+            <span class="left-top"></span>
+            <span class="left-bottom"></span>
+        </div>
+        <div class="right arrows">
+            <span class="right-top"></span>
+            <span class="right-bottom"></span>
+        </div>
+    </div>
+
+    <script>
+        let Doms = {
+            item: document.querySelector( '#box > .container' ),
+            items: document.querySelectorAll( '#box > .container > li' ),
+            arrowLeft: document.querySelector( '#box > .left' ),
+            arrowRight: document.querySelector( '#box > .right' ),
+            indicator: document.querySelectorAll( '#box > .indicator > li' ),
+            // active: document.querySelector( '#box > .indicator > li.active' )
+        };
+        let curIndex = 0;
+        let count = Doms.items.length;
+
+        class SeamlessShow {
+            constructor( item, size, indicator, itemList ) {
+                this.item = item;    // 轮播图 container
+                this.size = size;    // 图片尺寸
+                this.indicator = indicator;    // 指示器 list
+                this.itemList = itemList;    // 轮播图列表
+            }
+            // 改变位置
+            moveTo( index ) {
+                // 改变 container 位置
+                this.item.style.transform = `translateX( -${ index * this.size }px )`;
+                this.item.style.transition = '0.5s';
+                // 获取 .active
+                let active = document.querySelector( '#box > .indicator > li.active' );
+                // 删除类名, 并为当前指示器添加 .active
+                active.setAttribute( 'class', '' );
+                this.indicator[ index ].setAttribute( 'class', 'active' );
+                // 将计数器更新为 index
+                curIndex = index;
+            }
+            // 初始化
+            init() {
+                // 创建两个 dom 元素, 第一的 li, 和最后一个 li
+                let first = this.item.firstElementChild.cloneNode( true );
+                let last = this.item.lastElementChild.cloneNode( true );
+                // 添加到 dom 里, first 放到最后, last 放到第一
+                this.item.appendChild( first );
+                this.item.insertBefore( last, this.item.firstElementChild );
+                // 设置 last 位置
+                last.style.position = 'absolute';
+                last.style.transform = `translateX( -${ this.size }px )`;
+                // 改变 container 宽度
+                let initWidth = ( this.itemList.length + 2 ) * this.size;
+                this.item.style.width = initWidth + 'px';
+            }
+        }
+        let love = new SeamlessShow( Doms.item, 320, Doms.indicator, Doms.items );
+        love.init();
+        // love.leftNext();
+        function clickCut() {
+            Doms.indicator.forEach( function ( item, i ) {
+                item.onclick = function () {
+                    love.moveTo( i );
+                }
+            } );
+        }
+        clickCut();
+        function leftNext () {
+            if ( curIndex === 0 ) {
+                console.log( 'getting' );
+                Doms.item.style.transform = `translateX( -${count * 320}px )`;
+                Doms.item.style.transition = 'none';
+                Doms.item.clientHeight;
+                love.moveTo( count - 1 );
+            }
+            else {
+                love.moveTo( curIndex - 1 );
+            }
+        }
+        function rightNext () {
+            if ( curIndex === count - 1 ) {
+                console.log( 'getting' );
+                Doms.item.style.transform = `translateX( ${320}px )`;
+                Doms.item.style.transition = 'none';
+                Doms.item.clientHeight;
+                love.moveTo( 0 );
+            }
+            else {
+                love.moveTo( curIndex + 1 );
+            }
+        }
+        Doms.arrowLeft.addEventListener( 'click', leftNext );
+        Doms.arrowRight.addEventListener( 'click', rightNext );
+
+        // function moveTo( index ) {
+        //     Doms.item.style.transform = `translateX( -${index * 320}px )`;
+        //     Doms.item.style.transition = '0.5s';
+        //     var active = document.querySelector( '#box > .indicator > li.active' );
+        //     active.classList.remove('active');
+        //     Doms.indicator[ index ].classList.add( 'active' );
+        //     curIndex = index;
+        // }
+
+        // Doms.indicator.forEach( function ( item, i ) {
+        //     item.onclick = function () {
+        //         moveTo( i );
+        //     }
+        // } );
+
+        // function init () {
+        //     let first = Doms.item.firstElementChild.cloneNode( true );
+        //     let last = Doms.item.lastElementChild.cloneNode( true );
+        //     Doms.item.appendChild( first );
+        //     Doms.item.insertBefore( last, Doms.item.firstElementChild );
+        //     last.style.position = 'absolute';
+        //     last.style.transform = 'translateX( -320px )';
+        //     let initWidth = (Doms.items.length + 2) * 320;
+        //     Doms.item.style.width = initWidth + 'px';
+        // }
+        // init();
+
+        // let count = Doms.items.length;
+        // function leftNext () {
+        //     if ( curIndex === 0 ) {
+        //         console.log( 'getting' );
+        //         Doms.item.style.transform = `translateX( -${count * 320}px )`;
+        //         Doms.item.style.transition = 'none';
+        //         Doms.item.clientHeight;
+        //         moveTo( count - 1 );
+        //     }
+        //     else {
+        //         moveTo( curIndex - 1 );
+        //     }
+        // }
+        /*
+        function rightNext () {
+            if ( curIndex === count - 1 ) {
+                console.log( 'getting' );
+                Doms.item.style.transform = `translateX( ${320}px )`;
+                Doms.item.style.transition = 'none';
+                Doms.item.clientHeight;
+                moveTo( 0 );
+            }
+            else {
+                moveTo( curIndex + 1 );
+            }
+        }
+        */
+
+        // Doms.arrowLeft.addEventListener( 'click', leftNext );
+        // Doms.arrowRight.addEventListener( 'click', rightNext );
+    </script>
+</body>
+</html>

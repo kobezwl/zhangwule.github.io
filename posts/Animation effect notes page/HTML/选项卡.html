@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../jQuery notes page/HTML/jQuery 库/jquery-3.1.1.min.js"></script>
+    <title>选项卡</title>
+    <style type="text/css">
+        /* Nav Active 的统一样式 */
+        .tab ul, .tab ol{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        /* Nav */
+        .tab ul {
+            height:26px;
+            width:500px;
+        }
+        /* Active */
+        .tab ol {
+            height:auto;
+            width:500px;
+            height: 240px;
+            padding:6px;
+            background:#1B8DD6;
+        }
+        /* Nav 里的li */
+        .tab ul li {
+            float:left;
+            height:24px;
+            padding:0 1em;
+            cursor:pointer;
+        }
+        /* jQuery用到的样式 */
+        .normal {
+            color:#1f3a87;
+            background:#fff;
+            border:2px solid #1B8DD6;
+            border-bottom:0;
+        }
+        .hover {
+            color:#fff;
+            font-weight:bold;
+            background:#1B8DD6;
+            border:2px solid #1B8DD6;
+            border-bottom:0;
+        }
+        .show { display:block; }
+        .none { display:none; }
+
+        input{
+            margin-top: 10px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <ul>
+            <li>Tab1</li>
+            <li>Tab2</li>
+            <li>Tab3</li>
+        </ul>
+        <ol>
+            <li>111111111111111</li>
+            <li>222222222222222</li>
+            <li>333333333333333</li>
+        </ol>
+    </div>
+    <input type="button" value="Click启用" class="Click" style="width: 253.5px;height: 30px;"></input>
+    <input type="button" value="Hover启用" class="Hover" style="width: 253.5px;height: 30px;"></input>
+
+    <script>
+        // javascript
+        /*
+        window.onload = function(){
+            var tab = document.getElementsByClassName('tab')[0];
+            var Nav = tab.getElementsByTagName('ul')[0];
+            var Active = tab.getElementsByTagName('ol')[0];
+            var Nav_li = Nav.getElementsByTagName('li');
+            var Active_li = Active.getElementsByTagName('li');
+            for(var i = 0; i < Nav_li.length; i++){
+                Nav_li[i].className = 'normal';
+            }
+            for(var i = 0; i < Active_li.length; i++){
+                Active_li[i].className = 'none';
+            }
+            Nav_li[0].className = 'hover';
+            Active_li[0].className = 'show';
+            var addEvent = function(event, fn){
+                return event.addEventListener("mouseover", fn, false);
+            }
+            for(var j = 0; j < Nav_li.length; j++) {
+                (function(j, Nav_li, Active_li){    //调用匿名函数
+                    addEvent(Nav_li[j], function(){
+                        for(var n = 0; n < Nav_li.length; n++){
+                            Nav_li[n].className = 'normal';
+                            Active_li[n].className = 'none';
+                        }
+                        Nav_li[j].className = 'hover';
+                        Active_li[j].className = 'show';
+                    });
+                })(j,Nav_li,Active_li);
+            }
+        }
+        */
+
+        // jQuery
+        $(function(){
+            var $Nav_li = $('.tab > ul > li');
+            var $Active_li = $('.tab > ol > li');
+            $Nav_li.addClass('normal');
+            $Active_li.addClass('none');
+
+            $Nav_li.eq(0).removeClass().addClass('hover');
+            $Active_li.eq(0).removeClass().addClass('show');
+
+            $Nav_li.each(function(n){
+                $(this).mouseover(function(){
+                    $Nav_li.removeClass().addClass('normal');
+                    $(this).removeClass().addClass('hover');
+
+                    $Active_li.removeClass().addClass('none');
+                    $($Active_li[n]).removeClass().addClass('show');
+                })
+            });
+            $Nav_li.click(function(){
+                $Nav_li.removeClass().addClass('normal');
+                $(this).addClass('hover')
+                var index = $(this).index();
+                $Active_li.removeClass().addClass('none');
+                $Active_li.eq(index).removeClass().addClass('show');
+            });
+            function newHover(){
+                $Nav_li.each(function(n){
+                    $(this).mouseover(function(){
+                        $Nav_li.removeClass().addClass('normal');
+                        $(this).removeClass().addClass('hover');
+
+                        $Active_li.removeClass().addClass('none');
+                        $($Active_li[n]).removeClass().addClass('show');
+                    })
+                });
+            }
+            function newClick(){
+                $Nav_li.click(function(){
+                    $Nav_li.removeClass().addClass('normal');
+                    $(this).addClass('hover')
+                    var index = $(this).index();
+                    $Active_li.removeClass().addClass('none');
+                    $Active_li.eq(index).removeClass().addClass('show');
+                });
+            }
+
+            var $Click = $('.Click');
+            var $Hover = $('.Hover');
+            $Click.click(function(){
+                $Nav_li.off('click');
+                $Nav_li.on('mouseover', newHover);
+                $('.Click').val('Click注销');
+                if($('.Hover').val() == 'Hover注销'){
+                    $('.Hover').val('Hover启用')
+                }
+            });
+            $Hover.click(function(){
+                $Nav_li.off('mouseover');
+                $Nav_li.on('click', newClick);
+                $('.Hover').val('Hover注销');
+                if($('.Click').val() == 'Click注销'){
+                    $('.Click').val('Click启用')
+                }
+            });
+        });
+    </script>
+</body>
+</html>

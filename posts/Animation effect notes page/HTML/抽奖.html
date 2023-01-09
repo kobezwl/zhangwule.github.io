@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../jQuery notes page/HTML/jQuery 库/jquery-3.1.1.min.js"></script>
+    <title>抽奖</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style-type: none;
+        }
+        body{
+            height: 100vh;
+            cursor: default;
+            user-select: none;
+        }
+        #wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(200deg, #5EE7DF, rgb(120, 100, 225));
+        }
+        .box{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            /* background-color: azure; */
+            transform-style: preserve-3d;
+        }
+        .box-main{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .box-main > li, .start{
+            margin-top: 25px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            line-height: 150px;
+            font-size: 24px;
+            /* align-self: center; */
+        }
+        .start{
+            border-radius: 12px;
+        }
+        li.no-Top{
+            margin-top: 0px;
+        }
+        li.li-3{
+            position: absolute;
+            top: 150px;
+            left: 350px;
+        }
+        li.li-4{
+            position: absolute;
+            top: 325px;
+            left: 350px;
+        }
+        li.li-5{
+            position: absolute;
+            top: 325px;
+            left: 175px;
+        }
+        li.li-6{
+            position: absolute;
+            top: 325px;
+            left: 0px;
+        }
+        li.li-7{
+            position: absolute;
+            top: 150px;
+            left: 0px;
+        }
+        div.start{
+            position: absolute;
+            top: 150px;
+            left: 175px;
+            background-color: rgba(120, 100, 225, 0.5);
+            font-weight: bold;
+            /* cursor: pointer; */
+            pointer-events: none;
+            z-index: 10;
+        }
+        /* div.start:hover{
+            cursor: pointer;
+            transform: scale(1.05, 1.05);
+            transition: all 0.3s cubic-bezier(0.66, -0.47, 0.33, 1.5);
+        }
+        div.start:active{
+            transform: scale(1, 1);
+            transition: all 0.3s cubic-bezier(0.66, -0.47, 0.33, 1.5);
+        } */
+        .startCheckbox{
+            position: absolute;
+            top: 175px;
+            left: 175px;
+            width: 150px;
+            height: 150px;
+            opacity: 0;
+            /* z-index: -1; */
+        }
+        .startCheckbox:hover{
+            cursor: pointer;
+        }
+        .startCheckbox:hover ~ .start{
+            transform: scale(1, 1);
+            transition: all 0.3s cubic-bezier(0.66, -0.47, 0.33, 1.5);
+        }
+        .startCheckbox:checked ~ .start{
+            transform: scale(1, 1);
+            transition: all 0.3s cubic-bezier(0.66, -0.47, 0.33, 1.5);
+        }
+        .startCheckbox:not(:checked) ~ .start{
+            transform: scale(1.05, 1.05);
+            transition: all 0.3s cubic-bezier(0.66, -0.47, 0.33, 1.5);
+        }
+        #main{
+            position: absolute;
+            top: 96px;
+            left: 120px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 240px;
+            height: 120px;
+            /* border: 1px solid red; */
+            background-image: linear-gradient(90deg, #F4748B, #FFA358, #FDC0C5);
+            -moz-background-clip: text;
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* overflow: hidden; */
+        }
+        #main > .main-text{
+            display: block;
+            width: 180px;
+            height: 60px;
+            /* border: 1px solid red; */
+            color: transparent;
+            text-align: center;
+            line-height: 60px;
+            font-size: 24px;
+        }
+        .main-get{
+            width: 180px;
+            height: 60px;
+            /* border: 1px solid red; */
+            color: #F4748B;
+            text-align: center;
+            line-height: 60px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #arrow{
+            /* display: none; */
+            position: relative;
+            top: calc(100px - 100px / 2);
+            left: calc(250px - 40px / 2);
+            width: 40px;
+            height: 100px;
+            transform: rotateZ(315deg);
+            transition: all 150ms linear;
+            pointer-events: none;
+        }
+        .Pointer{
+            position: absolute;
+            top: -13px;
+            left: 7.05px;
+            border: 13px solid transparent;
+            /* border-top-color: #5EE7DF; */
+            /* border-right-color: #F4748B; */
+            border-bottom-color: #FAC091;
+            /* border-left-color: #FDC0C5;s */
+        }
+        .circular{
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            background-color: #F4748B;
+            z-index: 1;
+        }
+        .arrow-main{
+            position: absolute;
+            top: 10px;
+            left: calc(50% - 3px / 2);
+            width: 3px;
+            height: 90px;
+            background-color: #FAC091;
+        }
+        .arrow-main::before,
+        .arrow-main::after{
+            position: absolute;
+            bottom: 0px;
+            left: -8px;
+            width: 8px;
+            height: 18px;
+            background-color: #FAC091;
+            content: '';
+            transform: skew(0deg, -45deg);
+        }
+        .arrow-main::after{
+            bottom: 0px;
+            left: 2.5px;
+            transform: skew(0deg, 45deg);
+        }
+        #resetPointerposition{
+            display: none;
+            position: absolute;
+            top: 120px;
+            right: 300px;
+            width: 100px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .Select{
+            background-color: rgb(255, 149, 149) !important;
+            transform: scale(1.03, 1.03);
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="box">
+            <ul class="box-main">
+                <li class="li-0 no-Top Select">1</li>
+                <li class="li-1 no-Top">再来一次</li>
+                <li class="li-2 no-Top">3</li>
+                <li class="li-3">4</li>
+                <li class="li-4">5</li>
+                <li class="li-5">6</li>
+                <li class="li-6">7</li>
+                <li class="li-7">8</li>
+            </ul>
+            <input type="checkbox" value="start" class="startCheckbox">
+            <div class="start" target="_start">点击开始</div>
+            <div id="arrow">
+                <div class="Pointer"></div>
+                <div class="circular"></div>
+                <div class="arrow-main"></div>
+            </div>
+        </div>
+        <div id="main">
+            <span class="main-text">试试你的运气吧!</span>
+            <span class="main-get"></span>
+        </div>
+        <input type="button" value="重置指针" id="resetPointerposition">
+    </div>
+
+    <script>
+        $(function(){
+            var $wrapper = $('#wrapper');
+            var $box = $('#wrapper .box');
+            var $boxMain = $('#wrapper .box .box-main');
+            var $boxMainLi = $('#wrapper .box .box-main li');
+            var $start = $('#wrapper .box div.start');
+            var $startCheckbox = $('#wrapper .box .startCheckbox');
+            var $main_text = $('#main .main-text');
+            var $main_get = $('#main .main-get');
+            var $arrow = $('#arrow');
+            var $degs = [315, 360, 405, 450, 495, 540, 585, 630];
+            var $circles = [];
+            var $circle = 0;
+            var $resetPointer = $('#resetPointerposition');
+            // i = 0;
+
+            // === 转换数组 ===
+            if(!jQuery.isArray($boxMainLi)){
+                var $boxMainLiArray = jQuery.makeArray($boxMainLi);
+            }
+            else{
+                return $boxMainLi;
+            }
+
+            // === $startCheckbox 'click'方法 ===
+            function startCheckboxClick(){
+                // =================================================================
+                var isChecked = $startCheckbox.is(':checked');
+                $start.text('点击结束');
+                // === 生成随机数 ===
+                var x = 5;
+                var y = 3;
+                var random_a = parseInt(Math.random() * (x - y + 1) + y);
+                var n = 10;
+                var m = 5;
+                var random_b = parseInt(Math.random() * (n - m + 1) + m);
+                var time = random_a * random_b * 100;
+
+                if(isChecked){
+                    // console.log(random_a, random_b);
+                    console.log('运行时间: ' + time);
+                    if(time >= 2000 && time <= 2500){
+                        var time = 4000;
+                    }
+                    // === 运行动画 ===
+                    // var i = 0;
+                    // else 获取不到i，所以设为全局
+                    i = 0;
+                    timerIn = setInterval(() => {
+                        $boxMainLi.removeClass('Select');
+                        $('.li-'+ i).addClass('Select');
+                        $('.li-'+ i).prev('li').removeClass('Select');
+                        if(i == 0){
+                            $('.li-'+ 7).removeClass('Select');
+                        }
+                        if(i++ >= 7){
+                            i = 0;
+                        }
+                        if(i == 1){
+                            $circles.push($circle);
+                            console.log('数组长度' + $circles);
+                        }
+                        switch(i){
+                            case 1:
+                                $arrow.css({
+                                    'transform' : 'rotateZ(' + ($degs[0] + (($circles.length - 1) * 360)) + 'deg)'
+                                });
+                                break;
+                            case 2:
+                                $arrow.css({
+                                    'transform' : 'rotateZ(' + ($degs[1] + (($circles.length - 1) * 360)) + 'deg)'
+                                });
+                                break;
+                            case 3:
+                                $arrow.css({
+                                    'transform' : 'rotateZ(' + ($degs[2] + (($circles.length - 1) * 360)) + 'deg)'
+                                });
+                                break;
+                            case 4:
+                                $arrow.css({
+                                    'transform' : 'rotateZ(' + ($degs[3] + (($circles.length - 1) * 360)) + 'deg)'
+                                });
+                                break;
+                            case 5:
+                                $arrow.css({
+                                    'transform' : 'rotateZ(' + ($degs[4] + (($circles.length - 1) * 360)) + 'deg)'
+                                });
+                                break;
+                            case 6:
+                                $arrow.css({
+                                    'transform' : 'rotateZ(' + ($degs[5] + (($circles.length - 1) * 360)) + 'deg)'
+                                });
+                                break;
+                            case 7:
+                                $arrow.css({
+                                    'transform' : 'rotateZ(' + ($degs[6] + (($circles.length - 1) * 360)) + 'deg)'
+                                });
+                                break;
+                                default:
+                                    $arrow.css({
+                                        'transform' : 'rotateZ(' + ($degs[7] + (($circles.length - 1) * 360)) + 'deg)'
+                                    });
+                        }
+                    }, 150);
+
+                    // === 运行时间 ===
+                    timerOut = setTimeout(() => {
+                        clearInterval(timerIn);
+                        $startCheckbox.prop({
+                            checked: false
+                        });
+                        $start.text('点击开始');
+                        if(i == 0){
+                            // $main.text('恭喜您抽中了: ' + $('.li-'+ 7).text());
+                        $main_text.text('恭喜您抽中了: ');
+                        $main_get.text($('.li-'+ 7).text());
+                        }
+                        else{
+                            // $main.text('恭喜您抽中了: ' + $('.li-'+ i).prev().text());
+                        $main_text.text('恭喜您抽中了: ');
+                        $main_get.text($('.li-'+ i).prev().text());
+                        }
+                        resetPointerClick();
+                    }, time);
+                    return i;
+                }
+                else{
+                    clearInterval(timerIn);
+                    clearTimeout(timerOut);
+                    $start.text('点击开始');
+                    if(i == 0){
+                        // $main.text('恭喜您抽中了: ' + $('.li-'+ 7).text());
+                        $main_text.text('恭喜您抽中了: ');
+                        $main_get.text($('.li-'+ 7).text());
+                    }
+                    else{
+                        // $main.text('恭喜您抽中了: ' + $('.li-'+ i).prev().text());
+                        $main_text.text('恭喜您抽中了: ');
+                        $main_get.text($('.li-'+ i).prev().text());
+                    }
+                }
+                resetPointerClick();
+            }
+
+            // $resetPointer 'click' 方法
+            function resetPointerClick(){
+                if(i <= 4 && i != 0){
+                    console.log('get');
+                    $circles.splice(0, 1)
+                    console.log('数组长度' + $circles);
+                    $arrow.css({
+                        'transform' : 'rotateZ(' + ($degs[i - 1] + (($circles.length) * 360)) - (45 * (i - 1)) + 'deg)'
+                    });
+                }
+            }
+
+            $startCheckbox.on('click', startCheckboxClick);
+            // $resetPointer.on('click', resetPointerClick);
+        });
+    </script>
+
+    <!-- <script>
+        function raf(){
+            requestAnimationFrame(function(){
+                // 设置动画
+                raf();
+            });
+        }
+    </script> -->
+</body>
+</html>

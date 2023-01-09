@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载动画</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #wrapper{
+            position: relative;
+            margin: 150px auto;
+            width: 405px;
+            height: 405px;
+            /* background-color: rgb(120,100,225); */
+        }
+        #wrapper > section{
+            position: relative;
+            float: left;
+            width: 135px;
+            height: 135px;
+            /* background-color: #DCDCDC; */
+            /* border: 1px solid rgb(120,100,225); */
+        }
+        #wrapper > section:nth-child(2){
+            float: right;
+        }
+        #wrapper > section:nth-child(3){
+            position: relative;
+            left: calc(202.5px - 135px / 2);
+            clear: both;
+        }
+        #wrapper > section:nth-child(4){
+            clear: both;
+        }
+        #wrapper > section:last-child{
+            float: right;
+        }
+/* ================================================================================================= */
+        /* Disc */
+        .loader_spinningDisc{
+            position: absolute;
+            top: calc(67.5px - 48px / 2);
+            left: calc(67.5px - 48px / 2);
+            border: 8px solid #9B59B6;
+            border-right-color: transparent;
+            border-left-color: transparent;
+            padding: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3498DB;
+            background-clip: content-box; /* 背景的绘制区域 内容框 */
+            animation: spinDisc 1.5s linear infinite;
+        }
+        @keyframes spinDisc{
+            50%{
+                border-top-color: #3498DB;
+                border-bottom-color: #3498DB;
+                background-color: #2ECC71;
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        /* Wave */
+        .loader_audioWave{
+            position: absolute;
+            top: calc(67.5px - 32px / 2);
+            left: calc(67.5px - 48px / 2);
+            width: 48px;
+            height: 32px;
+            background-color: red;
+            background: linear-gradient(#9b59b6, #9b59b6) 0 50%, linear-gradient(#9b59b6, #9b59b6) 0.625em 50%, linear-gradient(#9b59b6, #9b59b6) 1.25em 50%, linear-gradient(#9b59b6, #9b59b6) 1.875em 50%, linear-gradient(#9b59b6, #9b59b6) 2.5em 50%;
+            background-repeat: no-repeat;
+            background-size: 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em;
+            animation: audioWave 1.5s linear infinite;
+        }
+        @keyframes audioWave{
+            25%{
+                background: linear-gradient(#3498DB, #3498DB) 0 50%, linear-gradient(#9b59b6, #9b59b6) 0.625em 50%, linear-gradient(#9b59b6, #9b59b6) 1.25em 50%, linear-gradient(#9b59b6, #9b59b6) 1.875em 50%, linear-gradient(#9b59b6, #9b59b6) 2.5em 50%;
+                background-repeat: no-repeat;
+                background-size: 0.5em 2em, 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em;
+            }
+            37.5% {
+                background: linear-gradient(#9b59b6, #9b59b6) 0 50%, linear-gradient(#3498db, #3498db) 0.625em 50%, linear-gradient(#9b59b6, #9b59b6) 1.25em 50%, linear-gradient(#9b59b6, #9b59b6) 1.875em 50%, linear-gradient(#9b59b6, #9b59b6) 2.5em 50%;
+                background-repeat: no-repeat;
+                background-size: 0.5em 0.25em, 0.5em 2em, 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em;
+            }
+            50% {
+                background: linear-gradient(#9b59b6, #9b59b6) 0 50%, linear-gradient(#9b59b6, #9b59b6) 0.625em 50%, linear-gradient(#3498db, #3498db) 1.25em 50%, linear-gradient(#9b59b6, #9b59b6) 1.875em 50%, linear-gradient(#9b59b6, #9b59b6) 2.5em 50%;
+                background-repeat: no-repeat;
+                background-size: 0.5em 0.25em, 0.5em 0.25em, 0.5em 2em, 0.5em 0.25em, 0.5em 0.25em;
+            }
+            62.5% {
+                background: linear-gradient(#9b59b6, #9b59b6) 0 50%, linear-gradient(#9b59b6, #9b59b6) 0.625em 50%, linear-gradient(#9b59b6, #9b59b6) 1.25em 50%, linear-gradient(#3498db, #3498db) 1.875em 50%, linear-gradient(#9b59b6, #9b59b6) 2.5em 50%;
+                background-repeat: no-repeat;
+                background-size: 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em, 0.5em 2em, 0.5em 0.25em;
+            }
+            75% {
+                background: linear-gradient(#9b59b6, #9b59b6) 0 50%, linear-gradient(#9b59b6, #9b59b6) 0.625em 50%, linear-gradient(#9b59b6, #9b59b6) 1.25em 50%, linear-gradient(#9b59b6, #9b59b6) 1.875em 50%, linear-gradient(#3498db, #3498db) 2.5em 50%;
+                background-repeat: no-repeat;
+                background-size: 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em, 0.5em 0.25em, 0.5em 2em;
+            }
+        }
+        /* Window */
+        .loader_glisteningWindow{
+            position: absolute;
+            top: calc(67.5px - 4px / 2);
+            left: calc(67.5px - 4px / 2);
+            width: 4px;
+            height: 4px;
+            box-shadow: 0.70711em 0.70711em 0 0em #2ecc71, -0.70711em 0.70711em 0 0.17678em #9b59b6, -0.70711em -0.70711em 0 0.25em #3498db, 0.70711em -0.70711em 0 0.17678em #f1c40f;
+            animation: gw 1s ease-in-out infinite, rot 2.8s linear infinite;
+        }
+        @keyframes rot {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes gw {
+            0% {
+                box-shadow: 0.70711em 0.70711em 0 0.125em #2ecc71, -0.70711em 0.70711em 0 0.39017em #9b59b6, -0.70711em -0.70711em 0 0.5em #3498db, 0.70711em -0.70711em 0 0.39017em #f1c40f;
+            }
+            25% {
+                box-shadow: 0.70711em 0.70711em 0 0.39017em #2ecc71, -0.70711em 0.70711em 0 0.5em #9b59b6, -0.70711em -0.70711em 0 0.39017em #3498db, 0.70711em -0.70711em 0 0.125em #f1c40f;
+            }
+            50% {
+                box-shadow: 0.70711em 0.70711em 0 0.5em #2ecc71, -0.70711em 0.70711em 0 0.39017em #9b59b6, -0.70711em -0.70711em 0 0.125em #3498db, 0.70711em -0.70711em 0 0.39017em #f1c40f;
+            }
+            75% {
+                box-shadow: 0.70711em 0.70711em 0 0.39017em #2ecc71, -0.70711em 0.70711em 0 0.125em #9b59b6, -0.70711em -0.70711em 0 0.39017em #3498db, 0.70711em -0.70711em 0 0.5em #f1c40f;
+            }
+            100% {
+                box-shadow: 0.70711em 0.70711em 0 0.125em #2ecc71, -0.70711em 0.70711em 0 0.39017em #9b59b6, -0.70711em -0.70711em 0 0.5em #3498db, 0.70711em -0.70711em 0 0.39017em #f1c40f;
+            }
+        }
+        /* Snake */
+        .loader_snake{
+            position: absolute;
+            top: calc(67.5px - 20px / 2);
+            left: calc(67.5px - 20px / 2);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            transform: translate(-66px);
+            box-shadow: 1.375em 0em #DEBF23, 1.375em 0em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 2.75em 0.29721em #B8B64C, 2.75em -0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 4.125em 0.18368em #92AE75, 4.125em -0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 5.5em -0.18368em #6CA59D, 5.5em 0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 6.875em -0.29721em #469CC6, 6.875em 0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52);
+            animation: snake 2s linear infinite;
+        }
+        @keyframes snake {
+            0% {
+                box-shadow: 1.375em 0em #DEBF23, 1.375em 0em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 2.75em 0.29721em #B8B64C, 2.75em -0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 4.125em 0.18368em #92AE75, 4.125em -0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 5.5em -0.18368em #6CA59D, 5.5em 0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 6.875em -0.29721em #469CC6, 6.875em 0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52);
+            }
+            20% {
+                box-shadow: 1.375em 0.29721em #B8B64C, 1.375em -0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 2.75em 0.18368em #92AE75, 2.75em -0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 4.125em -0.18368em #6CA59D, 4.125em 0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 5.5em -0.29721em #469CC6, 5.5em 0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 6.875em 0.0em #DEBF23, 6.875em 0.0em 0.625em -0.3125em rgba(0, 0, 0, 0.52);
+            }
+            40% {
+                box-shadow: 1.375em 0.18368em #92AE75, 1.375em -0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 2.75em -0.18368em #6CA59D, 2.75em 0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 4.125em -0.29721em #469CC6, 4.125em 0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 5.5em 0.0em #DEBF23, 5.5em 0.0em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 6.875em 0.29721em #B8B64C, 6.875em -0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52);
+            }
+            60% {
+                box-shadow: 1.375em -0.18368em #6CA59D, 1.375em 0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 2.75em -0.29721em #469CC6, 2.75em 0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 4.125em 0.0em #DEBF23, 4.125em 0.0em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 5.5em 0.29721em #B8B64C, 5.5em -0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 6.875em 0.18368em #92AE75, 6.875em -0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52);
+            }
+            80% {
+                box-shadow: 1.375em -0.29721em #469CC6, 1.375em 0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 2.75em 0.0em #DEBF23, 2.75em 0.0em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 4.125em 0.29721em #B8B64C, 4.125em -0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 5.5em 0.18368em #92AE75, 5.5em -0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 6.875em -0.18368em #6CA59D, 6.875em 0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52);
+            }
+            100% {
+                box-shadow: 1.375em 0.0em #DEBF23, 1.375em 0.0em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 2.75em 0.29721em #B8B64C, 2.75em -0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 4.125em 0.18368em #92AE75, 4.125em -0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 5.5em -0.18368em #6CA59D, 5.5em 0.18368em 0.625em -0.3125em rgba(0, 0, 0, 0.52), 6.875em -0.29721em #469CC6, 6.875em 0.29721em 0.625em -0.3125em rgba(0, 0, 0, 0.52);
+            }
+        }
+        /* Square */
+        .loader_circularSquare{
+            position: absolute;
+            top: calc(67.5px);
+            left: calc(67.5px);
+            width: 0;
+            height: 0;
+            box-shadow: -0.625em -0.625em 0 0.625em #9b59b6, 0.625em -0.625em 0 0.625em #9b59b6, -0.625em 0.625em 0 0.625em #9b59b6, 0.625em 0.625em 0 0.625em #9b59b6;
+            animation: circSquare 1.5s ease-in-out infinite;
+        }
+        @keyframes circSquare{
+            50% {
+                width: 1.25em;
+                height: 1.25em;
+                border-radius: 50%;
+                transform: rotate(0.5turn);
+                box-shadow: -2.5em 0 0 #2ecc71, 2.5em 0 0 #e74c3c, -2.5em 0 0 #3498db, 2.5em 0 0 #f1c40f;
+            }
+            80%, 100% {
+                transform: rotate(1turn);
+            }
+        }
+    </style>
+</head>
+<body>
+    <article id="wrapper">
+        <section id="Disc">
+            <div class="loader_spinningDisc"></div>
+        </section>
+        <section id="Wave">
+            <div class="loader_audioWave"></div>
+        </section>
+        <section id="Window">
+            <div class="loader_glisteningWindow"></div>
+        </section>
+        <section id="Snake">
+            <div class="loader_snake"></div>
+        </section>
+        <section id="Square">
+            <div class="loader_circularSquare"></div>
+        </section>
+    </article>
+</body>
+</html>

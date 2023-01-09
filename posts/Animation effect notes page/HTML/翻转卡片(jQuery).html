@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻转卡片(jQuery)</title>
+    <link rel="stylesheet" href="./CSS/4.style.css">
+    <script src="../../jQuery notes page/HTML/jQuery 库/jquery-3.1.1.min.js"></script>
+    <style>
+        .test{
+            position: absolute;
+            top: 330px;
+            left: 590px;
+            border: 1px solid red;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 设置默认字体 */
+        body,
+        button, input, select, textarea { /* for ie */
+            /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+            font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+        }
+        h1 {
+            font-size: 18px; /* 18px / 12px = 1.5 */ 
+        }
+        h2 {
+            font-size: 16px;
+        }
+        h3 {
+            font-size: 14px;
+        }
+        h4, h5, h6 {
+            font-size: 100%;
+        }
+        address, cite, dfn, em, var {
+            font-style: normal; /* 将斜体扶正 */
+        }
+        code, kbd, pre, samp, tt {
+            font-family: "Courier New", Courier, monospace; /* 统一等宽字体*/
+        }
+        small {
+            font-size: 12px; /* 小于 12px 的中文很难阅读，让 small 正常化 */
+        }
+        /* 重置列表元素 */
+        ul, ol {
+            list-style: none;
+        }
+        /* 重置文本格式元素 */
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果*/
+            border-bottom: 1px dotted;
+            cursor: help;
+        }
+
+        /* 重置表单元素 */
+        legend {
+            color: #000; /* for ie6 */
+        }
+        fieldset, img {
+            border: none; /* img 搭车：让链接里的 img 无边框 */
+        }
+        /* 注：optgroup 无法扶正 */
+        button, input, select, textarea {
+            font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+        }
+        /* 重置表格元素 */
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+            /* 重置 hr */
+        hr {
+            border: none;
+            height: 1px;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* width: 100%; */
+            height: 100vh;
+            background-image: linear-gradient(200deg, #5EE7DF, #B490CA);
+            /* background: linear-gradient(200deg, #5EE7DF, rgb(120, 100, 225)); */
+            perspective: 800px;
+        }
+        #card{
+            width: 350px;
+            height: 450px;
+            /* border: 1px solid red; */
+            border-radius: 30px;
+            background-color: #FFFFFF;
+            box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transform-style: preserve-3d;
+            /* animation: rotate_L 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards; */
+            /* overflow: hidden; */
+        }
+        /* #card:hover{
+            animation: rotate_R 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
+        } */
+        .front,.back{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            /* border: 1px solid #000000; */
+            border-radius: 30px;
+            background-color: #FFFFFF;
+            font-size: 20px;
+        }
+        .front{
+            background: linear-gradient(180deg,#F1EEFC,#9DC6FF 70%,#A5BCFF);
+        }
+        .front::after{
+            position: absolute;
+            top: 0px;
+            right: 0.5px;
+            display: block;
+            width: 60px;
+            height: 60px;
+            content: '';
+            border-radius: 0px 30px 0px 0px;
+            /* border: 1px solid red; */
+            background-image: url( '../image/k4.jpg' );
+            background-size: 60px 60px;
+            /* clip-path: polygon(100vw 0, 0% 0vh, 100vw 100vh); */
+            clip-path: polygon(0px 0px, 60px 60px, 60px 0px);
+            cursor: pointer;
+        }
+        .front h1{
+            color: #FFFFF1;    /* #ECF0F1 */
+            font-size: 50px;
+            letter-spacing: 5px;
+            font-weight: 100;
+            text-shadow: 5px 5px 5px rgba(33, 45, 58, 0.3);
+            /* z-index: 1; */
+        }
+        .front form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 350px;
+            height: 200px;
+            /* z-index: 1; */
+        }
+        .User{
+            width: 250px;
+            height: 40px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #FFFFFF;
+            background: none;
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        .User::placeholder{
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        .Submit{
+            margin-top: 20px;
+            width: 250px;
+            height: 40px;
+            outline: none;
+            background: none;
+            border: 1px solid #FFFFFF;
+            border-radius: 20px;
+            letter-spacing: 5px;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+        .back{
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            text-align: center;
+        }
+        .back > img{
+            position: relative;
+            top: 50px;
+            width: 150px;
+            height: 150px;
+        }
+        .back > p{
+            width: 200px;
+            height: 100px;
+            color: #000;
+            font-weight: 200;
+            /* background-color: red; */
+        }
+        .rotate_R{
+            animation: rotate_R 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
+        }
+        .rotate_L{
+            animation: rotate_L 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
+        }
+        @keyframes rotate_R{
+            0%{
+            transform: rotateY(0deg);
+            }
+            100%{
+            transform: rotateY(180deg);
+            }
+        }
+        @keyframes rotate_L{
+            0%{
+            transform: rotateY(180deg);
+            }
+            100%{
+            transform: rotateY(0deg);
+            }
+        }
+
+        .front .in{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-radius: 50%;
+            background-color: rgb(207, 69, 95, 0.1);
+            transform: translate(-50%, -50%);
+            animation: in 0.5s ease-out forwards;
+            /* z-index: 1; */
+        }
+        .front .out{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: block;
+            width: 1200px;
+            height: 1200px;
+            border-radius: 50%;
+            background-color: rgb(207, 69, 95, 0.1);
+            transform: translate(-50%, -50%);
+            animation: out 0.5s ease-out forwards;
+        }
+        @keyframes in{
+            0%{
+                width: 0px;
+                height: 0px;
+            }
+            100%{
+                width: 1200px;
+                height: 1200px;
+            }
+        }
+        @keyframes out{
+            0%{
+                width: 1200px;
+                height: 1200px;
+            }
+            100%{
+                width: 0px;
+                height: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="wrapper"> -->
+        <article id="card">
+            <div class="front">
+                <h1>Login</h1>
+                <form action="#">
+                    <input type="text" placeholder="用户名" name="User" class="User">
+                    <input type="password" placeholder="密码" name="User" class="User">
+                    <input type="submit" value="提交" name="UserSubmit" class="Submit">
+                </form>
+                <!-- <span class="in"></span> -->
+            </div>
+            <div class="back">
+                <img src="../image/k4.jpg" alt="二维码">
+                <p>二维码登陆</p>
+            </div>
+        </article>
+    <!-- </div> -->
+    <div class="test"></div>
+
+    <script>
+        $(function(){
+            var $card = $('#card');
+            $card.addClass('rotate_L').removeClass('rotate_R');
+            $card.click(function(){
+                if($card.hasClass('rotate_L')){
+                    $card.addClass('rotate_R').removeClass('rotate_L');
+                }
+                else{
+                    $card.addClass('rotate_L').removeClass('rotate_R');
+                }
+            });
+        });
+
+        const con = document.querySelector('.front');
+
+        let isIn = true;
+        let isOut = false;
+
+        var span;
+
+        con.addEventListener('mouseenter', (e) => {
+            if(isIn){
+                let inX = e.clientX - e.target.offsetLeft;
+                // 鼠标相对于浏览器的X坐标 - 父盒子左侧偏移量 = 生成元素的X坐标
+                let inY = e.clientY - e.target.offsetTop;
+                // 鼠标相对于浏览器的Y坐标 - 父盒子上边偏移量 = 生成元素的Y坐标
+
+                let el = document.createElement('span');    // 对象中创建一个对象
+                // 出生坐标
+                var $el = $(el);
+                el.style.left = inX + 'px';
+                el.style.top = inY + 'px';
+                    console.log(el);
+                    console.log($el.parent());
+                if(inX > 600){
+                    console.log('test');
+                }
+                else{
+                    con.appendChild(el);    // 添加到父元素中
+
+                    $('.front span').removeClass('out');
+                    $('.front span').addClass('in');
+
+                    span = document.querySelector('.front span');
+                    isIn = false;
+                    isOut = true;
+                }
+                // con.appendChild(el);    // 添加到父元素中
+
+                // $('.front span').removeClass('out');
+                // $('.front span').addClass('in');
+
+                // span = document.querySelector('.front span');
+                // isIn = false;
+                // isOut = true;
+            }
+        });
+        
+        con.addEventListener('mouseleave', (e) => {
+            if(isOut){
+                let outX = e.clientX - e.target.offsetLeft;
+                let outY = e.clientY - e.target.offsetTop;
+
+                $('.front span').removeClass('in');
+                $('.front span').addClass('out');
+
+                $('.out').css('left', outX + 'px');
+                $('.out').css('top', outY + 'px');
+                
+
+                isOut = false;
+                setTimeout(() => {
+                    con.removeChild(span);    // 从父元素中删除
+                    isIn = true;
+                }, 500);
+            }
+        })
+    </script>
+</body>
+</html>

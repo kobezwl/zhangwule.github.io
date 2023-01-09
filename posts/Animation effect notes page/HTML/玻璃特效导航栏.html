@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3501374_k398qnltt2h.css">
+    <link rel="stylesheet" href="./悬浮球时间/SuspendedBall.css">
+    <script src="../../jQuery notes page/HTML/jQuery 库/jquery-3.1.1.min.js"></script>
+    <script src="./悬浮球时间/SuspendedBall.js"></script>
+    <title>玻璃特效导航栏</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        li{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #wrapper{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(200deg, rgb(173, 156, 255), #ff99cc);
+        }
+        #container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        #container::before{
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 50%;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);    /* 背景模糊 除了IE基本支持  */
+            content: '';
+            z-index: 1;
+        }
+        #container .color{
+            position: absolute;
+            filter: blur(200px);
+        }
+        #container .color:first-child{
+            top: -450px;
+            width: 800px;
+            height: 800px;
+            background-color: #FD746C;
+        }
+        #container .color:nth-child(2){
+            bottom: -150px;
+            left: 100px;
+            width: 600px;
+            height: 600px;
+            background-color: #CF8BF3;
+        }
+        #container .color:nth-child(3){
+            bottom: 50px;
+            right: 100px;
+            width: 400px;
+            height: 400px;
+            background-color: #FDB99B;
+        }
+        .icon{
+            position: relative;
+            display: flex;
+            z-index: 2;
+        }
+        .icon li{
+            position: relative;
+            margin: 10px;
+        }
+        .icon li a{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0px 5px 45px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(2px);
+            transition: all 0.5s;
+            overflow: hidden;
+        }
+        .icon li a:hover{
+            transform: translateY(-20px);
+        }
+        .icon li a::before{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 50px;
+            height: 100%;
+            content: '';
+            background-color: #FFFFFF;
+            transform: skewX(45deg) translateX(150px);
+            transition: all 0.5s;
+        }
+        .icon li a:hover::before{
+            transform: skewX(45deg) translateX(-150px);
+        }
+        .icon li a i{
+            display: inline-block;
+            color: #FFFFFF;
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <ul class="icon">
+                <li>
+                    <a href="javascript:void(0);"><i class="icon-icon-test2 iconfont"></i></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon-icon-test40 iconfont"></i></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon-icon-test11 iconfont"></i></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon-icon-test24 iconfont"></i></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="icon-icon-test33 iconfont"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="SuspendedBallBox">
+        <div id="SuspendedBallContainer">
+            <input type="checkbox" class="SuspendedBallCheckBox">
+            <span class="SuspendedBallIcon">
+                <i class="icon-icon-test5 iconfont"></i>
+            </span>
+            <span class="SuspendedBallSS"></span>
+            <ul class="SuspendedBallThisTime">
+                <li>07</li>
+                <li>-</li>
+                <li>28</li>
+                <li>&nbsp;</li>
+                <li>星期五</li>
+                <li>&nbsp;</li>
+                <li>08</li>
+                <li>:</li>
+                <li>24</li>
+                <li>:</li>
+                <li>24</li>
+            </ul>
+        </div>
+        <!-- <input type="button" value="停止" id="Stop">
+        <input type="button" value="重启" id="Restart"> -->
+    </div>
+</body>
+</html>
