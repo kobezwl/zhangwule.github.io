@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.放大镜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100%;
+            height: 792px;
+        }
+        #page {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            /* cursor: url( '../../img/KB4.jpg' ), auto; */
+        }
+        div.card {
+            position: relative;
+            margin: 80px auto;
+            width: 300px;
+            height: 450px;
+            border: 1px solid red;
+            border-radius: 12px;
+            background-image: url( '../../img/Kobe.jpg' );
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            background-position: 0% 0%;
+            box-sizing: border-box;
+            transition: background 0.2s;
+        }
+        div.card:hover {
+            background-position: right cener;
+            background-size: auto 200%;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <div class="card">
+        </div>
+    </div>
+
+    <script>
+        let card = document.querySelector( '.card' );
+        let cardWidth = card.offsetWidth;
+        let cardHeight = card.offsetHeight;
+        card.addEventListener( 'mousemove', ( e ) => {
+            let { offsetX, offsetY } = e;
+            // console.log( offsetX, offsetY );
+            let posX = offsetX / cardWidth * 100;
+            let posY = offsetY / cardHeight * 100;
+            card.style.cssText = `background-position: ${ posX }% ${ posY }%;`;
+            // console.log( posX, posY );
+        }, false );
+        card.addEventListener( 'mouseout', ( e ) => {
+            card.style.cssText = `background-position: 50% 50%`;
+        }, false );
+    </script>
+</body>
+</html>

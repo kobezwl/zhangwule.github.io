@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东放大镜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            position: relative;
+        }
+        body {
+            width: 100%;
+            height: 792px;
+            overflow: hidden;
+        }
+        #page-box {
+            margin: 80px auto;
+            width: 70%;
+            height: 70%;
+        }
+        .img-small {
+            position: relative;
+            /* padding: 20px; */
+            width: 400px;
+            height: 550px;
+            border: 1px solid red;
+            /* box-sizing: border-box; */
+            overflow: hidden;
+        }
+        .img, img {
+            width: 100%;
+            height: 100%;
+        }
+        .img > img {
+            /*  */
+        }
+        .mask-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            width: 200px;
+            height: 200px;
+            background-color: rgba( 255, 199, 59, 0.5 );
+            cursor: move;
+        }
+        .img-big {
+            position: absolute;
+            top: 100px;
+            left: 650px;
+            display: none;
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            background-color: #ea517f;
+            overflow: hidden;
+        }
+        .img-big .img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .img-big img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc( 400px * 1.3 );
+            height: calc( 550px * 1.3 );
+            display: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-box">
+        <div class="img-small">
+            <div class="img">
+                <img src="../../img/Kobe.jpg" alt="Kobe">
+            </div>
+            <div class="mask-layer"></div>
+        </div>
+        <div class="img-big">
+            <div class="img">
+                <img src="../../img/Kobe.jpg" alt="big-img">
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        "use strict";
+        import * as api from "../../网页练习/电商网站/JavaScript/module.js";
+
+        let smallImg = document.querySelector( '.img-small' );
+        let maskLayer = document.querySelector( '.mask-layer' );
+        let bigImgBox = document.querySelector( '.img-big' );
+        let bigImg = document.querySelector( '.img-big img' );
+
+        function show() {
+            maskLayer.style.display = 'block';
+            bigImgBox.style.display = 'block';
+        }
+        function hide() {
+            maskLayer.style.display = 'none';
+            bigImgBox.style.display = 'none';
+        }
+
+        function smallMoveTo( x, y ) {
+            let maskX = x - smallImg.offsetLeft - maskLayer.clientWidth / 2;
+            let maskY = y - smallImg.offsetTop - maskLayer.clientHeight / 2;
+            function isOverflow( x, y ) {
+                let modifyX = x;
+                let modifyY = y;
+                if ( x < 0 ) {
+                    modifyX = 0;
+                }
+                if ( x > smallImg.clientWidth - maskLayer.clientWidth ) {
+                    modifyX = smallImg.clientWidth - maskLayer.clientWidth;
+                }
+                if ( y < 0 ) {
+                    modifyY = 0;
+                }
+                if ( y > smallImg.clientHeight - maskLayer.clientHeight ) {
+                    modifyY = smallImg.clientHeight - maskLayer.clientHeight;
+                }
+                return {
+                    x: modifyX, 
+                    y: modifyY
+                }
+            }
+            let modify = isOverflow( maskX, maskY );
+            maskLayer.style.top = modify.y + 'px';
+            maskLayer.style.left = modify.x + 'px';
+            return {
+                x: modify.x, 
+                y: modify.y, 
+                maskMax: {
+                    x: smallImg.clientWidth - maskLayer.clientWidth,
+                    y: smallImg.clientHeight - maskLayer.clientHeight
+                }
+            }
+        }
+        function bigMoveTo( x, y, max, bigImgMax ) {
+            // console.log( x, y );
+            bigImg.style.top = -1 * ( y * bigImgMax.y / max.y ) + 'px';
+            bigImg.style.left = -1 * ( x * bigImgMax.x / max.x ) + 'px';
+            // console.log( x * bigImgMax.x / max.x );
+            // console.log( bigImgMax );
+        }
+
+        api.hover( smallImg, show, hide );
+        smallImg.addEventListener( 'mousemove', function( e ) {
+            let small = smallMoveTo( e.pageX, e.pageY );
+            let bigImgMax = {
+                // x: 100,
+                // y: 100
+                x: bigImg.clientWidth - bigImgBox.clientWidth,
+                y: bigImg.clientHeight - bigImgBox.clientHeight
+            }
+            bigMoveTo( small.x, small.y, small.maskMax, bigImgMax );
+            // console.log( bigImg.clientHeight - bigImgBox.clientHeight );
+            // 大图片移动距离 = 遮挡移动距离 * 大图片移动最大距离 / 遮挡最大移动距离
+            // console.log( small );
+        } );
+    </script>
+</body>
+</html>

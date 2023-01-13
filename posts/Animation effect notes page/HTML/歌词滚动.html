@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13.歌词滚动</title>
+    <link rel="shortcut icon" href="../image/music.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+        }
+        li {
+            list-style-type: none;
+        }
+        #page {
+            position: relative;
+            top: calc( 50% - 80% / 2 );
+            left: calc( 50% - 70% / 2 );
+            width: 70%;
+            height: 80%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        header, footer {
+            width: 100%;
+            height: 50px;
+            background-color: #313131;
+        }
+        header h3 {
+            width: inherit;
+            height: inherit;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            letter-spacing: 0.1em;
+        }
+        main {
+            position: relative;
+            width: 100%;
+            height: calc( 100% - 50px * 2 );
+            background-color: rgba( 43, 43, 43, 0.8 );
+        }
+        #lyrics {
+            margin: 0 auto;
+            width: 70%;
+            height: 100%;
+            background-color: rgba(72, 72, 72, 0.8);
+            overflow: hidden;
+        }
+        #lyrics ul {
+            width: 100%;
+            /* height: 100%; */
+            height: auto;
+            /* overflow: hidden;
+            overflow-y: auto;
+            box-sizing: border-box; */
+            transform: translateY( 0 );
+            transition: all .3s ease;
+        }
+        #lyrics li {
+            margin: 3px 0;
+            width: auto;
+            height: 24px;
+            color: #8a8a8a;
+            text-align: center;
+            line-height: 24px;
+            transition: inherit;
+        }
+        #lyrics li.active {
+            color: #ffffff;
+            transform: scale( 1.2 );
+        }
+        /* #lyrics ul::-webkit-scrollbar {
+            width: 0px;
+        }
+        #lyrics ul::-webkit-scrollbar {
+            width: 3px;
+            background-color: #b2b2b2;
+        }
+        #lyrics ul::-webkit-scrollbar-thumb {
+            background-color: #39363f;
+        } */
+        footer audio {
+            position: absolute;
+            left: calc( 50% - 70% / 2 );
+            width: 70%;
+            height: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <header>
+            <h3>歌词滚动效果</h3>
+        </header>
+        <main>
+            <div id="lyrics">
+                <ul>
+                    <!--  -->
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <audio src="../music/程艾影.mp3" loop controls></audio>
+        </footer>
+    </div>
+
+    <script src="./JavaScript/13.data.js"></script>
+    <script>
+        // console.log( lrc );
+
+        /** 获取需要的 dom */
+        let doms = {
+            audio: document.querySelector( 'audio' ), 
+            list: document.querySelector( '#lyrics ul' ), 
+            lyrics: document.querySelector( '#lyrics' )
+        }
+
+        /**
+         * @name: parseLrcData
+         * @description: 
+         *  1.得到一个歌词对象的数组
+         *  2.每个歌词对象: { time: 开始时间, words: '歌词内容' }
+         * @param { String } data
+         * @return { object } result 歌词对象数组
+         */ 
+        function parseLrcData( data ) {
+            let lines = data.split( '\n' );
+            // 歌词对象数组
+            let result = [];
+            lines.forEach( item => {
+                let obj = {
+                    time: ( item.split( ']' )[0] ).substr( 1 ),
+                    words: item.split( ']' )[1]
+                }
+                /** 将获得的时间格式化 ( 秒 ) */
+                obj.time = +obj.time.split( ':' )[0] * 60 + +obj.time.split( ':' )[1];
+                result.push( obj );
+            } );
+            return result;
+        }
+
+        let lrcData = parseLrcData( lrc );
+
+        /**
+         * @name: findIndex
+         * @description: 
+         *  1.计算出当前播放器播放到第几秒
+         *  2.lrcData 数组中, 应该高亮显示的歌词下标
+         * @return { Number } i 高亮歌词下标
+         */ 
+        function findIndex() {
+            // 播放器当前时间
+            let curTime = doms.audio.currentTime;
+            for ( let i = 0; i < lrcData.length; i++ ) {
+                if ( curTime < lrcData[i].time ) {
+                    return i - 1;
+                }
+            }
+            // 当没找到时, 到了最后一句
+            return lrcData.length - 1;
+        }
+
+        // findIndex();
+
+        /**
+         * @name: initLyrics
+         * @description: 
+         *  初始化歌词, 将歌词添加到页面中
+         * @return {*}
+         */ 
+        // console.log( `${ lrcData[0].words }` );
+        function initLyrics() {
+            // 文档片段
+            let frag = document.createDocumentFragment();
+            lrcData.forEach( item => {
+                let li = document.createElement( 'li' );
+                li.textContent = item.words;
+                frag.append( li );
+            } );
+            doms.list.append( frag );
+        }
+
+        initLyrics();
+
+        // 容器高度
+        let lyricsHeight = doms.lyrics.clientHeight;
+        // li 高度
+        let liHeight = doms.list.children[0].clientHeight;
+        // 最大偏移量
+        // let offsetMax = doms.list.clientHeight - lyricsHeight;
+        let i = 0;
+        /**
+         * @name: setOffset
+         * @description: 
+         *  设置 ul 元素的偏移量
+         * @return {*}
+         */ 
+        function setOffset() {
+            let index = findIndex();
+            let offset = liHeight * index + liHeight / 2 - lyricsHeight / 2;
+            // if ( offset < 0 ) {
+            //     offset = 0;
+            // }
+            // if ( offset > offsetMax ) {
+            //     offset = offsetMax;
+            // }
+            if ( index > 0 ) {
+                doms.list.children[ i ].classList.remove( 'active' );
+                doms.list.children[ index ].classList.add( 'active' );
+                i = index;
+            }
+            doms.list.style.transform = `translateY( -${ offset }px )`;
+        }
+        // setOffset();
+
+        // audio 绑定事件
+        doms.audio.addEventListener( 'timeupdate', setOffset );
+
+        /** 点击测试 */
+        document.body.addEventListener( 'click', findIndex );
+    </script>
+</body>
+</html>
